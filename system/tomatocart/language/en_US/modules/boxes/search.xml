@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>box_search_heading</key>
+      <value><![CDATA[Search]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_search_text</key>
+      <value><![CDATA[(try our <a href="%s">advanced search</a>)]]></value>
+      <group>modules-boxes</group>
+    </definition>
+  </definitions>
+</language>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>box_livezilla_heading</key>
+      <value><![CDATA[LiveZilla Chat]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_livezilla_code</key>
+      <value><![CDATA[LiveZilla Chat Javascript Code]]></value>
+      <group>modules-boxes</group>
+    </definition>
+  </definitions>
+</language>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>box_google_adsense_heading</key>
+      <value><![CDATA[Google Adsense]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_google_adsense_code</key>
+      <value><![CDATA[Google Adsense Code]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_google_adsense_example_code</key>
+      <value><![CDATA[Google Adsense Example Code]]></value>
+      <group>modules-boxes</group>
+    </definition>
+  </definitions>
+</language>

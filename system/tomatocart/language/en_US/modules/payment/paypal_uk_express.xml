@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>payment_paypal_uk_express_title</key>
+      <value><![CDATA[PayPal Website Payments Pro (UK) Express Checkout]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_paypal_uk_express_description</key>
+      <value><![CDATA[PayPal UK Express]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_paypal_uk_express_method_title</key>
+      <value><![CDATA[PayPal UK Express (including Credit Cards and Debit Cards)]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_paypal_uk_express_error_cfg_error</key>
+      <value><![CDATA[Error: Payment module configuration error. Please verify the login credentials.]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_paypal_uk_express_error_address</key>
+      <value><![CDATA[Error: A match of the Shipping Address City, State, and Postal Code failed. Please try again.]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_paypal_uk_express_error_declined</key>
+      <value><![CDATA[Error: This transaction has been declined. Please try again.]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_paypal_uk_express_error_express_disabled</key>
+      <value><![CDATA[Error: PayPal Express Checkout has been disabled for this merchant. Please contact PayPal Customer Service.]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_paypal_uk_express_error_general</key>
+      <value><![CDATA[Error: A general problem has occurred with the transaction. Please try again.]]></value>
+      <group>modules-payment</group>
+    </definition>
+  </definitions>
+</language>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>shipping_free_title</key>
+      <value><![CDATA[Free Shipping]]></value>
+      <group>modules-shipping</group>
+    </definition>
+    <definition>
+      <key>shipping_free_description</key>
+      <value><![CDATA[Free Shipping]]></value>
+      <group>modules-shipping</group>
+    </definition>
+    <definition>
+      <key>shipping_free_for_amount</key>
+      <value><![CDATA[for orders over %s]]></value>
+      <group>modules-shipping</group>
+    </definition>
+  </definitions>
+</language>

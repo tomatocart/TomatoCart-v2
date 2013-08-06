@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>box_ordering_steps_heading</key>
+      <value><![CDATA[结算流程]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_ordering_steps_delivery</key>
+      <value><![CDATA[配送信息]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_ordering_steps_payment</key>
+      <value><![CDATA[支付信息]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_ordering_steps_confirmation</key>
+      <value><![CDATA[订单确认]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_ordering_steps_complete</key>
+      <value><![CDATA[完成!]]></value>
+      <group>modules-boxes</group>
+    </definition>
+  </definitions>
+</language>

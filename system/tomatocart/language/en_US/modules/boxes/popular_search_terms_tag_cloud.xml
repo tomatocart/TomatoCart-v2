@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>box_popular_search_terms_tag_cloud_heading</key>
+      <value><![CDATA[Popular Search Terms]]></value>
+      <group>modules-boxes</group>
+    </definition>
+  </definitions>
+</language>

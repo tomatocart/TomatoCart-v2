@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>recently_visited_title</key>
+      <value><![CDATA[最近浏览历史]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>recently_visited_products_title</key>
+      <value><![CDATA[最近浏览过的商品]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>recently_visited_categories_title</key>
+      <value><![CDATA[最近浏览过的商品分类]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>recently_visited_searches_title</key>
+      <value><![CDATA[最近搜索历史]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>recently_visited_item_in_category</key>
+      <value><![CDATA[商品分类：%s]]></value>
+      <group>modules-boxes</group>
+    </definition>
+  </definitions>
+</language>

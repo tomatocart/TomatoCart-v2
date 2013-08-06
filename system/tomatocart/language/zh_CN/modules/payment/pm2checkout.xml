@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>payment_2checkout_title</key>
+      <value><![CDATA[2CheckOut]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_2checkout_description</key>
+      <value><![CDATA[信用卡测试信息：<br /><br />CC#: 4111111111111111<br />有效期: 无限]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_2checkout_credit_cart_type</key>
+      <value><![CDATA[类型：]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_2checkout_credit_card_owner</key>
+      <value><![CDATA[持卡人：]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_2checkout_credit_card_owner_first_name</key>
+      <value><![CDATA[持卡人名称：]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_2checkout_credit_card_owner_last_name</key>
+      <value><![CDATA[持卡人姓氏：]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_2checkout_credit_card_number</key>
+      <value><![CDATA[信用卡卡号：]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_2checkout_credit_card_expiry_date</key>
+      <value><![CDATA[信用卡有效期：]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_2checkout_credit_card_checknumber</key>
+      <value><![CDATA[信用卡验证码：]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_2checkout_credit_card_checknumber_location</key>
+      <value><![CDATA[(位于信用卡的背面)]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_2checkout_js_credit_card_number</key>
+      <value><![CDATA[* 信用卡卡号至少包含 %s 位字符。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_2checkout_error_message</key>
+      <value><![CDATA[处理信用卡时出错。请重试。]]></value>
+      <group>modules-payment</group>
+    </definition>
+  </definitions>
+</language>

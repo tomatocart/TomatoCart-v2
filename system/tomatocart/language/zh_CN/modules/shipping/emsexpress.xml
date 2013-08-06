@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>shipping_ems_title</key>
+      <value><![CDATA[EMS 国内邮政特快专递]]></value>
+      <group>modules-shipping</group>
+    </definition>
+    <definition>
+      <key>shipping_ems_description</key>
+      <value><![CDATA[EMS 国内邮政特快专递]]></value>
+      <group>modules-shipping</group>
+    </definition>
+    <definition>
+      <key>shipping_ems_method</key>
+      <value><![CDATA[EMS 国内邮政特快专递]]></value>
+      <group>modules-shipping</group>
+    </definition>
+    <definition>
+      <key>emsexpress_base_fee</key>
+      <value><![CDATA[500克以内费用]]></value>
+      <group>modules-shipping</group>
+    </definition>
+    <definition>
+      <key>emsexpress_step_fee</key>
+      <value><![CDATA[续重每500克或其零数的费用]]></value>
+      <group>modules-shipping</group>
+    </definition>
+    <definition>
+      <key>emsexpress_free_shipping</key>
+      <value><![CDATA[免费额度]]></value>
+      <group>modules-shipping</group>
+    </definition>
+  </definitions>
+</language>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>payment_moneyorder_title</key>
+      <value><![CDATA[支票/银行转账]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_moneyorder_description</key>
+      <value><![CDATA[请支付到:&nbsp;%s<br /><br />账户:<br />%s<br /><br />我们将在收到您的汇款后发送货物。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_moneyorder_email_footer</key>
+      <value><![CDATA[请支付到: %s
+
+账户:
+%
+
+我们将在收到您的汇款后发送货物。]]></value>
+      <group>modules-payment</group>
+    </definition>
+  </definitions>
+</language>

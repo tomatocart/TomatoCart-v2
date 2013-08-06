@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>payment_saferpay_vt_title</key>
+      <value><![CDATA[Saferpay 虚拟终端]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_saferpay_vt_description</key>
+      <value><![CDATA[Saferpay 虚拟终端交易]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_saferpay_vt_method_title</key>
+      <value><![CDATA[信用卡]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_saferpay_vt_error_general</key>
+      <value><![CDATA[处理此订单时出现问题。请核对账单信息后重试。]]></value>
+      <group>modules-payment</group>
+    </definition>
+  </definitions>
+</language>

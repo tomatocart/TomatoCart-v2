@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>shipping_zones_title</key>
+      <value><![CDATA[Zone Rates]]></value>
+      <group>modules-shipping</group>
+    </definition>
+    <definition>
+      <key>shipping_zones_description</key>
+      <value><![CDATA[Zone Based Rates]]></value>
+      <group>modules-shipping</group>
+    </definition>
+    <definition>
+      <key>shipping_zones_method</key>
+      <value><![CDATA[Shipping to]]></value>
+      <group>modules-shipping</group>
+    </definition>
+    <definition>
+      <key>shipping_zones_invalid_zone</key>
+      <value><![CDATA[No shipping available to the selected country]]></value>
+      <group>modules-shipping</group>
+    </definition>
+    <definition>
+      <key>shipping_zones_undefined_rate</key>
+      <value><![CDATA[The shipping rate cannot be determined at this time]]></value>
+      <group>modules-shipping</group>
+    </definition>
+  </definitions>
+</language>

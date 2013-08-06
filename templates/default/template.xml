@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Template>
+	<Title>TomatoCart Default Bootstrap Template</Title>
+	<Code>default</Code>
+	<Author>TomatoCart</Author>
+	<Email>info@tomatocart.com</Email>
+	<URL>http://www.tomatocart.com</URL>
+	<Copyright>Copyright (c) 2008 - 2013 TomatoCart Shopping Cart Solution. All rights reserved.</Copyright>
+	<CompatibleVersion>2.0.0</CompatibleVersion>
+	<Description>TomatoCart Default Bootstrap Template</Description>
+
+	<WebLayout>
+		<ContentGroups>
+			<Group>before</Group>
+			<Group>after</Group>
+			<Group>left</Group>
+			<Group>right</Group>
+			<Group>slideshow</Group>
+			<Group>footer-col-1</Group>
+			<Group>footer-col-2</Group>
+			<Group>footer-col-3</Group>
+			<Group>footer-col-4</Group>
+		</ContentGroups>
+		<Modules>
+			<Module code="categories" sort-order="100" page="*" Group="left">
+				<Param name="MODULE_CATEGORIES_SHOW_PRODUCT_COUNT" value="1" />
+			</Module>
+			<Module code="manufacturers" sort-order="100" page="*" Group="left" />
+			<Module code="information" sort-order="100" page="*" Group="left" />
+			<Module code="whats_new" sort-order="100" page="*" Group="left" />
+			<Module code="manufacturer_info" sort-order="100" page="products/info"
+				Group="right" />
+			<Module code="order_history" sort-order="100" page="*" Group="right" />
+			<Module code="best_sellers" sort-order="100" page="*" Group="right" />
+			<Module code="product_notifications" sort-order="100"
+				page="products/info" Group="right" />
+			<Module code="tell_a_friend" sort-order="100" page="products/info"
+				Group="right" />
+			<Module code="specials" sort-order="100" page="*" Group="right" />
+			<Module code="reviews" sort-order="100" page="*" Group="right" />
+			<Module code="currencies" sort-order="100" page="*" Group="right" />
+			<Module code="slide_show" sort-order="100" page="index/index"
+				Group="slideshow" />
+			<Module code="new_products" sort-order="100"
+				page="index/category_listing" Group="after" />
+			<Module code="new_products" sort-order="100" page="index/index"
+				Group="after" />
+			<Module code="recently_visited" sort-order="100" page="*"
+				Group="after" />
+			<Module code="also_purchased_products" sort-order="100"
+				page="products/info" Group="after" />
+		</Modules>
+	</WebLayout>
+
+
+	<Logo width="180" height="50" />
+
+	<Params>
+		<Param name="template_scheme" title="Template Color" type="combobox"
+			default="gray" description="Template Schema for Default Template">
+			<Option value="gray">Gray Theme</Option>
+			<Option value="red">Red Theme</Option>
+			<Option value="green">Green Theme</Option>
+			<Option value="blue">Blue Theme</Option>
+		</Param>
+		<Param name="logo_slogan" title="Logo Slogan" type="textfield"
+			default="gray" description="Logo Slogan for Template Scheme" />
+	</Params>
+
+</Template>

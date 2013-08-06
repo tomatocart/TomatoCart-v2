@@ -1,0 +1,583 @@
+/*!
+* Ext JS Library 4.0
+* Copyright(c) 2006-2011 Sencha Inc.
+* licensing@sencha.com
+* http://www.sencha.com/license
+*/
+
+#poweredby {
+    position: absolute;
+    bottom: 40px;
+    right: 20px;
+    z-index: 15000;
+
+    /* IE 5-7 */
+    filter: alpha(opacity=70);
+    /* Netscape */
+    -moz-opacity: 0.7;
+    /* Safari 1.x */
+    -khtml-opacity: 0.7;
+    /* Good browsers */
+    opacity: 0.7;
+}
+
+#poweredby div {
+    position: relative;
+    width: 150px;
+    height: 25px;
+    background-image: url(../images/powered-by-ext-js.png);
+    background-repeat: no-repeat;
+}
+
+/* The simple background image PNG does not work in IE6-8, but does in IE9 */
+.x-ie6 #poweredby div,
+.x-ie7 #poweredby div,
+.x-ie8 #poweredby div {
+    background-image: none;
+    filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/powered-by-ext-js.png', sizingMethod='scale');
+}
+
+/*----------------------------------------------------
+    Start Button
+*/
+
+.ux-start-button-icon {
+    background-image: url(../images/taskbar/sencha.gif) !important;
+    background-color: transparent;
+}
+
+.ux-start-button .x-btn-arrow {
+    background-image: none;
+}
+
+.ux-start-button .x-btn-arrow-right {
+    padding-left: 10px;
+}
+
+.ux-taskbar {
+    padding-left: 4px !important;
+}
+
+/*
+    Start Button (Black)
+*/
+
+.ux-desktop-black .ux-start-button {
+    height: 28px;
+    padding: 0px;
+    display: block;
+}
+
+.ux-desktop-black .ux-start-button em {
+    margin-top: 5px;
+}
+
+.ux-desktop-black .ux-start-button .x-btn-inner {
+    color: black;
+    font-size:11px;
+    font-weight: bold;
+}
+
+.ux-desktop-black .ux-start-button {
+    background-image: -moz-linear-gradient(center top , #E4F3FF, #D9EDFF 48%, #C2D8F2 52%, #C6DCF6);
+    border-radius: 8px 8px 8px 8px;
+    border-color: #81A4D0;
+}
+
+/*----------------------------------------------------
+    Start Menu
+*/
+
+.ux-start-menu-toolbar .x-btn-inner {
+    text-align: left;
+}
+
+.ux-start-menu-toolbar {
+    padding: 4px !important;
+}
+
+/*----------------------------------------------------
+    TaskBar
+*/
+
+.ux-taskbar .x-toolbar {
+    background: transparent none;
+    border-color: transparent;
+}
+
+.x-ie6 .ux-taskbar .x-toolbar {
+    border-color: #d3e1f1;
+}
+
+.ux-desktop-windowbar .x-btn-inner,
+.x-nbr .ux-desktop-windowbar .x-btn-icon-text-left button {
+    text-align: left !important;
+}
+
+.ux-taskbar .x-toolbar {
+    height: 28px;
+}
+
+.ux-taskbar {
+    height: 28px;
+    padding: 0;
+}
+
+.x-toolbar .x-toolbar {
+    padding: 0;
+}
+
+/*
+    TaskBar (Black)
+*/
+
+.ux-desktop-black .ux-taskbar {
+    background: transparent url('../images/taskbar/black/taskbar-start-panel-bg.gif') repeat-x left top;
+    border-color: transparent;
+    /*height: 30px;*/
+}
+
+.ux-desktop-black .ux-taskbar .x-splitter {
+    background: transparent url(../images/taskbar/black/taskbar-split-h.gif) no-repeat scroll 0 -2px;
+}
+
+.ux-desktop-black .ux-taskbar .x-toolbar-text {
+    color: white !important;
+}
+
+.ux-desktop-black .ux-taskbar .x-btn-default-toolbar-small-over {
+    background-color: yellow;
+}
+
+.ux-desktop-black .ux-taskbar .x-btn-inner {
+    color: white;
+}
+
+.ux-desktop-black .ux-taskbar .x-btn-pressed .x-btn-inner, .ux-taskbar .x-btn-over .x-btn-inner {
+    color: black;
+}
+
+/*----------------------------------------------------
+    Tray Clock
+*/
+
+.ux-desktop-trayclock {
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/*----------------------------------------------------
+    Desktop DataView
+*/
+
+.ux-wallpaper {
+    background-color: #3d71b8;
+}
+
+.ux-wallpaper-tiled {
+    background-repeat: repeat;
+}
+
+.ux-desktop-shortcut {
+    cursor: pointer;
+    text-align: center;
+    padding: 8px;
+    margin: 8px;
+    width: 68px;
+}
+
+.ux-desktop-shortcut-icon {
+    width: 48px;
+    height: 48px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+}
+
+.ux-desktop-shortcut-icon img {
+  width: 48px !important;
+  height: 48px !important;
+}
+
+.ux-desktop-shortcut-text {
+    font: normal 10px tahoma,arial,verdana,sans-serif;
+    text-decoration: none;
+    padding-top: 5px;
+    color: white;
+}
+
+.x-view-over .ux-desktop-shortcut-text {
+    text-decoration: underline;
+}
+
+
+/*----------------------------------------------------
+    Various icon classes
+*/
+
+.accordion-shortcut {
+    background-image: url(../images/im48x48.png);
+}
+
+.cpu-shortcut {
+    background-image: url(../images/statusLarge.png);
+}
+
+.grid-shortcut {
+    background-image: url(../images/grid48x48.png);
+}
+
+.notepad-shortcut {
+    background-image: url(../images/notepadLarge.png);
+    width: 46px;
+    height: 46px;
+}
+
+.x-ie6 .accordion-shortcut {
+    background-image: none;
+    filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/im48x48.png', sizingMethod='scale');
+}
+
+.x-ie6 .cpu-shortcut {
+    background-image: none;
+    filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/statusLarge.png', sizingMethod='scale');
+}
+
+.x-ie6 .grid-shortcut {
+    background-image: none;
+    filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/grid48x48.png', sizingMethod='scale');
+}
+
+.x-ie6 .notepad-shortcut {
+    background-image: none;
+    filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/notepadLarge.png', sizingMethod='scale');
+}
+
+.video {
+    background-image: url(../images/gears.gif);
+}
+
+.bogus {
+    background-image: url( ../images/bogus.png ) !important;
+}
+
+.notepad {
+    background-image: url( ../images/bogus.png ) !important;
+}
+
+.logout {
+    background-image: url( ../images/logout.gif ) !important;
+}
+
+.settings {
+    background-image: url( ../images/gears.gif ) !important;
+}
+
+
+.icon-grid {
+    background-image:url( ../images/grid.png ) !important;
+}
+.add {
+    background-image:url(../../shared/icons/fam/add.gif) !important;
+}
+.option {
+    background-image:url(../../shared/icons/fam/plugin.gif) !important;
+}
+.remove {
+    background-image:url(../../shared/icons/fam/delete.gif) !important;
+}
+.save {
+    background-image:url(../../shared/icons/save.gif) !important;
+}
+.accordion {
+    background-image:url(../images/accordian.gif) !important;
+}
+.tabs {
+    background-image:url(../images/tabs.gif) !important;
+}
+
+/*----------------------------------------------------
+    IM window icons
+*/
+
+.user-add {
+    background-image:url(../../shared/icons/fam/user_add.gif) !important;
+}
+
+.user-delete {
+    background-image:url(../../shared/icons/fam/user_delete.gif) !important;
+}
+
+.connect {
+    background-image:url(../../shared/icons/fam/connect.gif) !important;
+}
+
+.user-girl {
+    background-image:url(../../shared/icons/fam/user_female.gif) !important;
+}
+
+.user-kid {
+    background-image:url(../../shared/icons/fam/user_green.gif) !important;
+}
+
+.user-suit {
+    background-image:url(../../shared/icons/fam/user_suit.gif) !important;
+}
+
+/*-------------------------
+Action Icon
+*/
+.x-action-col-icon {cursor: pointer; height: 16px; margin: 0px 4px}
+
+
+/* Begin: Destop Setting */
+.setting-thumbnail-viewer .x-panel-header{
+  background:transparent none;
+  border-bottom:1px solid #ccc !important;
+  color: #000000;
+}
+#setting-wallpaper-view .x-panel-body,
+#setting-theme-view .x-panel-body {
+  background: white;
+  font: 11px Arial, Helvetica, sans-serif;
+}
+#setting-wallpaper-view .setting-view-thumb,
+#setting-theme-view .setting-view-thumb {
+  background: #dddddd;
+  padding: 3px;
+}
+#setting-wallpaper-view .setting-view-thumb img,
+#setting-theme-view  .setting-view-thumb img {
+  border:1px solid #fff;
+}
+#setting-wallpaper-view .setting-view-thumb-wrap,
+#setting-theme-view .setting-view-thumb-wrap {
+  float: left;
+  margin: 4px;
+  margin-right: 0;
+  padding: 5px;
+}
+#setting-wallpaper-view .setting-view-thumb-wrap span,
+#setting-theme-view .setting-view-thumb-wrap span {
+  display: block;
+  overflow: hidden;
+  text-align: center;
+}
+
+#setting-wallpaper-view .x-view-over,
+#setting-theme-view .x-view-over {
+  border:1px solid #dddddd;
+  padding: 4px;
+}
+
+#setting-wallpaper-view .x-item-selected,
+#setting-theme-view .x-item-selected {
+  background: #f1f1f1 none;
+  border:1px solid #999;
+  padding: 4px;
+}
+
+#setting-wallpaper-view .x-view-selected .setting-view-thumb,
+#setting-theme-view .x-view-selected .setting-view-thumb{
+  background:transparent;
+}
+
+#setting-wallpaper-view .loading-indicator {
+  font-size:11px;
+  background-repeat: no-repeat;
+  background-position: left;
+  padding-left:20px;
+  margin:10px;
+}
+
+#wallpapers {
+  padding: 10px 0;
+}
+
+.wallpaper-tile {
+  background-repeat: repeat;
+  background-position: left top;
+}
+
+.wallpaper-center {
+  background-position: center;
+}
+
+/*---------------
+check column 
+*/
+
+.x-grid-checkheader {
+    height: 14px;
+    background-image: url('../images/unchecked.gif');
+    background-position: 50% -2px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.x-grid-checkheader-checked {
+    background-image: url('../images/checked.gif');
+}
+
+.x-grid-checkheader-editor .x-form-cb-wrap {
+    text-align: center;
+}
+
+/* End: Check Column */
+
+.bg-pos-center {
+  background-image:url(../images/icons/bg-center-icon.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/bg-center-icon.png', sizingMethod='scale');
+}
+.bg-pos-tile {
+  background-image:url(../images/icons/bg-tile-icon.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/bg-tile-icon.png', sizingMethod='scale');
+}
+
+.setting-percent-field{
+  background:#ffffff url(../images/default/percent-icon.gif) no-repeat right center;
+}
+.services {
+  background-image: url(../../images/icons/16x16/services.png) !important;
+}
+/* End: Destop Setting */
+
+
+/*Start: Portal Panel*/
+.x-panel-ghost {
+    z-index: 1;
+}
+.x-border-layout-ct {
+    background: #DFE8F6;
+}
+.x-portal-body{
+  border: 0;
+}
+
+.x-portal-container {
+  margin: 10px;
+  width: 351px;
+}
+
+.x-portal .x-portal-column {
+    /* columns must have vertical padding to avoid losing dimensions when empty */
+    padding: 8px 8px 0 0;
+}
+.x-portal .x-panel-dd-spacer {
+    background: #f6f6f6;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    margin-bottom: 10px;
+}
+.x-portlet {
+    margin:10px;
+    padding: 1px;
+    border: 1px solid #B8C8DB;
+    border-radius: 4px 4px 4px 4px;
+    border-bottom-width: 1px !important;
+    width: 329px;
+}
+
+.x-portlet-draggable .x-panel-header {
+	padding-left: 20px;
+	background: #D3E1F1 url(../images/icons/16x16/drag2.png) no-repeat left center;
+    filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/16x16/drag2.png', sizingMethod='scale');
+    border: none;
+    box-shadow: 0 1px 0 0 #D3E1F1 inset;
+}
+
+.x-portlet-hover .x-panel-header {
+    background: #d7e6f6 url(../images/icons/16x16/drag2.png) no-repeat left center;
+}
+
+.x-portlet-focus {
+  box-shadow: 0 0 10px #AAAAAA;
+}
+
+.x-portlet-focus .x-panel-header-text {
+  font-weight: bold;
+}
+
+.x-portlet-draggable .x-panel-header-text{
+    font-weight: normal;
+}
+
+.x-portlet-draggable .x-panel-body {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+}
+
+.x-portlet .x-panel-body {
+    background: #fff;
+}
+.portlet-content {
+    padding: 10px;
+    font-size: 11px;
+}
+
+.droppableMsg {
+  padding: 10px;
+}
+
+.droppableMsg:hover {
+  cursor: pointer;
+}
+
+.notifyDrop {
+  background-color: #FDEC01 !important;
+}
+
+.oldPrice {text-decoration: line-through;}
+
+/*Start order details in order module*/
+.order_details {padding: 10px 0 10px 60px;}
+
+.order_details strong {font-weight: bolder;}
+
+.order_details .order_products {margin: 35px 0;}
+
+.pnlSummary p {
+  padding: 10px;
+  margin-left: 10px;
+}
+
+/*Start Configuration*/
+
+strong {font-weight: bolder;}
+
+.x-form-item-label span.desc {
+  font-size: 11px;
+  color: #666666;
+}
+
+.x-panel-ghost {
+    margin:10px;
+    padding: 1px;
+    border: 1px solid #B8C8DB;
+    border-radius: 4px 4px 4px 4px;
+    border-bottom-width: 1px !important;
+}
+
+.x-panel-ghost .x-panel-header {
+    background: url("../images/icons/16x16/drag2.png") no-repeat scroll left center #D3E1F1;
+    border: medium none;
+    box-shadow: 0 1px 0 0 #D3E1F1 inset;
+    padding-left: 20px;
+    font-weight: normal;
+}
+
+.x-panel-ghost .x-panel-header-text{
+    font-weight: normal;
+}
+
+.x-portlet-focus .x-component-default .x-panel-header-text {
+    font-weight: bold;
+}
+
+.droppableMsg{
+    width: 349px;
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>box_product_notifications_heading</key>
+      <value><![CDATA[商品更新通知]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_product_notifications_add</key>
+      <value><![CDATA[通知我关于%s商品的更新信息]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_product_notifications_remove</key>
+      <value><![CDATA[取消我对%s商品的更新关注]]></value>
+      <group>modules-boxes</group>
+    </definition>
+  </definitions>
+</language>

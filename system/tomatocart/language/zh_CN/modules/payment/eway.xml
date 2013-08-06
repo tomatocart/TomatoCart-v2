@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>payment_eway_title</key>
+      <value><![CDATA[eWAY Payment Credit Card]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_eway_description</key>
+      <value><![CDATA[eWAY Payment Credit Card]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_eway_method_title</key>
+      <value><![CDATA[eWAY Payment Credit Card]]></value>
+      <group>modules-payment</group>
+    </definition>
+  </definitions>
+</language>

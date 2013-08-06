@@ -1,0 +1,113 @@
+2013/6/24 TomatoCart v2.0 alpha4
+
+  Features included in this release:
+  
+  Store Front:
+  
+  1. Upgrade CodeIgniter v2.1 to v3 dev
+  2. Web based Installation tool for TomatoCart Installation
+  3. Create Sample Data For Demo Store
+  4. Use Twitter Bootstrap css Framework for TomatoCart Store frontend and severl template module
+     -- Drop Down Categories Nagivation Menu
+     -- Products Grid & List View
+     -- One Page Checkout
+  5. guest checkout
+  6. paypal direct pay
+  7. paypal standard
+  8. wishlist
+  9. product compare
+  10. variants support
+  11. weight support
+  
+  Store Admin:
+  
+  1. Tools Group
+    1.1 Administrators
+    1.2 Images
+    1.3 Newsletter Manager
+    1.4 Server Information
+    
+  2. Templates
+    2.1 LogoUpload
+    2.2 Templates
+    
+  3. Definitions
+    3.1 Information
+    3.2 Currencies
+    3.3 Countries
+    3.4 Zone Groups
+    3.5 Tax Classes
+    3.6 Product Quantity Units
+    3.7 Orders Status
+    3.8 Image Groups
+    3.9 Languages
+    3.1o Weight Classes
+    
+  4. Customers
+    4.1 Customers
+    4.2 Customers Groups
+    4.3 Orders
+    
+  5. Catalog
+    5.1 Categories
+    5.2 Products
+    5.3 Product Variants
+    5.4 Manufacturers
+    5.5 Specials
+    5.6 Feature Products Manager
+    5.7 Products Expected
+    5.8 Reviews
+    
+  6. Configuration
+    6.1 Homepage Info
+    6.2 Configuration
+    
+  7. Content
+    7.1 Articles Categories
+    7.2 Articles
+    7.3 FAQs
+    7.4 Guest Book
+    7.5 Slide Images
+
+2012/08/27 TomatoCart v2.0 alpha2
+  TomatoCart v2.0 is in development, please do not use it in production enviroment. This release is an evaluation version 
+  for community developers and users who are participating in the development and are providing feedback.
+  
+  There will be no install routine for evaluation edition, please refer to readme.txt for installation guide.
+  
+  Features included in this release:
+  1. Developed as a flexible and solid ecommerce framework utilizing mvc pattern.
+  
+  2. Add and override core features without touching the core source code.
+  
+  3. Integrate the sencha touch into the admin panel to support the pad and mobile device.
+  
+  4. Improve the template engine as the engine in the wordpress.
+  
+  5. Perform modifications and override base views in a separate template for the specific device.
+  
+  6. Migrate the the sytem config file into the local directory so as to let the developers setup the system without touching the core config file.
+  
+  7. Share the system config file between Backend and Frontend
+  
+  8. Add the payment, shipping, order totals and service module into the admin panel.
+
+
+
+2012/04/9 TomatoCart v2.0 alpha1
+  TomatoCart v2.0 is in development, please do not use it in production enviroment. This release is an evaluation version 
+  for community developers and users who are participating in the development and are providing feedback.
+  
+  There will be no install routine for evaluation edition, please refer to readme.txt for installation guide.
+  
+  Features included in this release:
+  1. Core Complete Rewrite with CodeIgniter
+  2. New Template Enginee
+     -- Customized Settings for Templates
+     -- Template Modules Can Be Instaniated More Than Once and Each Instance Has Its Own Parameters
+     -- Template Module Layout Management through Drag & Drop 
+     -- Response Web Design for Store Front
+        Added Mobile View Support With jQuery Mobile
+        Added Mobile View Support For Template Module
+  3. Upgrade Extjs 2.0 to Extjs 4.0
+  

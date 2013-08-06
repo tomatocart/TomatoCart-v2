@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>box_articles_heading</key>
+      <value><![CDATA[最新文章]]></value>
+      <group>modules-boxes</group>
+    </definition>
+  </definitions>
+</language>

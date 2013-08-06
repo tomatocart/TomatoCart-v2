@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>box_search_heading</key>
+      <value><![CDATA[搜索]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_search_text</key>
+      <value><![CDATA[(请尝试<a href="%s">高级搜索</a>)]]></value>
+      <group>modules-boxes</group>
+    </definition>
+  </definitions>
+</language>

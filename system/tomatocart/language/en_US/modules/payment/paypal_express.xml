@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>payment_paypal_express_title</key>
+      <value><![CDATA[PayPal Express Checkout]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_paypal_express_description</key>
+      <value><![CDATA[PayPal Express Checkout]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_paypal_express_method_title</key>
+      <value><![CDATA[PayPal Express (including Credit Cards and Debit Cards)]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_paypal_express_button_title</key>
+      <value><![CDATA[Pay with PayPal Express Checkout]]></value>
+      <group>modules-payment</group>
+    </definition>
+  </definitions>
+</language>

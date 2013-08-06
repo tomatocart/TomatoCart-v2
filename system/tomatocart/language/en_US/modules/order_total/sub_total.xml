@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>order_total_subtotal_title</key>
+      <value><![CDATA[Sub-Total]]></value>
+      <group>modules-order_total</group>
+    </definition>
+    <definition>
+      <key>order_total_subtotal_description</key>
+      <value><![CDATA[Order Sub-Total]]></value>
+      <group>modules-order_total</group>
+    </definition>
+  </definitions>
+</language>

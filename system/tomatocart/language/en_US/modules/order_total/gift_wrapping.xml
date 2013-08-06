@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>order_total_gift_wrapping_title</key>
+      <value><![CDATA[Gift Wrapping]]></value>
+      <group>modules-order_total</group>
+    </definition>
+    <definition>
+      <key>order_total_gift_wrapping_description</key>
+      <value><![CDATA[Gift Wrapping]]></value>
+      <group>modules-order_total</group>
+    </definition>
+    <definition>
+      <key>gift_wrapping_heading</key>
+      <value><![CDATA[Gift Wrapping]]></value>
+      <group>modules-order_total</group>
+    </definition>
+    <definition>
+      <key>gift_wrapping_description</key>
+      <value><![CDATA[Please click the checkbox to have your item(s) gift-wrapped. It will cost additional %s.]]></value>
+      <group>modules-order_total</group>
+    </definition>
+  </definitions>
+</language>

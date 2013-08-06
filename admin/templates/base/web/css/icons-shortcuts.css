@@ -1,0 +1,398 @@
+/*
+  $Id: icons-shortcuts.css $
+  TomatoCart Open Source Shopping Cart Solutions
+  http://www.tomatocart.com
+
+  Copyright (c) 2009 Wuxi Elootec Technology Co., Ltd
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License v2 (1991)
+  as published by the Free Software Foundation.
+*/
+
+.icon-articles_categories-shortcut img {
+  background-image: url(../images/icons/48x48/article_categories.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/article_categories.png', sizingMethod='scale');
+}
+
+.icon-articles-shortcut img {
+  background-image: url(../images/icons/48x48/article.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/article.png', sizingMethod='scale');
+}
+
+.icon-faqs-shortcut img {
+  background-image: url(../images/icons/48x48/faqs.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/faqs.png', sizingMethod='scale');
+}
+
+.icon-slide_images-shortcut img {
+  background-image: url(../images/icons/48x48/slide_images.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/slide_images.png', sizingMethod='scale');
+}
+
+.icon-configuration-shortcut img {
+  background-image: url(../images/icons/48x48/configuration.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/configuration.png', sizingMethod='scale');
+}
+
+.icon-categories-shortcut img {
+  background-image: url(../images/icons/48x48/categories.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/categories.png', sizingMethod='scale');
+}
+
+.icon-products-shortcut img {
+  background-image: url(../images/icons/48x48/product.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/product.png', sizingMethod='scale');
+}
+
+.icon-new-products-shortcut img {
+  background-image: url(../images/icons/48x48/new_product.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/new_product.png', sizingMethod='scale');
+}
+
+.icon-product_variants-shortcut img {
+  background-image: url(../images/icons/48x48/products_variants.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/product_variants.png', sizingMethod='scale');
+}
+
+.icon-products_attributes-shortcut img {
+  background-image: url(../images/icons/48x48/products_attributes.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/products_attributes.png', sizingMethod='scale');
+}
+
+.icon-google_base_manage_items-shortcut img {
+  background-image: url(../images/icons/48x48/google_base.png);
+}
+
+.icon-specials-shortcut img {
+  background-image: url(../images/icons/48x48/specials.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/specials.png', sizingMethod='scale');
+}
+
+.icon-reviews-shortcut img {
+  background-image: url(../images/icons/48x48/reviews.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/reviews.png', sizingMethod='scale');
+}
+
+.icon-ratings-shortcut img {
+  background-image: url(../images/icons/48x48/ratings.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/ratings.png', sizingMethod='scale');
+}
+
+.icon-products_expected-shortcut img {
+  background-image: url(../images/icons/48x48/product-expected.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/product-expected.png', sizingMethod='scale');
+}
+
+.icon-quantity_discount_groups-shortcut img {
+  background-image: url(../images/icons/48x48/quantity_discount.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/quantity_discount.png', sizingMethod='scale');
+}
+
+.icon-manufacturers-shortcut img {
+  background-image: url(../images/icons/48x48/manufacturer.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/manufacturer.png', sizingMethod='scale');
+}
+
+.icon-customers-shortcut img {
+  background-image: url(../images/icons/48x48/customer.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/customer.png', sizingMethod='scale');
+}
+
+.icon-email-shortcut img {
+  background-image: url(../images/icons/48x48/email_send.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/email_send.png', sizingMethod='scale');
+}
+
+.icon-customers_groups-shortcut img {
+  background-image: url(../images/icons/48x48/customer_groups.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/customer_groups.png', sizingMethod='scale');
+}
+
+.icon-orders-shortcut img {
+  background-image: url(../images/icons/48x48/orders.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/orders.png', sizingMethod='scale');
+}
+
+.icon-orders_returns-shortcut img {
+  background-image: url(../images/icons/48x48/orders.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/orders.png', sizingMethod='scale');
+}
+
+.icon-credits_memo-shortcut img {
+  background-image: url(../images/icons/48x48/orders.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/orders.png', sizingMethod='scale');
+}
+
+.icon-languages-shortcut img {
+  background-image: url(../images/icons/48x48/language.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/language.png', sizingMethod='scale');
+}
+
+.icon-currencies-shortcut img {
+  background-image: url(../images/icons/48x48/currencies.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/currencies.png', sizingMethod='scale');
+}
+
+.icon-countries-shortcut img {
+  background-image: url(../images/icons/48x48/countries.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/countries.png', sizingMethod='scale');
+}
+
+.icon-zone_groups-shortcut img {
+  background-image: url(../images/icons/48x48/zone_groups.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/relationshipzone_groups.png', sizingMethod='scale');
+}
+
+.icon-tax_classes-shortcut img {
+  background-image: url(../images/icons/48x48/tax_classes.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/tax_classes.png', sizingMethod='scale');
+}
+
+.icon-weight_classes-shortcut img {
+  background-image: url(../images/icons/48x48/weight_classes.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/weight_classes.png', sizingMethod='scale');
+}
+
+.icon-credit_cards-shortcut img {
+  background-image: url(../images/icons/48x48/credit_cards.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/credit_cards.png', sizingMethod='scale');
+}
+
+.icon-orders_status-shortcut img {
+  background-image: url(../images/icons/48x48/status.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/status.png', sizingMethod='scale');
+}
+
+.icon-image_groups-shortcut img {
+  background-image: url(../images/icons/48x48/image_groups.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/image_groups.png', sizingMethod='scale');
+}
+
+.icon-modules_payment-shortcut img {
+  background-image: url(../images/icons/48x48/payment.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/payment.png', sizingMethod='scale');
+}
+
+.icon-modules_shipping-shortcut img {
+  background-image: url(../images/icons/48x48/shipping.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/shipping.png', sizingMethod='scale');
+}
+
+.icon-modules_order_total-shortcut img {
+  background-image: url(../images/icons/48x48/order_total.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/order_total.png', sizingMethod='scale');
+}
+
+.icon-modules_geoip-shortcut img {
+  background-image: url(../images/icons/48x48/geoip.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/geoip.png', sizingMethod='scale');
+}
+
+.icon-services-shortcut img {
+  background-image: url(../images/icons/48x48/services.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/services.png', sizingMethod='scale');
+}
+
+.icon-reports-products-purchased-shortcut img {
+  background-image: url(../images/icons/48x48/report_products_purchased.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/report_products_purchased.png', sizingMethod='scale');
+}
+
+.icon-reports-products-viewed-shortcut img {
+  background-image: url(../images/icons/48x48/report_products_viewed.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/report_products_viewed.png', sizingMethod='scale');
+}
+
+.icon-reports-products-categories-shortcut img {
+  background-image: url(../images/icons/48x48/report_products_categories.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/report_products_categories.png', sizingMethod='scale');
+}
+
+.icon-reports-products-low-stock-shortcut img {
+  background-image: url(../images/icons/48x48/report_products_low_stock.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/report_products_low_stock.png', sizingMethod='scale');
+}
+
+.icon-reports-customers-purchased-shortcut img {
+  background-image: url(../images/icons/48x48/report_customers_purchased.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/report_customers_purchased.png', sizingMethod='scale');
+}
+
+.icon-reports-customers-orders-total-shortcut img {
+  background-image: url(../images/icons/48x48/report_customers_orders_total.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/report_customers_orders_total.png', sizingMethod='scale');
+}
+
+.icon-logo_upload-shortcut img {
+  background-image: url(../images/icons/48x48/logo_upload.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/logo_upload.png', sizingMethod='scale');
+}
+
+.icon-templates-shortcut img {
+  background-image: url(../images/icons/48x48/template.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/template.png', sizingMethod='scale');
+}
+
+.icon-templates-modules-boxes-shortcut img {
+  background-image: url(../images/icons/48x48/templates_modules_boxes.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/templates_modules_boxes.png', sizingMethod='scale');
+}
+
+.icon-templates-modules-content-shortcut img {
+  background-image: url(../images/icons/48x48/templates_modules_content.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/templates_modules_content.png', sizingMethod='scale');
+}
+
+.icon-templates-modules-layout-boxes-shortcut img {
+  background-image: url(../images/icons/48x48/templates_modules_boxes_layout.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/templates_modules_boxes_layout.png', sizingMethod='scale');
+}
+
+.icon-templates-modules-layout-content-shortcut img {
+  background-image: url(../images/icons/48x48/templates_modules_content_layout.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/templates_modules_content_layout.png', sizingMethod='scale');
+}
+
+.icon-administrators-shortcut img {
+  background-image: url(../images/icons/48x48/administrator.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/administrator.png', sizingMethod='scale');
+}
+
+.icon-cache-shortcut img {
+  background-image: url(../images/icons/48x48/cache.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/cache.png', sizingMethod='scale');
+}
+
+.icon-backup-shortcut img {
+  background-image: url(../images/icons/48x48/database.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/database.png', sizingMethod='scale');
+}
+
+.icon-email_templates-shortcut img {
+  background-image: url(../images/icons/48x48/email_templates.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/email_templates.png', sizingMethod='scale');
+}
+
+.icon-images-shortcut img {
+  background-image: url(../images/icons/48x48/image.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/image.png', sizingMethod='scale');
+}
+
+.icon-newsletters-shortcut img {
+  background-image: url(../images/icons/48x48/newsletter.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/newsletter.png', sizingMethod='scale');
+}
+
+.icon-server_info-shortcut img {
+  background-image: url(../images/icons/48x48/server_info.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/server_info.png', sizingMethod='scale');
+}
+
+.icon-information-shortcut img {
+  background-image: url(../images/icons/48x48/information.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/information.png', sizingMethod='scale');
+}
+
+.icon-dashboard-shortcut img {
+  background-image: url(../images/icons/48x48/dashboard.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/dashboard.png', sizingMethod='scale');
+}
+.icon-gift_certificates-shortcut img {
+  background-image: url(../images/icons/48x48/gift_certificates.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/gift_certificates.png', sizingMethod='scale');
+}
+.icon-invoices-shortcut img {
+  background-image: url(../images/icons/48x48/invoices.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/invoices.png', sizingMethod='scale');
+}
+.icon-coupons-shortcut img {
+  background-image: url(../images/icons/48x48/coupons.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/coupons.png', sizingMethod='scale');
+}
+.icon-purchased_downloadables-shortcut img {
+  background-image: url(../images/icons/48x48/purchased_downloadables.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/purchased_downloadables.png', sizingMethod='scale');
+}
+.icon-unit_classes-shortcut img {
+  background-image: url(../images/icons/48x48/unit_classes.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/unit_classes.png', sizingMethod='scale');
+}
+.icon-administrators_log-shortcut img {
+  background-image: url(../images/icons/48x48/administrators_log.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/administrators_log.png', sizingMethod='scale');
+}
+.icon-banner_manager-shortcut img {
+  background-image: url(../images/icons/48x48/banner_manager.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/banner_manager.png', sizingMethod='scale');
+}
+.icon-google_sitemap-shortcut img {
+  background-image: url(../images/icons/48x48/google_sitemap.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/google_sitemap.png', sizingMethod='scale');
+}
+.icon-import_export-shortcut img {
+  background-image: url(../images/icons/48x48/import_export.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/import_export.png', sizingMethod='scale');
+}
+.icon-whos_online-shortcut img {
+  background-image: url(../images/icons/48x48/whos_online.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/whos_online.png', sizingMethod='scale');
+}
+.icon-search_terms-shortcut img {
+  background-image: url(../images/icons/48x48/search.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/search.png', sizingMethod='scale');
+}
+.icon-abandoned_cart-shortcut img {
+  background-image: url(../images/icons/48x48/cart.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/cart.png', sizingMethod='scale');
+}
+
+.icon-feature_products_manager-shortcut img {
+  background-image: url(../images/icons/48x48/feature_products.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/feature_products.png', sizingMethod='scale');
+}
+
+.icon-homepage_info-shortcut img {
+  background-image: url(../images/icons/48x48/home.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/home.png', sizingMethod='scale');
+}
+
+.icon-reports-web-shortcut img {
+  background-image: url(../images/icons/48x48/report_web.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/report_web.png', sizingMethod='scale');
+}
+
+.icon-file_manager-shortcut img {
+  background-image: url(../images/icons/48x48/folder.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/folder.png', sizingMethod='scale');
+}
+
+.icon-watermark-shortcut img {
+  background-image: url(../images/icons/48x48/watermark.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/watermark.png', sizingMethod='scale');
+}
+
+.icon-products_attachments-shortcut img {
+  background-image: url(../images/icons/48x48/attachments.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/attachments.png', sizingMethod='scale');
+}
+
+.icon-products_attachments-shortcut img {
+  background-image: url(../images/icons/48x48/attachments.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/attachments.png', sizingMethod='scale');
+}
+
+.icon-department-shortcut img {
+  background-image: url(../images/icons/48x48/department.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/department.png', sizingMethod='scale');
+}
+
+.icon-guest_book-shortcut img {
+  background-image: url(../images/icons/48x48/guestbook.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/guestbook.png', sizingMethod='scale');
+}
+
+.icon-polls-shortcut img {
+  background-image: url(../images/icons/48x48/polls.png);
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/48x48/polls.png', sizingMethod='scale');
+}

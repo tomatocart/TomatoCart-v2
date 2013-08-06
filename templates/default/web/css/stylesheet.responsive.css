@@ -1,0 +1,183 @@
+/**
+ * TomatoCart Open Source Shopping Cart Solution
+ * 
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License v3 (2007)
+ * as published by the Free Software Foundation.
+ *
+ * @package      TomatoCart
+ * @author       TomatoCart Dev Team
+ * @copyright    Copyright (c) 2009 - 2012, TomatoCart. All rights reserved.
+ * @license      http://www.gnu.org/licenses/gpl.html
+ * @link         http://tomatocart.com
+ * @since        Version 2.0
+ * @filesource
+*/
+
+/*******************************************
+ *               Reset Style
+*******************************************/
+body {
+    overflow-x: hidden;
+}
+.navbar .btn-navbar {
+    float: left;
+}
+@media (min-width: 980px) {
+    /*fix table row inheritance for th, td*/
+    th.visible-desktop, td.visible-desktop {
+        display: table-cell !important;
+    }
+}
+@media (min-width: 768px) and (max-width: 979px) {
+    .products-listing-action .row-fluid .span4 {
+        float: left;
+        width: 33%;
+        *width: 33%;
+        margin-left: 0;
+        text-align: center;
+    }
+    .products-listing-action .row-fluid .span4 label {
+        float: none;
+        display: block;
+    }
+    .products-listing-action label {
+        display: block;
+    }
+    ul.list li {
+        padding: 0;
+    }
+    ul.list li div.left {
+        display: block;
+        float: left;
+        margin: 15px 0 0 15px;
+        position: relative;
+        width: 380px;
+        padding: 0;
+    }
+    ul.list li div.right {
+        width: 100px;
+        padding: 15px 15px 15px 0;
+    }
+    ul.grid li {
+        height: 360px;
+    }
+    ul.grid li div.right span.price {
+        float: none;
+        width: 100%;
+    }
+    ul.grid li div.right span.price s{
+        display: inline;
+        color: red;
+    }
+    /*checkout form*/
+    #sel_billing_address, #sel_shipping_address {
+        width: 350px;
+    }
+    /*fix table row inheritance for th, td*/
+    #shopping-cart table .info {
+        margin-left: 0;
+    }
+    
+    #product-info .span5, #product-info .span7 {
+        display: block;
+        float: none;
+        width: 100%;
+        margin: 0;
+        padding: 15px;
+    }
+}
+@media (max-width: 767px) {
+    .logo {
+        text-align: center;
+    }
+    .top-nav, .main-nav {
+        width: 100%;
+        text-align: center;
+        margin: 5px 0;
+    }
+    .top-nav > div {
+        float: none;
+        display: inline-block; 
+    }
+    .col3 > div {
+        display: block;
+        float: left;
+        width: 100%;
+    }
+    .products-listing-action .row-fluid .span4 {
+        float: left;
+        width: 33%;
+        *width: 33%;
+        margin-left: 0;
+        text-align: center;
+    }
+    .products-listing-action .row-fluid .span4 label {
+        float: none;
+        display: block;
+    }
+    /****/
+    ul.grid li {
+        float: none;
+        width: 100%;
+        padding: 15px;
+        height: auto;
+    }
+    
+    ul.grid li a {
+        display: block;
+        float: left;
+    }
+    
+    ul.grid li div.right span.price s {
+        display: inline;
+    }
+    
+    ul.grid li .wishlist, ul.grid li .compare {
+        display: none;
+    }
+    
+    ul.grid li div.right span.price {
+        float: none;
+        width: 100%;
+    }
+    
+    /*list view*/
+    ul.list li {
+        padding: 0;
+    }
+    ul.list li div.left {
+        display: block;
+        float: left;
+        margin: 10px 10px 0 10px;
+        position: relative;
+        width: 90%;
+        padding-bottom: 0;
+    }
+    ul.list li div.right {
+        padding: 0 10px 0 0;
+    }
+    /*checkout form*/
+    #sel_billing_address, #sel_shipping_address {
+        width: 100%;
+    }
+    #orderConfirmationForm .span6 {
+       width: 50%;
+       float: left;
+    }
+    .submitFormButtons .span3, .submitFormButtons .span4, .submitFormButtons .span5{
+       text-align: right;
+    }
+    .product-info .images {
+       width: 100%;
+       text-align: center;
+       float: none;
+    }
+    .product-info #cart-quantity {
+        width: 100%;
+        float: none;
+    }
+	#shopping-cart table .info {
+	    margin-left: 0;
+	}
+}

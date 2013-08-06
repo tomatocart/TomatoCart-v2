@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>box_attribute_filter_heading</key>
+      <value><![CDATA[商品分类属性过滤器]]></value>
+      <group>modules-boxes</group>
+    </definition>
+  </definitions>
+</language>

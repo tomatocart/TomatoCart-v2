@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>payment_cheque_title</key>
+      <value><![CDATA[Cheque]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_cheque_description</key>
+      <value><![CDATA[Cheque]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_cheque_method_title</key>
+      <value><![CDATA[Cheque]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_cheque_account_owner</key>
+      <value><![CDATA[To the order of]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_cheque_address</key>
+      <value><![CDATA[Address]]></value>
+      <group>modules-payment</group>
+    </definition>
+  </definitions>
+</language>

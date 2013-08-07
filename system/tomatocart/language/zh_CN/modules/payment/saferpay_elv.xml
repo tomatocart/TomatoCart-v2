@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>payment_saferpay_elv_title</key>
+      <value><![CDATA[Saferpay银行转账]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_saferpay_elv_description</key>
+      <value><![CDATA[Saferpay 银行转账交易]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_saferpay_elv_method_title</key>
+      <value><![CDATA[银行转账]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_saferpay_elv_bank_owner</key>
+      <value><![CDATA[户主名称：]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_saferpay_elv_bank_account_number</key>
+      <value><![CDATA[帐户号码：]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_saferpay_elv_bank_code</key>
+      <value><![CDATA[银行代码：]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_saferpay_elv_js_error</key>
+      <value><![CDATA[*必填项。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_saferpay_elv_error_general</key>
+      <value><![CDATA[处理此银行帐户出错。请核对帐户信息后再试。]]></value>
+      <group>modules-payment</group>
+    </definition>
+  </definitions>
+</language>

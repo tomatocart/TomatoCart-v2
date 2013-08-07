@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>shipping_flat_title</key>
+      <value><![CDATA[固定运费]]></value>
+      <group>modules-shipping</group>
+    </definition>
+    <definition>
+      <key>shipping_flat_description</key>
+      <value><![CDATA[固定运费]]></value>
+      <group>modules-shipping</group>
+    </definition>
+    <definition>
+      <key>shipping_flat_method</key>
+      <value><![CDATA[最佳方式]]></value>
+      <group>modules-shipping</group>
+    </definition>
+  </definitions>
+</language>

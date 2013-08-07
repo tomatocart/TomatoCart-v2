@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>box_manufacturer_info_heading</key>
+      <value><![CDATA[厂商信息]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_manufacturer_info_website</key>
+      <value><![CDATA[进入 %s 的网站]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_manufacturer_info_products</key>
+      <value><![CDATA[浏览其他商品]]></value>
+      <group>modules-boxes</group>
+    </definition>
+  </definitions>
+</language>

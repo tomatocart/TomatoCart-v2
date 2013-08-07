@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>payment_paypal_standard_title</key>
+      <value><![CDATA[PayPal Website Payments Standard]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_paypal_standard_method_title</key>
+      <value><![CDATA[PayPal Website Payments Standard]]></value>
+      <group>modules-payment</group>
+    </definition>
+  </definitions>
+</language>

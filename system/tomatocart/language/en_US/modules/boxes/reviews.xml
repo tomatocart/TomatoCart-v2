@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>box_reviews_heading</key>
+      <value><![CDATA[Reviews]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_reviews_write</key>
+      <value><![CDATA[Write a review on this product!]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_reviews_stars_rating</key>
+      <value><![CDATA[%s of 5 Stars!]]></value>
+      <group>modules-boxes</group>
+    </definition>
+  </definitions>
+</language>

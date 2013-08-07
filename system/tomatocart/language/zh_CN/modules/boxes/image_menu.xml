@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>image_menu_show_title</key>
+      <value><![CDATA[交替幻灯片]]></value>
+      <group>modules-boxes</group>
+    </definition>
+  </definitions>
+</language>

@@ -1,0 +1,441 @@
+/*
+  $Id: icons.css $
+  TomatoCart Open Source Shopping Cart Solutions
+  http://www.tomatocart.com
+
+  Copyright (c) 2009 Wuxi Elootec Technology Co., Ltd
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License v2 (1991)
+  as published by the Free Software Foundation.
+*/
+
+.icon-tomatocart {
+  background-image: url(../../images/icons/16x16/tomatocart.png) !important;
+}
+
+.icon-logout {
+  background-image: url(../../images/icons/16x16/logout.png) !important;
+}
+
+.icon-articles-grp {
+  background-image: url(../../images/icons/16x16/article_categories.png) !important;
+}
+
+.icon-articles_categories-win {
+  background-image: url(../../images/icons/16x16/article_categories.png) !important;
+}
+
+.icon-articles-win {
+  background-image: url(../../images/icons/16x16/article.png) !important;
+}
+
+.icon-faqs-win {
+  background-image: url(../../images/icons/16x16/faqs.png) !important;
+}
+
+.icon-slide_images-win {
+  background-image: url(../../images/icons/16x16/slide_images.png) !important;
+}
+
+.icon-configuration-grp {
+  background-image: url(../../images/icons/16x16/configuration.png) !important;
+}
+
+.icon-configuration-subgroup { 
+  background-image: url(../../images/icons/16x16/configuration.png) !important;
+}
+
+.icon-configuration-win {
+  background-image: url(../../images/icons/16x16/configuration.png) !important;
+}
+
+.icon-homepage_info-win {
+  background-image: url(../../images/icons/16x16/article.png) !important;
+}
+
+.icon-content-grp {
+  background-image: url(../../images/icons/16x16/catalog.png) !important;
+}
+
+.icon-categories-win {
+  background-image: url(../../images/icons/16x16/categories.png) !important;
+}
+
+.icon-products-subgroup {
+  background-image: url(../../images/icons/16x16/product.png) !important;
+}
+
+.icon-products-win {
+  background-image: url(../../images/icons/16x16/product.png) !important;
+}
+
+.icon-new-products-win {
+  background-image: url(../../images/icons/16x16/new_product.png) !important;
+}
+
+.icon-product_variants-win {
+  background-image: url(../../images/icons/16x16/products_variants.png) !important;
+}
+
+.icon-products_attributes-win {
+  background-image: url(../../images/icons/16x16/products_attributes.png) !important;
+}
+
+.icon-google_base-subgroup, .icon-google_base_manage_items-win {
+  background-image: url(../../images/icons/16x16/google_base.png) !important;
+}
+
+.icon-specials-win {
+  background-image: url(../../images/icons/16x16/specials.png) !important;
+}
+
+.icon-reviews-win {
+  background-image: url(../../images/icons/16x16/reviews.png) !important;
+}
+
+.icon-ratings-win {
+  background-image: url(../../images/icons/16x16/ratings.png) !important;
+}
+
+.icon-products_expected-win {
+  background-image: url(../../images/icons/16x16/product_expected.png) !important;
+}
+
+.icon-quantity_discount_groups-win {
+  background-image: url(../../images/icons/16x16/quantity_discount.png) !important;
+}
+
+.icon-manufacturers-win {
+  background-image: url(../../images/icons/16x16/manufacturer.png) !important;
+}
+
+.icon-customers-grp {
+  background-image: url(../../images/icons/16x16/customer.png) !important;
+}
+
+.icon-customers-win {
+  background-image: url(../../images/icons/16x16/customer.png) !important;
+}
+
+.icon-customers_groups-win {
+  background-image: url(../../images/icons/16x16/customer_groups.png) !important;
+}
+
+.icon-information-win {
+  background-image: url(../../images/icons/16x16/article_categories.png) !important;
+}
+
+.icon-coupons-win {
+  background-image: url(../../images/icons/16x16/coupons.png) !important;
+}
+
+.icon-orders-win {
+  background-image: url(../../images/icons/16x16/orders.png) !important;
+}
+
+.icon-orders_returns-win {
+  background-image: url(../../images/icons/16x16/orders_returns.png) !important;
+}
+
+.icon-credits_memo-win {
+  background-image: url(../../images/icons/16x16/orders.png) !important;
+}
+
+.icon-definitions-grp {
+  background-image: url(../../images/icons/16x16/services.png) !important;
+}
+
+.icon-languages-win {
+  background-image: url(../../images/icons/16x16/language.png) !important;
+}
+
+.icon-currencies-win {
+  background-image: url(../../images/icons/16x16/currencies.png) !important;
+}
+
+.icon-countries-win {
+  background-image: url(../../images/icons/16x16/countries.png) !important;
+}
+
+.icon-zone_groups-win {
+  background-image: url(../../images/icons/16x16/zone_groups.png) !important;
+}
+
+.icon-tax_classes-win {
+  background-image: url(../../images/icons/16x16/tax_classes.png) !important;
+}
+
+.icon-weight_classes-win {
+  background-image: url(../../images/icons/16x16/weight_classes.png) !important;
+}
+
+.icon-credit_cards-win {
+  background-image: url(../../images/icons/16x16/credit_cards.png) !important;
+}
+
+.icon-orders_status-win {
+  background-image: url(../../images/icons/16x16/status.png) !important;
+}
+
+.icon-image_groups-win {
+  background-image: url(../../images/icons/16x16/image_groups.png) !important;
+}
+
+.icon-unit_classes-win {
+  background-image: url(../../images/icons/16x16/unit_classes.png) !important;
+}
+
+.icon-modules-grp {
+  background-image: url(../../images/icons/16x16/modules.png) !important;
+}
+
+.icon-modules_payment-win {
+  background-image: url(../../images/icons/16x16/payment.png) !important;
+}
+
+.icon-modules_shipping-win {
+  background-image: url(../../images/icons/16x16/shipping.png) !important;
+}
+
+.icon-modules_order_total-win {
+  background-image: url(../../images/icons/16x16/order_total.png) !important;
+}
+
+.icon-modules_geoip-win {
+  background-image: url(../../images/icons/16x16/geoip.png) !important;
+}
+
+.icon-services-win {
+  background-image: url(../../images/icons/16x16/services.png) !important;
+}
+
+.icon-reports-grp {
+  background-image: url(../../images/icons/16x16/report_customers.png) !important;
+}
+
+.icon-reports_products-subgroup {
+  background-image: url(../../images/icons/16x16/report_orders.png) !important;
+}
+
+.icon-reports-products-purchased-win {
+  background-image: url(../../images/icons/16x16/report_products_purchased.png) !important;
+}
+
+.icon-reports-products-viewed-win {
+  background-image: url(../../images/icons/16x16/report_products_viewed.png) !important;
+}
+
+.icon-reports-products-categories-win {
+  background-image: url(../../images/icons/16x16/report_products_categories.png) !important;
+}
+
+.icon-reports-products-low-stock-win {
+  background-image: url(../../images/icons/16x16/report_products_low_stock.png) !important;
+}
+
+.icon-reports_customers-subgroup {
+  background-image: url(../../images/icons/16x16/report_customers.png) !important;
+}
+
+.icon-reports-customers-purchased-win {
+  background-image: url(../../images/icons/16x16/report_customers_purchased.png) !important;
+}
+
+.icon-reports-customers-orders-total-win {
+  background-image: url(../../images/icons/16x16/report_customers_orders_total.png) !important;
+}
+
+.icon-templates-grp {
+  background-image: url(../../images/icons/16x16/template.png) !important;
+}
+
+.icon-logo_upload-win {
+  background-image: url(../../images/icons/16x16/logo_upload.png) !important;
+}
+
+.icon-templates-win {
+  background-image: url(../../images/icons/16x16/template.png) !important;
+}
+
+.icon-templates_modules-subgroup {
+  background-image: url(../../images/icons/16x16/templates_modules.png) !important;
+}
+
+.icon-templates-modules-boxes-win {
+  background-image: url(../../images/icons/16x16/templates_modules_boxes.png) !important;
+}
+
+.icon-templates-modules-content-win {
+  background-image: url(../../images/icons/16x16/templates_modules_content.png) !important;
+}
+
+.icon-templates_modules_layout-subgroup {
+  background-image: url(../../images/icons/16x16/templates_modules_layout.png) !important;
+}
+
+.icon-templates-modules-layout-boxes-win {
+  background-image: url(../../images/icons/16x16/templates_modules_boxes_layout.png) !important;
+}
+
+.icon-templates-modules-layout-content-win {
+  background-image: url(../../images/icons/16x16/templates_modules_content_layout.png) !important;
+}
+
+.icon-tools-grp {
+  background-image: url(../../images/icons/16x16/configure.png) !important;
+}
+
+.icon-administrators-win {
+  background-image: url(../../images/icons/16x16/administrator.png) !important;
+}
+
+.icon-administrators_log-win {
+  background-image: url(../../images/icons/16x16/administrators_log.png) !important;
+}
+
+.icon-banner_manager-win {
+  background-image: url(../../images/icons/16x16/banner_manager.png) !important;
+}
+
+.icon-cache-win {
+  background-image: url(../../images/icons/16x16/cache.png) !important;
+}
+
+.icon-backup-win {
+  background-image: url(../../images/icons/16x16/database.png) !important;
+}
+
+.icon-email_templates-win {
+  background-image: url(../../images/icons/16x16/email_templates.png) !important;
+}
+
+.icon-file_manager-win {
+  background-image: url(../../images/icons/16x16/file_manager.png) !important;
+}
+
+.icon-google_sitemap-win {
+  background-image: url(../../images/icons/16x16/google_sitemap.png) !important;
+}
+
+.icon-images-win {
+  background-image: url(../../images/icons/16x16/image.png) !important;
+}
+
+.icon-import_export-win {
+  background-image: url(../../images/icons/16x16/import_export.png) !important;
+}
+
+.icon-newsletters-win {
+  background-image: url(../../images/icons/16x16/newsletter.png) !important;
+}
+
+.icon-server_info-win {
+  background-image: url(../../images/icons/16x16/server_info.png) !important;
+}
+
+.icon-statistics-win {
+  background-image: url(../../images/icons/16x16/statistics.png) !important;
+}
+
+.icon-whos_online-win {
+  background-image: url(../../images/icons/16x16/whos_online.png) !important;
+}
+
+.icon-languages-grp {
+  background-image: url(../../images/icons/16x16/language.png) !important;
+}
+
+.icon-us-win {
+  background-image: url(../../../../../../images/worldflags/us.png) !important;
+}
+
+.icon-dashboard-win {
+  background-image: url(../../images/icons/16x16/dashboard.png) !important;
+}
+
+.icon-help {
+  background-image: url(../../images/icons/16x16/info.png) !important;
+}
+
+.icon-oscommercesupportsite {
+  background-image: url(../../images/icons/16x16/tomatocart.png) !important;
+}
+
+.icon-languages {
+  background-image: url(../../images/icons/16x16/locale.png) !important;
+}
+
+.icon-onlinecatalog {
+  background-image: url(../../images/icons/16x16/home.png) !important;
+}
+.icon-gift_certificates-win {
+  background-image: url(../../images/icons/16x16/gift_certificates.png) !important;
+}
+.icon-invoices-win {
+  background-image: url(../../images/icons/16x16/invoices.png) !important;
+}
+.icon-purchased_downloadables-win {
+  background-image: url(../../images/icons/16x16/purchased_downloadables.png) !important;
+}
+.icon-configuration_wizard-win {
+  background-image: url(../../images/icons/16x16/configuration.png) !important;
+}
+.icon-account-win {
+  background-image: url(../../images/icons/16x16/email_account.png) !important;
+}
+.icon-email-win {
+  background-image: url(../../images/icons/16x16/email.png) !important;
+}
+.icon-email_compose-win {
+  background-image: url(../../images/icons/16x16/email_compose.png) !important;
+}
+.icon-email_compose_attachment-win {
+  background-image: url(../../images/icons/16x16/email_compose_attachment.png) !important;
+}
+.icon-search_terms-win {
+  background-image: url(../../images/icons/16x16/search.png) !important;
+}
+.icon-abandoned_cart-win {
+  background-image: url(../../images/icons/16x16/cart.png) !important;
+}
+
+.icon-feature_products_manager-win {
+  background-image: url(../../images/icons/16x16/feature_products.png) !important;
+}
+
+.icon-reports-web-win {
+  background-image: url(../../images/icons/16x16/reports_web.png) !important;
+}
+
+.icon-reports_web-subgroup {
+  background-image: url(../../images/icons/16x16/reports_web.png) !important;
+}
+
+.icon-watermark-win {
+  background-image: url(../../images/icons/16x16/watermark.png) !important;
+}
+
+.icon-products_attachments-win {
+  background-image: url(../../images/icons/16x16/attachments.png) !important;
+}
+
+.icon-reviews-subgroup {
+  background-image: url(../../images/icons/16x16/reviews.png) !important;
+}
+
+.icon-departments-win {
+  background-image: url(../../images/icons/16x16/department.png) !important;
+}
+
+.icon-polls-win {
+  background-image: url(../../images/icons/16x16/polls.png) !important;
+}
+
+.icon-guest_book-win {
+  background-image: url(../../images/icons/16x16/guestbook.png) !important;
+}
+
+.icon-tomatocart-feeds {
+  background-image: url(../../images/icons/16x16/tomatocart.png) !important;
+}

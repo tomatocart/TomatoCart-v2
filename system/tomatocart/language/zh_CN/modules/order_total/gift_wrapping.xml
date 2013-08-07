@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>order_total_gift_wrapping_title</key>
+      <value><![CDATA[礼品包装]]></value>
+      <group>modules-order_total</group>
+    </definition>
+    <definition>
+      <key>order_total_gift_wrapping_description</key>
+      <value><![CDATA[礼品包装]]></value>
+      <group>modules-order_total</group>
+    </definition>
+    <definition>
+      <key>gift_wrapping_heading</key>
+      <value><![CDATA[礼品包装]]></value>
+      <group>modules-order_total</group>
+    </definition>
+    <definition>
+      <key>gift_wrapping_description</key>
+      <value><![CDATA[请选择是否需要礼品包装。礼品包装为：%s。]]></value>
+      <group>modules-order_total</group>
+    </definition>
+  </definitions>
+</language>

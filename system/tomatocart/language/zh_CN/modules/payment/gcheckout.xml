@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>payment_gcheckout_title</key>
+      <value><![CDATA[Google支付方式]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_gcheckout_description</key>
+      <value><![CDATA[Google支付方式]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_gcheckout_method_title</key>
+      <value><![CDATA[Google支付方式]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_gcheckout_merchant_id</key>
+      <value><![CDATA[商家ID]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_gcheckout_merchant_key</key>
+      <value><![CDATA[厂家密钥]]></value>
+      <group>modules-payment</group>
+    </definition>
+  </definitions>
+</language>

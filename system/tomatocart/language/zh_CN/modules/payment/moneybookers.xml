@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>payment_moneybookers_title</key>
+      <value><![CDATA[Moneybookers支付方式]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_moneybookers_description</key>
+      <value><![CDATA[Moneybookers支付方式]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_moneybookers_method_title</key>
+      <value><![CDATA[Moneybookers支付方式]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_moneybookers_email</key>
+      <value><![CDATA[邮件]]></value>
+      <group>modules-payment</group>
+    </definition>
+  </definitions>
+</language>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>payment_eway_au_title</key>
+      <value><![CDATA[eWay支付方式]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_eway_au_description</key>
+      <value><![CDATA[eWay支付方式]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_eway_au_method_title</key>
+      <value><![CDATA[eWay支付方式]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_eway_au_credit_card_owner</key>
+      <value><![CDATA[持卡人姓名：]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_eway_au_credit_card_number</key>
+      <value><![CDATA[卡号：]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_eway_au_credit_card_expiry_date</key>
+      <value><![CDATA[有效日期：]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_eway_au_credit_card_cvv</key>
+      <value><![CDATA[CVV号：]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_eway_eu_js_credit_card_owner</key>
+      <value><![CDATA[* 该持卡人姓名必须大于%s个字符。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_eway_eu_js_credit_card_number</key>
+      <value><![CDATA[* 该信用卡好必须大于%s个字符。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_eway_eu_cc_js_credit_card_cvc</key>
+      <value><![CDATA[* 该CVC号必须大于3个字符。]]></value>
+      <group>modules-payment</group>
+    </definition>
+  </definitions>
+</language>

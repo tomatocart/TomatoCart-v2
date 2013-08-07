@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>payment_cod_title</key>
+      <value><![CDATA[Cash on Delivery]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_cod_description</key>
+      <value><![CDATA[Cash on Delivery]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_cod_method_title</key>
+      <value><![CDATA[Cash on Delivery]]></value>
+      <group>modules-payment</group>
+    </definition>
+  </definitions>
+</language>

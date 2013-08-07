@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>order_total_loworderfee_title</key>
+      <value><![CDATA[Low Order Fee]]></value>
+      <group>modules-order_total</group>
+    </definition>
+    <definition>
+      <key>order_total_loworderfee_description</key>
+      <value><![CDATA[Low Order Fee]]></value>
+      <group>modules-order_total</group>
+    </definition>
+  </definitions>
+</language>

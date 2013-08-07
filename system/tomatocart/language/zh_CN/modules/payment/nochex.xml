@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>payment_nochex_title</key>
+      <value><![CDATA[NOCHEX]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_nochex_method_title</key>
+      <value><![CDATA[NoChex]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_nochex_description</key>
+      <value><![CDATA[NOCHEX<br />需要GBP作为货币。]]></value>
+      <group>modules-payment</group>
+    </definition>
+  </definitions>
+</language>

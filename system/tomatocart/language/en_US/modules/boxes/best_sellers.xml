@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>box_best_sellers_heading</key>
+      <value><![CDATA[Best Sellers]]></value>
+      <group>modules-boxes</group>
+    </definition>
+  </definitions>
+</language>

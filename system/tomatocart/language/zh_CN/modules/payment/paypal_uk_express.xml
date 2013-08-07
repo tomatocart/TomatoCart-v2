@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>payment_paypal_uk_express_title</key>
+      <value><![CDATA[PayPal Website Payments Pro (UK) Express Checkout]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_paypal_uk_express_description</key>
+      <value><![CDATA[PayPal UK Express]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_paypal_uk_express_method_title</key>
+      <value><![CDATA[PayPal UK Express (包括信用卡和借记卡)]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_paypal_uk_express_error_cfg_error</key>
+      <value><![CDATA[错误：支付模块配置错误。请确认账号信息。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_paypal_uk_express_error_address</key>
+      <value><![CDATA[错误：运输城市，州县和邮政编码无法对应。请重试。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_paypal_uk_express_error_declined</key>
+      <value><![CDATA[错误：交易被拒绝。请重试。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_paypal_uk_express_error_express_disabled</key>
+      <value><![CDATA[错误：该商家的PayPal Express支付账号被禁用了。请联系PayPal客户。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_paypal_uk_express_error_general</key>
+      <value><![CDATA[错误：交易出错。请重试。]]></value>
+      <group>modules-payment</group>
+    </definition>
+  </definitions>
+</language>

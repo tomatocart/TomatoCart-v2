@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>shipping_sf_title</key>
+      <value><![CDATA[顺丰速运]]></value>
+      <group>modules-shipping</group>
+    </definition>
+    <definition>
+      <key>shipping_sf_description</key>
+      <value><![CDATA[顺丰速运]]></value>
+      <group>modules-shipping</group>
+    </definition>
+    <definition>
+      <key>shipping_sf_method</key>
+      <value><![CDATA[顺丰速运]]></value>
+      <group>modules-shipping</group>
+    </definition>
+    <definition>
+      <key>sfexpress_base_fee</key>
+      <value><![CDATA[1000克以内费用]]></value>
+      <group>modules-shipping</group>
+    </definition>
+    <definition>
+      <key>sfexpress_step_fee</key>
+      <value><![CDATA[续重每1000克或其零数的费用]]></value>
+      <group>modules-shipping</group>
+    </definition>
+    <definition>
+      <key>sfexpress_free_shipping</key>
+      <value><![CDATA[免费额度]]></value>
+      <group>modules-shipping</group>
+    </definition>
+  </definitions>
+</language>

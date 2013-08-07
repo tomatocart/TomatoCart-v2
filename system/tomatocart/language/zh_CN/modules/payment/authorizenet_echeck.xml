@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>payment_authorizenet_echeck_title</key>
+      <value><![CDATA[Authorize.net 电子支票]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_authorizenet_echeck_description</key>
+      <value><![CDATA[Authorize.net 电子支票交易]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_authorizenet_echeck_method_title</key>
+      <value><![CDATA[银行/支票 帐户]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_authorizenet_echeck_owner</key>
+      <value><![CDATA[开户人：]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_authorizenet_echeck_account_type</key>
+      <value><![CDATA[帐户类型：]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_authorizenet_echeck_account_type_checking</key>
+      <value><![CDATA[校验]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_authorizenet_echeck_account_type_business_checking</key>
+      <value><![CDATA[商业支票]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_authorizenet_echeck_account_type_savings</key>
+      <value><![CDATA[储蓄]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_authorizenet_echeck_account_number</key>
+      <value><![CDATA[账号：]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_authorizenet_echeck_bank_name</key>
+      <value><![CDATA[银行名称：]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_authorizenet_echeck_routing_code</key>
+      <value><![CDATA[国际电汇代码:]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_authorizenet_echeck_tax_id</key>
+      <value><![CDATA[税号或社保号:]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_authorizenet_echeck_org_type</key>
+      <value><![CDATA[组织类型：]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_authorizenet_echeck_org_type_individual</key>
+      <value><![CDATA[个人]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_authorizenet_echeck_org_type_business</key>
+      <value><![CDATA[商业]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_authorizenet_echeck_js_owner</key>
+      <value><![CDATA[* 请输入银行帐户的户主名称。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_authorizenet_echeck_js_account_number</key>
+      <value><![CDATA[* 请输入银行的帐户号码。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_authorizenet_echeck_js_bank_name</key>
+      <value><![CDATA[* 请输入银行帐户的银行名称。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_authorizenet_echeck_js_routing_code</key>
+      <value><![CDATA[* 银行国际电汇代码必须包含 %s 位数字。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_authorizenet_echeck_js_tax_id</key>
+      <value><![CDATA[* 税号或社保号必须包含 %s 位数字。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_authorizenet_echeck_error_general</key>
+      <value><![CDATA[处理此银行账号出错。请核对账户信息后再试。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_authorizenet_echeck_error_routing_code</key>
+      <value><![CDATA[银行国际电汇代码必须包含 %s 位数字。请核对帐户信息后再试。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_authorizenet_echeck_error_invalid_routing_code</key>
+      <value><![CDATA[处理银行国际电汇代码时出错。请核对帐户信息后再试。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_authorizenet_echeck_error_invalid_account</key>
+      <value><![CDATA[处理银行国际电汇代码时出错。请核对帐户信息后再试。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_authorizenet_echeck_error_tax_id</key>
+      <value><![CDATA[税号或社保号必须包含 %s 位数字。请核对帐户信息后再试。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_authorizenet_echeck_error_invalid_tax_id</key>
+      <value><![CDATA[处理税号或社保号时出错。请核对账户信息后再试。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_authorizenet_echeck_confirmation_message</key>
+      <value><![CDATA[浏览订单之后，我决定用 %s 替代 %s 帐户来支付本次订单的 %s 个 %s 商品。]]></value>
+      <group>modules-payment</group>
+    </definition>
+  </definitions>
+</language>

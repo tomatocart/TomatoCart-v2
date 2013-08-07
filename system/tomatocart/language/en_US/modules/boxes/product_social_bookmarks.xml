@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>box_product_social_bookmarks_heading</key>
+      <value><![CDATA[Product Social Bookmarks]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_twitter_title</key>
+      <value><![CDATA[Share on Twitte]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_facebook_title</key>
+      <value><![CDATA[Share on Facebook]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_facebook_description</key>
+      <value><![CDATA[Share the product on Facebook]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_digg_title</key>
+      <value><![CDATA[Share on Digg]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_digg_description</key>
+      <value><![CDATA[Share this product on Digg]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_google_buzz_title</key>
+      <value><![CDATA[Share on Google Buzz]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_google_buzz_description</key>
+      <value><![CDATA[Share the product on Google Buzz]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_email_title</key>
+      <value><![CDATA[Share via E-Mail]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_email_description</key>
+      <value><![CDATA[Share the product via E-Mail]]></value>
+      <group>modules-boxes</group>
+    </definition>
+  </definitions>
+</language>

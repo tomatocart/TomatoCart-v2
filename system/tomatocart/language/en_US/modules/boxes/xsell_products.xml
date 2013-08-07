@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>xsell_products_title</key>
+      <value><![CDATA[Cross Sell Products]]></value>
+      <group>modules-boxes</group>
+    </definition>
+  </definitions>
+</language>

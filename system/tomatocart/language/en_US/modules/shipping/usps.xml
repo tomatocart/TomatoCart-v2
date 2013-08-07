@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>shipping_usps_title</key>
+      <value><![CDATA[United States Postal Service (USPS)]]></value>
+      <group>modules-shipping</group>
+    </definition>
+    <definition>
+      <key>shipping_usps_description</key>
+      <value><![CDATA[United States Postal Service<br /><br />You will need to have registered an account with USPS at http://www.uspsprioritymail.com/et_regcert.html to use this module<br /><br />USPS expects you to use pounds as weight measure for your products.]]></value>
+      <group>modules-shipping</group>
+    </definition>
+    <definition>
+      <key>shipping_usps_error</key>
+      <value><![CDATA[An error occured with the USPS shipping calculations.<br />If you prefer to use USPS as your shipping method, please contact the store owner.]]></value>
+      <group>modules-shipping</group>
+    </definition>
+  </definitions>
+</language>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>order_total_loworderfee_title</key>
+      <value><![CDATA[最低消费]]></value>
+      <group>modules-order_total</group>
+    </definition>
+    <definition>
+      <key>order_total_loworderfee_description</key>
+      <value><![CDATA[为了保证利润，最低的订单额的设置。]]></value>
+      <group>modules-order_total</group>
+    </definition>
+  </definitions>
+</language>

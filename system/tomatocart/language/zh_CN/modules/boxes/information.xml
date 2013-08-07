@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>box_information_heading</key>
+      <value><![CDATA[信息]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_information_privacy</key>
+      <value><![CDATA[隐私策略]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_information_conditions</key>
+      <value><![CDATA[使用条款]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_information_shipping</key>
+      <value><![CDATA[配送条款]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_information_contact</key>
+      <value><![CDATA[联系我们]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_information_sitemap</key>
+      <value><![CDATA[网站地图]]></value>
+      <group>modules-boxes</group>
+    </definition>
+  </definitions>
+</language>

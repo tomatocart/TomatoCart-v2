@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>payment_secpay_title</key>
+      <value><![CDATA[SECPay]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_secpay_description</key>
+      <value><![CDATA[信用卡测试信息：<br /><br />CC#: 4444333322221111<br />有效期至： 无限期]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_secpay_error</key>
+      <value><![CDATA[信用卡出错!]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_secpay_error_message</key>
+      <value><![CDATA[处理信用卡时出错。请重试。]]></value>
+      <group>modules-payment</group>
+    </definition>
+  </definitions>
+</language>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>payment_bank_wire_title</key>
+      <value><![CDATA[银行电汇]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_bank_wire_description</key>
+      <value><![CDATA[银行电汇]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_bank_wire_method_title</key>
+      <value><![CDATA[银行电汇]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_bank_wire_bank_account_owner</key>
+      <value><![CDATA[开户人]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_bank_wire_bank_detail</key>
+      <value><![CDATA[银行详细信息]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_bank_wire_bank_address</key>
+      <value><![CDATA[银行地址]]></value>
+      <group>modules-payment</group>
+    </definition>
+  </definitions>
+</language>

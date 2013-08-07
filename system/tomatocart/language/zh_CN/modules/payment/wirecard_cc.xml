@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>payment_wirecard_cc_title</key>
+      <value><![CDATA[Wire Card 信用卡]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_wirecard_cc_description</key>
+      <value><![CDATA[Wire Card 信用卡交易]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_wirecard_cc_method_title</key>
+      <value><![CDATA[信用卡]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_wirecard_cc_credit_card_owner</key>
+      <value><![CDATA[持卡人：]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_wirecard_cc_credit_card_number</key>
+      <value><![CDATA[信用卡卡号：]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_wirecard_cc_credit_card_expiry_date</key>
+      <value><![CDATA[信用卡有效期：]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_wirecard_cc_credit_card_cvc</key>
+      <value><![CDATA[信用卡校验码：]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_wirecard_cc_js_credit_card_owner</key>
+      <value><![CDATA[* 持卡人的名称至少包含 %s 位字符。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_wirecard_cc_js_credit_card_number</key>
+      <value><![CDATA[* 信用卡卡号至少包含 %s 位字符。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_wirecard_cc_js_credit_card_not_accepted</key>
+      <value><![CDATA[* 此信用卡类型未被识别。请尝试其他信用卡或选用其他支付方式。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_wirecard_cc_js_credit_card_cvc</key>
+      <value><![CDATA[* 信用卡校验码至少包含3位字符。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_wirecard_cc_error_general</key>
+      <value><![CDATA[处理此信用卡时出错。请核对信用卡信息后重试。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_wirecard_cc_error_not_accepted</key>
+      <value><![CDATA[此信用卡未被识别。请尝试其他信用卡或选用其他支付方式。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_wirecard_cc_error_20071</key>
+      <value><![CDATA[此信用卡有效期无效。请核对信用卡信息后重试。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_wirecard_cc_error_33</key>
+      <value><![CDATA[此信用卡已经过期。请尝试其他信用卡或选用其他支付方式。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_wirecard_cc_error_unkown_card</key>
+      <value><![CDATA[此信用卡未知，不能操作。请尝试其他信用卡或选用其他支付方式。]]></value>
+      <group>modules-payment</group>
+    </definition>
+  </definitions>
+</language>

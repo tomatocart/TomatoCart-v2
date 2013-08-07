@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>box_my_account_heading</key>
+      <value><![CDATA[我的账号]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_my_account</key>
+      <value><![CDATA[账号中心]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_my_orders_view</key>
+      <value><![CDATA[我的订单]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_my_wishlist</key>
+      <value><![CDATA[收藏夹]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_my_account_information</key>
+      <value><![CDATA[账号信息]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_my_account_address_book</key>
+      <value><![CDATA[发货地址]]></value>
+      <group>modules-boxes</group>
+    </definition>
+  </definitions>
+</language>

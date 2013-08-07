@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>shipping_ups_title</key>
+      <value><![CDATA[United Parcel Service]]></value>
+      <group>modules-shipping</group>
+    </definition>
+    <definition>
+      <key>shipping_ups_description</key>
+      <value><![CDATA[United Parcel Service.]]></value>
+      <group>modules-shipping</group>
+    </definition>
+  </definitions>
+</language>

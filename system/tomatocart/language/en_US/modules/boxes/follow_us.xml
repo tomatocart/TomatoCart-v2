@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>box_follow_us_heading</key>
+      <value><![CDATA[Follow Us]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>follow-us_facebook-title</key>
+      <value><![CDATA[Find on Facebook]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>follow-us_twitter-title</key>
+      <value><![CDATA[Find on Twitter]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>follow-us_google-plus</key>
+      <value><![CDATA[Google Plus]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>follow-us_rss</key>
+      <value><![CDATA[Subscribe RSS]]></value>
+      <group>modules-boxes</group>
+    </definition>
+  </definitions>
+</language>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>shipping_yto_title</key>
+      <value><![CDATA[圆通速递]]></value>
+      <group>modules-shipping</group>
+    </definition>
+    <definition>
+      <key>shipping_yto_description</key>
+      <value><![CDATA[圆通速递]]></value>
+      <group>modules-shipping</group>
+    </definition>
+    <definition>
+      <key>shipping_yto_method</key>
+      <value><![CDATA[圆通速递]]></value>
+      <group>modules-shipping</group>
+    </definition>
+    <definition>
+      <key>ytoexpress_base_fee</key>
+      <value><![CDATA[首重费用]]></value>
+      <group>modules-shipping</group>
+    </definition>
+    <definition>
+      <key>ytoexpress_step_fee</key>
+      <value><![CDATA[续重费用]]></value>
+      <group>modules-shipping</group>
+    </definition>
+    <definition>
+      <key>ytoexpress_free_shipping</key>
+      <value><![CDATA[免费额度]]></value>
+      <group>modules-shipping</group>
+    </definition>
+    <definition>
+      <key>ytoexpress_cod</key>
+      <value><![CDATA[货到付款支付费用]]></value>
+      <group>modules-shipping</group>
+    </definition>
+  </definitions>
+</language>

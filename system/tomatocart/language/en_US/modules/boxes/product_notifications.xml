@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>box_product_notifications_heading</key>
+      <value><![CDATA[Product Notifications]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_product_notifications_add</key>
+      <value><![CDATA[Notify me of updates to %s]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_product_notifications_remove</key>
+      <value><![CDATA[Remove my notifications to %s]]></value>
+      <group>modules-boxes</group>
+    </definition>
+  </definitions>
+</language>

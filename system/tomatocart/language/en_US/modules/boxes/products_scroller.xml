@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>box_products_scroller_heading</key>
+      <value><![CDATA[Products Scroller]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>products_scroller_new_products_title</key>
+      <value><![CDATA[New Products]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>products_scroller_special_products_title</key>
+      <value><![CDATA[Special Products]]></value>
+      <group>modules-boxes</group>
+    </definition>        
+    <definition>
+      <key>products_scroller_best_sellers_title</key>
+      <value><![CDATA[Best Sellers]]></value>
+      <group>modules-boxes</group>
+    </definition>        
+  </definitions>
+</language>

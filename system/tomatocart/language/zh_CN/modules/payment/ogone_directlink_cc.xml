@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>payment_ogone_directlink_cc_title</key>
+      <value><![CDATA[Ogone DirectLink 信用卡]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_ogone_directlink_cc_description</key>
+      <value><![CDATA[Ogone DirectLink 信用卡交易]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_ogone_directlink_cc_method_title</key>
+      <value><![CDATA[信用卡]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_ogone_directlink_cc_credit_card_owner</key>
+      <value><![CDATA[信用卡主人：]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_ogone_directlink_cc_credit_card_number</key>
+      <value><![CDATA[信用卡号码：]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_ogone_directlink_cc_credit_card_expiry_date</key>
+      <value><![CDATA[信用卡有效期：]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_ogone_directlink_cc_credit_card_cvc</key>
+      <value><![CDATA[信用卡验证码 (CVC):]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_ogone_directlink_cc_js_credit_card_owner</key>
+      <value><![CDATA[* 信用卡卡主的名称至少是 %s 位字符。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_ogone_directlink_cc_js_credit_card_number</key>
+      <value><![CDATA[* 信用卡号码必须是至少 %s 位字符。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_ogone_directlink_cc_js_credit_card_not_accepted</key>
+      <value><![CDATA[* 此信用卡类型是不被接受的。请您尝试使用其它的信用卡或其它的付款方式。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_ogone_directlink_cc_js_credit_card_cvc</key>
+      <value><![CDATA[* 信用卡验证码 (CVC) 必须至少有3位字符。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_ogone_directlink_cc_error_general</key>
+      <value><![CDATA[处理此信用卡时出现一些问题，请检查信用卡信息，然后再尝试一次。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_ogone_directlink_cc_error_not_accepted</key>
+      <value><![CDATA[此信用卡类型未被识别。请尝试其它信用卡或选用其它支付方式。]]></value>
+      <group>modules-payment</group>
+    </definition>
+  </definitions>
+</language>

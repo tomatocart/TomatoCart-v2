@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>shipping_pep_title</key>
+      <value><![CDATA[邮政快递包裹]]></value>
+      <group>modules-shipping</group>
+    </definition>
+    <definition>
+      <key>shipping_pep_description</key>
+      <value><![CDATA[邮政快递包裹]]></value>
+      <group>modules-shipping</group>
+    </definition>
+    <definition>
+      <key>shipping_pep_method</key>
+      <value><![CDATA[邮政快递包裹]]></value>
+      <group>modules-shipping</group>
+    </definition>
+    <definition>
+      <key>pepexpress_base_fee</key>
+      <value><![CDATA[1000克以内费用]]></value>
+      <group>modules-shipping</group>
+    </definition>
+    <definition>
+      <key>pepexpress_step1_fee</key>
+      <value><![CDATA[5000克以内续重每1000克费用]]></value>
+      <group>modules-shipping</group>
+    </definition>
+    <definition>
+      <key>pepexpress_step2_fee</key>
+      <value><![CDATA[5001克以上续重1000克费用]]></value>
+      <group>modules-shipping</group>
+    </definition>
+    <definition>
+      <key>pepexpress_free_shipping</key>
+      <value><![CDATA[免费额度]]></value>
+      <group>modules-shipping</group>
+    </definition>
+  </definitions>
+</language>

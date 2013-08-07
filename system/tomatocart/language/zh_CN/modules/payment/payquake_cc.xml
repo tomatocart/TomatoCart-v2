@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>payment_payquake_cc_title</key>
+      <value><![CDATA[PayQuake 信用卡]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_payquake_cc_description</key>
+      <value><![CDATA[PayQuake 信用卡交易]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_payquake_cc_method_title</key>
+      <value><![CDATA[信用卡]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_payquake_cc_credit_card_owner</key>
+      <value><![CDATA[持卡人：]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_payquake_cc_credit_card_number</key>
+      <value><![CDATA[信用卡卡号：]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_payquake_cc_credit_card_expiry_date</key>
+      <value><![CDATA[信用卡有效期：]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_payquake_cc_credit_card_cvc</key>
+      <value><![CDATA[信用卡校验码：]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_payquake_cc_js_credit_card_owner</key>
+      <value><![CDATA[* 持卡人名称至少是 %s 位字符。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_payquake_cc_js_credit_card_number</key>
+      <value><![CDATA[* 信用卡卡号至少是 %s 位字符。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_payquake_cc_js_credit_card_not_accepted</key>
+      <value><![CDATA[* 此信用卡类型未被识别。请尝试其他信用卡或选用其它支付方式。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_payquake_cc_js_credit_card_cvc</key>
+      <value><![CDATA[* 信用卡校验码至少是3位字符。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_payquake_cc_error_general</key>
+      <value><![CDATA[处理此信用卡时出错。请核对信用卡信息后再试。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_payquake_cc_error_not_accepted</key>
+      <value><![CDATA[此信用卡类型未被识别。请使用其他信用卡或选用其它支付方式。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_payquake_cc_error_invalid_expiry_date</key>
+      <value><![CDATA[此信用卡有效期无效。请核对信用卡信息后再试。]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_payquake_cc_error_expired</key>
+      <value><![CDATA[此信用卡已过期。请尝试其他信用卡或选用其它支付方式。]]></value>
+      <group>modules-payment</group>
+    </definition>
+  </definitions>
+</language>

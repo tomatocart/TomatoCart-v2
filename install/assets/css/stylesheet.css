@@ -1,0 +1,181 @@
+/**
+ * TomatoCart Open Source Shopping Cart Solution
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License v3 (2007)
+ * as published by the Free Software Foundation.
+ *
+ * @package     TomatoCart
+ * @author      TomatoCart Dev Team
+ * @copyright   Copyright (c) 2009 - 2012, TomatoCart. All rights reserved.
+ * @license     http://www.gnu.org/licenses/gpl.html
+ * @link        http://tomatocart.com
+ * @since       Version 2.0
+ * @filesource
+ */
+
+body {
+    font-size: 13px;
+}
+#header {
+    background-color: #F9F9F9;
+    border-bottom: 1px solid #DDDDDD;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    margin: 0 0 30px;
+}
+#footer {
+    margin-top: 30px;
+}
+h1 {
+    font-size: 28px;
+    line-height: 50px;
+}
+h2 {
+    color: #777;
+}
+hr {
+    margin: 5px 0;
+}
+.center {
+    text-align: center;
+}
+
+form label, .form-horizontal .control-label {
+    font-weight: bold;
+}
+#header ul.languages {
+    list-style: none outside none;
+}
+
+#header ul.languages li {
+    float: left;
+    margin: 0px 5px 0px 5px;
+}
+#header .links {
+    margin-top: 15px;
+}
+
+/**Navigation List**/
+.nav {
+    background-color: #FFFFFF;
+    border-radius: 6px 6px 6px 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+    margin: 0 0 0;
+    padding: 0;
+    width: 218px;
+    top: 0px;
+}
+.nav > li > a {
+    border: 1px solid #E5E5E5;
+    display: block;
+    margin: 0 0 -1px;
+    padding: 8px 14px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+.nav > li:first-child > a {
+    border-radius: 6px 6px 0 0;
+}
+.nav > li:last-child > a {
+    border-radius: 0 0 6px 6px;
+}
+.nav > .active a {
+    border: 0 none;
+    box-shadow: 1px 0 0 rgba(0, 0, 0, 0.1) inset, -1px 0 0 rgba(0, 0, 0, 0.1) inset;
+    padding: 9px 15px;
+    position: relative;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+    z-index: 2;
+}
+.nav .icon-chevron-right {
+    float: right;
+    margin-right: -6px;
+    margin-top: 2px;
+    opacity: 0.25;
+}
+.nav > li > a:hover {
+    background-color: #F5F5F5;
+}
+.nav a:hover .icon-chevron-right {
+    opacity: 0.5;
+}
+.nav .active .icon-chevron-right, .nav .active a:hover .icon-chevron-right {
+    background-image: url("../img/glyphicons-halflings-white.png");
+    opacity: 1;
+}
+.nav > .active > a, .nav > .active > a:hover {
+    background-color: #0088CC;
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+}
+.content {
+    border: 1px solid #dddddd;
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 0 3px #DDDDDD;
+    display: block;
+    width: 600px;
+    padding: 0 20px 20px 20px;
+}
+
+.license {
+    background: none repeat scroll 0 0 #FBFBF3;
+    border: 1px solid #DDDDDD;
+    font-size: 12px;
+    height: 350px;
+    overflow: auto;
+    padding-left: 10px;
+    text-align: left;
+    width: 99%;
+    border-radius: 5px;
+}
+
+.info {
+    background-color: #F6F7FB;
+    border: 1px solid #00CCFF;
+    margin: 20px auto;
+    padding: 10px;
+}
+.description {
+    color: #666;
+}
+.form-horizontal .description {
+    margin-left: 180px;
+}
+
+#installForm input {
+    margin-bottom: 0;
+}
+
+#mBox {
+    clear: both;
+    display: none;
+    float: left;
+    margin-top: 10px;
+    width: 218px;
+}
+
+#mBoxContents {
+    background: none repeat scroll 0 0 #FFEDD1;
+    border: 1px solid #F0A42A;
+    padding: 10px;
+    width: 198px;
+}
+
+div.large {
+    margin: 60px 0;
+}
+
+div.large a.btn {
+    width: 160px;
+}
+
+div.large div.span6 {
+    text-align: center;
+}
+
+div.large a.catalog {
+    width: 120px
+}
+
+div.large a.admin {
+    width: 180px
+}

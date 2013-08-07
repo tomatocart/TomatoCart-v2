@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>box_my_account_heading</key>
+      <value><![CDATA[My Account]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_my_account</key>
+      <value><![CDATA[My Account]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_my_orders_view</key>
+      <value><![CDATA[Orders]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_my_wishlist</key>
+      <value><![CDATA[Wishlist]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_my_account_information</key>
+      <value><![CDATA[Account Information]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_my_account_address_book</key>
+      <value><![CDATA[Address Book]]></value>
+      <group>modules-boxes</group>
+    </definition>
+  </definitions>
+</language>

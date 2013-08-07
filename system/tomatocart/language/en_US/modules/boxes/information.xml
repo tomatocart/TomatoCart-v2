@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>box_information_heading</key>
+      <value><![CDATA[Information]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_information_privacy</key>
+      <value><![CDATA[Privacy Notice]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_information_conditions</key>
+      <value><![CDATA[Conditions of Use]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_information_shipping</key>
+      <value><![CDATA[Shipping and Returns]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_information_contact</key>
+      <value><![CDATA[Contact Us]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_information_sitemap</key>
+      <value><![CDATA[Sitemap]]></value>
+      <group>modules-boxes</group>
+    </definition>
+  </definitions>
+</language>

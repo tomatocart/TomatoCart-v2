@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>payment_amazon_title</key>
+      <value><![CDATA[亚马逊支付]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_amazon_description</key>
+      <value><![CDATA[亚马逊支付]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_amazon_method_title</key>
+      <value><![CDATA[亚马逊支付]]></value>
+      <group>modules-payment</group>
+    </definition>
+  </definitions>
+</language>

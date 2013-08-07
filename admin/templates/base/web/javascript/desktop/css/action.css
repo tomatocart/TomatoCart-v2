@@ -1,0 +1,297 @@
+/*
+  $Id: actions.css $
+  TomatoCart Open Source Shopping Cart Solutions
+  http://www.tomatocart.com
+
+  Copyright (c) 2009 Wuxi Elootec Technology Co., Ltd
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License v2 (1991)
+  as published by the Free Software Foundation.
+*/
+
+/* Begin: Buttons*/
+.add {
+  background-image: url(../../images/icons/16x16/add.png) !important;
+}
+
+
+.edit {
+  background-image: url(../../images/icons/16x16/edit.png) !important;
+}
+
+.remove {
+  background-image: url(../../images/icons/16x16/delete.png) !important;
+}
+
+.move {
+  background-image: url(../../images/icons/16x16/delete.png) !important;
+}
+
+.refresh {
+  background-image: url(../../images/icons/16x16/reload.png) !important;
+}
+
+.search {
+  background-image: url(../../images/icons/16x16/search.png) !important;
+}
+
+.back {
+  background-image: url(../../images/icons/16x16/nav_back.png) !important;
+}
+
+.publish {
+  background-image: url(../../images/icons/16x16/publish.png) !important;
+}
+
+.unpublish {
+  background-image: url(../../images/icons/16x16/unpublish.png) !important;
+}
+
+.icon-upload {
+  background-image: url(../../images/icons/16x16/up.png) !important;
+}
+
+.image-add {
+  background-image: url(../../images/icons/16x16/image_add.png) !important;
+}
+
+.icon-update-exchange-rates {
+  background-image: url(../../images/icons/16x16/reload.png) !important;
+}
+
+.invoice {
+  background-image: url(../../images/icons/16x16/view.png) !important;
+}
+
+.packaging-slip {
+  background-image: url(../../images/icons/16x16/shipping.png) !important;
+}
+
+.check-email {
+  background-image: url(../../images/icons/16x16/email_check.png) !important;
+}
+.compose-email {
+  background-image: url(../../images/icons/16x16/email_compose.png) !important;
+}
+.accounts {
+  background-image: url(../../images/icons/16x16/email_account.png) !important;
+}
+.contactInfo {
+  background-image: url(../../images/icons/16x16/email_contactInfo.png) !important;
+}
+.reply {
+  background-image: url(../../images/icons/16x16/email_reply.png) !important;
+}
+.replyAll {
+  background-image: url(../../images/icons/16x16/email_replyAll.png) !important;
+}
+.forward {
+  background-image: url(../../images/icons/16x16/email_forward.png) !important;
+}
+.print {
+  background-image: url(../../images/icons/16x16/print.png) !important;
+}
+.send {
+  background-image: url(../../images/icons/16x16/email_compose_send.png) !important;
+}
+.saveDraft{
+  background-image: url(../../images/icons/16x16/email_compose_saveDraft.png) !important;
+}
+.options {
+  background-image: url(../../images/icons/16x16/settings.png) !important;
+}
+.show {
+  background-image: url(../../images/icons/16x16/nav_forward.png) !important;
+}
+.save {
+  background-image: url(../../images/icons/16x16/save.png) !important;
+}
+.attachment {
+  background-image: url(../../images/icons/16x16/email_attachment.png) !important;
+}
+.email_read {
+  background-image: url(../../images/icons/16x16/email_read.png) !important;
+}
+.email_unread {
+  background-image: url(../../images/icons/16x16/email_unread.png) !important;
+}
+.quickCreate {
+  background-image: url(../../images/icons/16x16/invoice-add.png) !important;
+}
+/* End: Buttons*/
+
+ /* Begin: Grid Buttons*/
+.icon-action {
+  width: 16px;
+  height: 16px;
+  margin: 0 3px;
+}
+
+.icon-install-record {
+  background-image: url(../../images/icons/16x16/install.png) !important;
+}
+
+.icon-uninstall-record {
+  background-image: url(../../images/icons/16x16/delete.png) !important;
+}
+
+.icon-uninstall-gray-record {
+  background-image: url(../../images/icons/16x16/delete-gray.png) !important;
+}
+
+.icon-move-record {
+  background-image: url(../../images/icons/16x16/move.png) !important;
+}
+
+.icon-info-record {
+  background-image: url(../../images/icons/16x16/info.png) !important;
+}
+
+.icon-delete-record {
+  background-image: url(../../images/icons/16x16/delete.png) !important;
+}
+
+.icon-copy-record {
+  background-image: url(../../images/icons/16x16/copy.png) !important;
+}
+
+.icon-delete-gray-record {
+  background-image: url(../../images/icons/16x16/delete-gray.png) !important;
+}
+
+.icon-default-record {
+  background-image: url(../../images/icons/16x16/default.png) !important;
+}
+
+.icon-default-gray-record {
+  background-image: url(../../images/icons/16x16/default_grey.png) !important;
+}
+
+.icon-empty-record {
+  background-image: url(../images/default/s.gif) !important;
+}
+
+.icon-edit-record {
+  background-image: url(../../images/icons/16x16/edit.png) !important;
+}
+
+.icon-send-email-record {
+  background-image: url(../../images/icons/16x16/email_send.png) !important;
+}
+
+.icon-view-record {
+  background-image: url(../../images/icons/16x16/view.png) !important;
+}
+
+.icon-print-record {
+  background-image: url(../../images/icons/16x16/print.png) !important;
+}
+
+.icon-order-record {
+  background-image: url(../../images/icons/16x16/orders.png) !important;
+}
+
+.icon-order-pdf-record {
+  background-image: url(../../images/icons/16x16/order-pdf.png) !important;
+}
+
+.icon-invoice-pdf-record {
+  background-image: url(../../images/icons/16x16/invoice-pdf.png) !important;
+}
+
+.icon-invoice-record {
+  background-image: url(../../images/icons/16x16/invoice-add.png) !important;
+}
+
+.icon-invoice-gray-record {
+  background-image: url(../../images/icons/16x16/invoice-add-gray.png) !important;
+}
+
+.icon-packaging-slip-record {
+  background-image: url(../../images/icons/16x16/shipping-pdf.png) !important;
+}
+
+.icon-store-credit-record{
+  background-image: url(../../images/icons/16x16/coins.png) !important;
+}
+
+.icon-store-credit-gray-record{
+  background-image: url(../../images/icons/16x16/coins-gray.png) !important;  
+}
+
+.icon-credit-slip-record{
+  background-image: url(../../images/icons/16x16/money.png) !important;
+}
+
+.icon-credit-slip-gray-record{
+  background-image: url(../../images/icons/16x16/money-gray.png) !important;
+}
+
+.icon-add-record {
+  background-image: url(../../images/icons/16x16/add.png) !important;
+}
+
+.icon-edit-gray-record {
+  background-image: url(../../images/icons/16x16/edit-gray.png) !important;
+}
+
+.icon-export-record {
+  background-image: url(../../images/icons/16x16/export.png) !important;
+}
+
+.icon-restore-record {
+  background-image: url(../../images/icons/16x16/restore.png) !important;
+}
+
+.icon-download-record {
+  background-image: url(../../images/icons/16x16/download.png) !important;
+}
+
+.icon-execute-record {
+  background-image: url(../../images/icons/16x16/run.png) !important;
+}
+
+.icon-send-email-record {
+  background-image: url(../../images/icons/16x16/email_send.png) !important;
+}
+
+.icon-log-record {
+  background-image: url(../../images/icons/16x16/log.png) !important;
+}
+
+.icon-banner-preview-record {
+  background-image: url(../../images/icons/16x16/banner_preview.png) !important;
+}
+
+.icon-statistics-record {
+  background-image: url(../../images/icons/16x16/statistics.png) !important;
+}
+
+.icon-folder-account-record {
+  background-image: url(../../images/icons/16x16/folder_account.png) !important;
+}
+.icon-folder-inbox-record {
+  background-image: url(../../images/icons/16x16/folder_inbox.png) !important;
+}
+.icon-folder-sent-record {
+  background-image: url(../../images/icons/16x16/folder_sent.png) !important;
+}
+.icon-folder-drafts-record {
+  background-image: url(../../images/icons/16x16/folder_drafts.png) !important;
+}
+.icon-folder-trash-record {
+  background-image: url(../../images/icons/16x16/folder_trash.png) !important;
+}
+.icon-folder-spam-record {
+  background-image: url(../../images/icons/16x16/folder_spam.png) !important;
+}
+.icon-folder-default-record {
+  background-image: url(../../images/icons/16x16/folder_default.png) !important;
+}
+
+.icon-action-hide {
+  display: none !important;
+}
+
+ /* End: Grid Buttons*/

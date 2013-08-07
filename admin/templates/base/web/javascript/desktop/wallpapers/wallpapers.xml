@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wallpapers>
+  <Wallpaper>
+    <Code><![CDATA[blank]]></Code>
+    <Name><![CDATA[Blank]]></Name>
+    <Author><![CDATA[]]></Author>
+    <Url><![CDATA[]]></Url>
+    <Thumbnail><![CDATA[templates/base/web/javascript/desktop/wallpapers/thumbnails/blank.gif]]></Thumbnail>
+    <File><![CDATA[templates/base/web/javascript/desktop/wallpapers/blank.gif]]></File>
+  </Wallpaper>
+  <Wallpaper>
+    <Code><![CDATA[blue-swirl]]></Code>
+    <Name><![CDATA[Blue Swirl]]></Name>
+    <Author><![CDATA[]]></Author>
+    <Url><![CDATA[]]></Url>
+    <Thumbnail><![CDATA[templates/base/web/javascript/desktop/wallpapers/thumbnails/blue-swirl.jpg]]></Thumbnail>
+    <File><![CDATA[templates/base/web/javascript/desktop/wallpapers/blue-swirl.jpg]]></File>
+  </Wallpaper>
+  <Wallpaper>
+    <Code><![CDATA[blue-psychedelic]]></Code>
+    <Name><![CDATA[Blue Psychedelic]]></Name>
+    <Author><![CDATA[]]></Author>
+    <Url><![CDATA[]]></Url>
+    <Thumbnail><![CDATA[templates/base/web/javascript/desktop/wallpapers/thumbnails/blue-psychedelic.jpg]]></Thumbnail>
+    <File><![CDATA[templates/base/web/javascript/desktop/wallpapers/blue-psychedelic.jpg]]></File>
+  </Wallpaper>
+  <Wallpaper>
+    <Code><![CDATA[desk]]></Code>
+    <Name><![CDATA[desk]]></Name>
+    <Author><![CDATA[]]></Author>
+    <Url><![CDATA[]]></Url>
+    <Thumbnail><![CDATA[templates/base/web/javascript/desktop/wallpapers/thumbnails/desk.jpg]]></Thumbnail>
+    <File><![CDATA[templates/base/web/javascript/desktop/wallpapers/desk.jpg]]></File>
+  </Wallpaper>
+  <Wallpaper>
+    <Code><![CDATA[desktop]]></Code>
+    <Name><![CDATA[desktop]]></Name>
+    <Author><![CDATA[]]></Author>
+    <Url><![CDATA[]]></Url>
+    <Thumbnail><![CDATA[templates/base/web/javascript/desktop/wallpapers/thumbnails/desktop.jpg]]></Thumbnail>
+    <File><![CDATA[templates/base/web/javascript/desktop/wallpapers/desktop.jpg]]></File>
+  </Wallpaper>
+</Wallpapers>

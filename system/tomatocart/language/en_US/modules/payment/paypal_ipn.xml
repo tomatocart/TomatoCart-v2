@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>payment_paypal_ipn_title</key>
+      <value><![CDATA[PayPal IPN]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_paypal_ipn_description</key>
+      <value><![CDATA[PayPal IPN]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_paypal_ipn_method_title</key>
+      <value><![CDATA[PayPal]]></value>
+      <group>modules-payment</group>
+    </definition>
+  </definitions>
+</language>

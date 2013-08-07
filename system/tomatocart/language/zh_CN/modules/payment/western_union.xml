@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>payment_western_union_title</key>
+      <value><![CDATA[西联汇款]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_western_union_description</key>
+      <value><![CDATA[西联汇款]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_western_union_method_title</key>
+      <value><![CDATA[西联汇款]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_western_union_owner_country</key>
+      <value><![CDATA[国家：]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_western_union_owner_city</key>
+      <value><![CDATA[城市：]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_western_union_owner_name</key>
+      <value><![CDATA[姓名：]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_western_union_owner_email</key>
+      <value><![CDATA[邮件：]]></value>
+      <group>modules-payment</group>
+    </definition>
+    <definition>
+      <key>payment_western_union_owner_telephone</key>
+      <value><![CDATA[电话号码：]]></value>
+      <group>modules-payment</group>
+    </definition>
+  </definitions>
+</language>

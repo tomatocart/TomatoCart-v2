@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>recently_visited_title</key>
+      <value><![CDATA[Your Recent History]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>recently_visited_products_title</key>
+      <value><![CDATA[Recently Visited Products]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>recently_visited_categories_title</key>
+      <value><![CDATA[Recent Categories]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>recently_visited_searches_title</key>
+      <value><![CDATA[Recent Searches]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>recently_visited_item_in_category</key>
+      <value><![CDATA[in %s]]></value>
+      <group>modules-boxes</group>
+    </definition>
+  </definitions>
+</language>

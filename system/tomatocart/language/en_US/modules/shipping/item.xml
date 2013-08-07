@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>shipping_item_title</key>
+      <value><![CDATA[Per Item]]></value>
+      <group>modules-shipping</group>
+    </definition>
+    <definition>
+      <key>shipping_item_description</key>
+      <value><![CDATA[Per Item]]></value>
+      <group>modules-shipping</group>
+    </definition>
+    <definition>
+      <key>shipping_item_method</key>
+      <value><![CDATA[Best Way]]></value>
+      <group>modules-shipping</group>
+    </definition>
+  </definitions>
+</language>

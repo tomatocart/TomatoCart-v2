@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>box_guestbook_heading</key>
+      <value><![CDATA[Guest Book]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_list_guest_book_heading</key>
+      <value><![CDATA[All Guest Books]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_guest_book_info_heading</key>
+      <value><![CDATA[Guest Book Info]]></value>
+      <group>modules-boxes</group>
+    </definition>
+  </definitions>    
+</language>

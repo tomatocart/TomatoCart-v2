@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>box_order_history_heading</key>
+      <value><![CDATA[Order History]]></value>
+      <group>modules-boxes</group>
+    </definition>
+  </definitions>
+</language>

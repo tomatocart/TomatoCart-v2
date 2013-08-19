@@ -172,7 +172,7 @@ function toc_copy($source, $target) {
         $src_dir = dir($source);
 
         while ( false !== ($file = $src_dir->read()) ) {
-            if ($file == '.' || $file == '..' || $file == '.svn' || $file == '.gitignore') {
+            if ($file == '.' || $file == '..' || $file == '.svn' || $file == '.gitignore' || $file == '.gitkeep') {
                 continue;
             }
 

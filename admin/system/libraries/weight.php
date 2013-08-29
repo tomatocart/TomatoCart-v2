@@ -11,75 +11,95 @@
  * @link    http://tomatocart.com
  * @since   Version 0.5
  * @filesource
- */
+*/
 
-  class TOC_Weight
-  {
-    private $_ci;
-    private $precision;
-    private $weight_classes = array();
-    
-    public function __construct($precision = '2')
-    {
-      $this->_ci = & get_instance();
-      $this->precision = $precision;
-      
-      $this->_ci->load->model('weight_model');
-      $this->_prepare_rules();
-    }
-    
-    private function _prepare_rules()
-    {
-      $rules = $this->_ci->weight_model->get_rules();
-      
-      if (!empty($rules))
-      {
-        foreach($rules as $rule)
-        {
-          $this->weight_classes[$rule['weight_class_from_id']][$rule['weight_class_to_id']] = $rule['weight_class_rule'];
-        }
-      }
-      
-      $classes = $this->_ci->weight_model->get_classes();
-      
-      if (!empty($classes))
-      {
-        foreach($classes as $class)
-        {
-          $this->weight_classes[$class['weight_class_id']]['key'] = $class['weight_class_key'];
-          $this->weight_classes[$class['weight_class_id']]['title'] = $class['weight_class_title'];
-        }
-      }
-    }
-    
-    public function get_classes()
-    {
-      $classes = $this->_ci->weight_model->get_classes();
-      
-      $result = array();
-      if (!empty($classes))
-      {
-        foreach($classes as $class)
-        {
-          $result[] = array('id' => $class['weight_class_id'], 'title' => $class['weight_class_title']);
-        }
-      }
-      
-      return $result;
-    }
-    
-    public function get_title($id)
-    {
-      $weight = $this->_ci->weight_model->get_title($id);
-      
-      if (isset($weight['weight_class_title']) && !empty($weight['weight_class_title']))
-      {
-        return $weight['weight_class_title'];
-      }
-      
-      return FALSE;
-    }
-  }
+class TOC_Weight
+{
+	private $_ci;
+	private $precision;
+	private $weight_classes = array();
+
+	public function __construct($precision = '2')
+	{
+		$this->_ci = & get_instance();
+		$this->precision = $precision;
+
+		$this->_ci->load->model('weight_model');
+		$this->_prepare_rules();
+	}
+
+	private function _prepare_rules()
+	{
+		$rules = $this->_ci->weight_model->get_rules();
+
+		if (!empty($rules))
+		{
+			foreach($rules as $rule)
+			{
+				$this->weight_classes[$rule['weight_class_from_id']][$rule['weight_class_to_id']] = $rule['weight_class_rule'];
+			}
+		}
+
+		$classes = $this->_ci->weight_model->get_classes();
+
+		if (!empty($classes))
+		{
+			foreach($classes as $class)
+			{
+				$this->weight_classes[$class['weight_class_id']]['key'] = $class['weight_class_key'];
+				$this->weight_classes[$class['weight_class_id']]['title'] = $class['weight_class_title'];
+			}
+		}
+	}
+
+	public function get_classes()
+	{
+		$classes = $this->_ci->weight_model->get_classes();
+
+		$result = array();
+		if (!empty($classes))
+		{
+			foreach($classes as $class)
+			{
+				$result[] = array('id' => $class['weight_class_id'], 'title' => $class['weight_class_title']);
+			}
+		}
+
+		return $result;
+	}
+
+	public function get_title($id)
+	{
+		$weight = $this->_ci->weight_model->get_title($id);
+
+		if (isset($weight['weight_class_title']) && !empty($weight['weight_class_title']))
+		{
+			return $weight['weight_class_title'];
+		}
+
+		return FALSE;
+	}
+
+	/**
+	 * Convert weight from specified unit to unit
+	 *
+	 * @param $value
+	 * @param @unit_from
+	 * @param @unit_to
+	 * @return float
+	 */
+	public function convert($value, $unit_from, $unit_to)
+	{
+		if ($unit_from == $unit_to)
+		{
+			return number_format($value, (int)$this->precision, $this->_ci->lang->get_numeric_decimal_separator(), $this->_ci->lang->get_numeric_thousands_separator());
+		}
+		else
+		{
+			return number_format($value * $this->weight_classes[(int)$unit_from][(int)$unit_to], (int)$this->precision, $this->_ci->lang->get_numeric_decimal_separator(), $this->_ci->lang->get_numeric_thousands_separator());
+		}
+	}
+}
 
 /* End of file weight.php */
 /* Location: ./system/library/weight.php */

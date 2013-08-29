@@ -20,9 +20,12 @@
   echo 'Ext.namespace("Toc.orders");';
   
   include 'orders_grid.php';
+  include 'orders_edit_products_grid.php';
   include 'orders_dialog.php';
+  include 'orders_edit_dialog.php';
   include 'orders_products_grid.php';
   include 'orders_status_panel.php';
+  include 'orders_edit_panel.php';
   include 'orders_transaction_grid.php';
   include 'orders_delete_confirm_dialog.php';
 ?>
@@ -31,7 +34,7 @@ Ext.override(Toc.desktop.OrdersWindow, {
   createWindow : function() {
     var desktop = this.app.getDesktop();
     var win = desktop.getWindow('orders-win');
-     
+    
     if (!win) {
       grd = Ext.create('Toc.orders.OrdersGrid');
       
@@ -39,6 +42,7 @@ Ext.override(Toc.desktop.OrdersWindow, {
       grd.on('batchdelete', function(params) {this.onBatchDeleteOrder(grd, params);}, this);
       grd.on('view', this.onViewOrder, this);
       grd.on('notifysuccess', this.onShowNotification, this);
+      grd.on('edit', function(record) {this.onEditOrder(grd, record);}, this);
       
       win = desktop.createWindow({
         id: 'orders-win',
@@ -78,6 +82,17 @@ Ext.override(Toc.desktop.OrdersWindow, {
     dlg.show();
   },
   
+  onEditOrder: function(grd, record) {
+   	var dlg = this.createOrdersEditDialog({ordersId: record.get("orders_id")});
+   	dlg.setTitle(record.get('orders_id') + ': ' + record.get('customers_name'));
+   	
+   	dlg.on('saveSuccess', function() {
+      grd.onRefresh();
+    }, this);
+    
+    dlg.show();
+  },
+  
   createOrdersDialog: function(config) {
     var desktop = this.app.getDesktop();
     var dlg = desktop.getWindow('orders-dialog-win');
@@ -103,6 +118,25 @@ Ext.override(Toc.desktop.OrdersWindow, {
       }, this);
     }
 
+    return dlg;
+  },
+  
+  createOrdersEditDialog: function(config) {
+    var desktop = this.app.getDesktop();
+    var dlg = desktop.getWindow('orders-edit-dialog-win');
+    
+    if (!dlg) {
+      dlg = desktop.createWindow(config, Toc.orders.OrdersEditDialog);
+      
+      dlg.on('saveSuccess', function(feedback) {
+        this.onShowNotification(feedback);
+      }, this);
+      
+      dlg.on('updateSuccess', function(feedback) {
+        this.onShowNotification(feedback);
+      }, this);
+    }
+    
     return dlg;
   },
   

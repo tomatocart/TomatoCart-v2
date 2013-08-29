@@ -64,7 +64,7 @@ Ext.define('Toc.orders.OrdersGrid', {
       { header: '<?php echo lang('table_heading_status'); ?>', dataIndex: 'orders_status_name', align: 'center', width: 120},
       {
         xtype:'actioncolumn', 
-        width: 80,
+        width: 140,
         header: '<?php echo lang("table_heading_action"); ?>',
         items: [{
           iconCls: 'icon-action icon-view-record',
@@ -90,14 +90,24 @@ Ext.define('Toc.orders.OrdersGrid', {
           scope: this
         },
         {
-            tooltip: TocLanguage.tipDelete,
-            getClass: this.getDeleteClass,
-            handler: function(grid, rowIndex, colIndex) {
-              var rec = grid.getStore().getAt(rowIndex);
-              
-              this.fireEvent('delete', rec);
-            },
-            scope: this                
+          tooltip: TocLanguage.tipEdit,
+          iconCls: 'icon-action icon-edit-record',
+          handler: function(grid, rowIndex, colIndex) {
+            var rec = grid.getStore().getAt(rowIndex);
+            
+            this.fireEvent('edit', rec);
+          },
+          scope: this
+        },
+        {
+          iconCls: 'icon-action icon-delete-record',
+          tooltip: TocLanguage.tipDelete,
+          handler: function(grid, rowIndex, colIndex) {
+            var rec = grid.getStore().getAt(rowIndex);
+            
+            this.onDelete(rec);
+          },
+          scope: this                
         }]
       }
     ];
@@ -219,7 +229,7 @@ Ext.define('Toc.orders.OrdersGrid', {
       displayInfo: true
     }];
     
-    this.addEvents({'delete': true, 'batchdelete': true, 'notifysuccess': true, 'view': true});
+    this.addEvents({'delete': true, 'batchdelete': true, 'notifysuccess': true, 'view': true, 'edit': true});
     
     this.callParent([config]);
   },

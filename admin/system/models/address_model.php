@@ -84,6 +84,30 @@ class Address_Model extends CI_Model
     
     return $Qzones->result_array();
   }
+  
+  /**
+   * Get zone id via geo zone
+   *
+   * @access public
+   * @param int
+   * @param int
+   * @return mixed
+   */
+  public function get_zone_id_via_geo_zone($country_id, $geo_zone_id)
+  {
+  	$result = $this->db->select('zone_id')->from('zones_to_geo_zones')->where('zone_country_id', (int) $country_id)->where('geo_zone_id', (int) $geo_zone_id)->get();
+  
+  	$zones = NULL;
+  	if ($result->num_rows() > 0)
+  	{
+  		foreach ($result->result_array() as $row)
+  		{
+  			$zones[] = $row['zone_id'];
+  		}
+  	}
+  
+  	return $zones;
+  }
 }
 
 /* End of file address_model.php */

@@ -39,7 +39,7 @@ class Products_Model extends CI_Model
         parent::__construct();
     }  
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
 
     /**
      * Get the products
@@ -132,7 +132,7 @@ class Products_Model extends CI_Model
         return NULL;
     }
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
     
     /**
      * Get the manufacturers
@@ -156,7 +156,7 @@ class Products_Model extends CI_Model
         return NULL;
     }
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
     
     /**
      * Get the weight classes
@@ -181,7 +181,7 @@ class Products_Model extends CI_Model
         return NULL;
     }
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
     
     /**
      * Get the tax classes
@@ -205,7 +205,7 @@ class Products_Model extends CI_Model
         return NULL;
     }
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
     
     /**
      * Get the quantity discount groups
@@ -229,7 +229,7 @@ class Products_Model extends CI_Model
         return NULL;
     }
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
     
     /**
      * Get the quantity units
@@ -254,7 +254,7 @@ class Products_Model extends CI_Model
         return NULL;
     }
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
     
     /**
      * Get xsell products linked to the product
@@ -279,7 +279,7 @@ class Products_Model extends CI_Model
         return NULL;
     }
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
     
     /**
      * Get the xsell products
@@ -313,7 +313,7 @@ class Products_Model extends CI_Model
         return NULL;
     }
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
     
     /**
      * Get the accessories
@@ -342,7 +342,7 @@ class Products_Model extends CI_Model
         return NULL;
     }
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
     
     /**
      * Get the product images
@@ -368,7 +368,7 @@ class Products_Model extends CI_Model
         return NULL;
     }
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
     
     /**
      * Load the variants groups
@@ -393,7 +393,7 @@ class Products_Model extends CI_Model
         return NULL;
     }
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
     
     /**
      * Get variants values
@@ -419,7 +419,7 @@ class Products_Model extends CI_Model
         return NULL;
     }
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
     
     /**
      * Save the product
@@ -787,7 +787,7 @@ class Products_Model extends CI_Model
         }
     }
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
     
     /**
      * Get the data of the product
@@ -814,7 +814,7 @@ class Products_Model extends CI_Model
         return NULL;
     }
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
     
     /**
      * Load the product description data
@@ -855,7 +855,7 @@ class Products_Model extends CI_Model
         return NULL;
     }
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
     
     /**
      * Delete the product
@@ -960,7 +960,7 @@ class Products_Model extends CI_Model
         }
     }
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
     
     /**
      * Get the categories that the product belong to
@@ -985,7 +985,7 @@ class Products_Model extends CI_Model
         return NULL;
     }
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
     
     /**
      * Get the product variants
@@ -1011,7 +1011,7 @@ class Products_Model extends CI_Model
         return NULL;
     }
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
     
      /**
      * Get the variants entries
@@ -1040,7 +1040,7 @@ class Products_Model extends CI_Model
         return NULL;
     }
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
     
     /**
      * Get the total number of the products
@@ -1083,7 +1083,7 @@ class Products_Model extends CI_Model
         }
     }
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
 
     /**
      * Set the frontpage product
@@ -1134,7 +1134,7 @@ class Products_Model extends CI_Model
         return FALSE;
     }
 
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
     
     /**
      * Set the status of the product
@@ -1164,7 +1164,7 @@ class Products_Model extends CI_Model
         return TRUE;
     }
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
     
     /**
      * Upload the product image
@@ -1227,7 +1227,7 @@ class Products_Model extends CI_Model
         
     }
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
     
     /**
      * Restock
@@ -1354,6 +1354,55 @@ class Products_Model extends CI_Model
             return TRUE;
         }
     }
+    
+    // ------------------------------------------------------------------------
+    
+    /**
+     * Get quantity of simple product or variant product
+     *
+     * @access public
+     * @param $id
+     * @param $is_variant
+     * @return mixed
+     */
+    public function get_quantity($id, $is_variant = FALSE)
+    {
+    	//simple product quantity
+    	if ($is_variant === FALSE)
+    	{
+    		$result = $this->db
+			->select('products_quantity as quantity')
+    		->from('products')
+    		->where('products_id', $id)
+    		->get();
+    		
+    		if ($result->num_rows() === 1)
+    		{
+    			$row = $result->row_array();
+    			
+    			return $row['quantity'];
+    		}
+    	}
+    	//variant product quantity
+    	else
+    	{
+    		$result = $this->db
+    		->select('products_quantity as quantity')
+    		->from('products_variants')
+    		->where('products_variants_id', $id)
+    		->get();
+    		
+    		if ($result->num_rows() === 1)
+    		{
+    			$row = $result->row_array();
+    			
+    			return $row['quantity'];
+    		}
+    	}
+    	
+    	return NULL;
+    }
+    
 }
 
 /* End of file products_model.php */

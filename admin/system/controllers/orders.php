@@ -41,7 +41,7 @@ class Orders extends TOC_Controller
         $this->load->model('orders_model');
     }
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
     
     /**
      * List the orders
@@ -111,7 +111,7 @@ class Orders extends TOC_Controller
                                                     EXT_JSON_READER_ROOT => $records)));
     }
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
     
     /**
      * Get the order total table
@@ -195,7 +195,7 @@ class Orders extends TOC_Controller
         return array('products_table' => $products_table, 'order_total' => $order_total);
     }
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
     
     /**
      * Delete the order
@@ -231,7 +231,7 @@ class Orders extends TOC_Controller
         $this->output->set_output(json_encode($response));
     }
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
     
     /**
      * Batch delete the orders
@@ -294,7 +294,7 @@ class Orders extends TOC_Controller
         $this->output->set_output(json_encode($response));
     }
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
     
     /**
      * Load the summary data
@@ -362,7 +362,7 @@ class Orders extends TOC_Controller
         $this->output->set_output(json_encode($response));
     }
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
     
     /**
      * Update the admin comment
@@ -386,7 +386,7 @@ class Orders extends TOC_Controller
         $this->output->set_output(json_encode($response));
     }
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
     
     /**
      * List the order products
@@ -441,7 +441,7 @@ class Orders extends TOC_Controller
         $this->output->set_output(json_encode(array(EXT_JSON_READER_ROOT => $records)));
     }
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
     
     /**
      * Get the transaction history
@@ -465,7 +465,7 @@ class Orders extends TOC_Controller
         $this->output->set_output(json_encode(array(EXT_JSON_READER_ROOT => $records)));
     }
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
     
     /**
      * List the history of the order status
@@ -492,7 +492,7 @@ class Orders extends TOC_Controller
         $this->output->set_output(json_encode(array(EXT_JSON_READER_ROOT => $records)));
     }
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
     
     /**
      * Get the order statuses
@@ -522,7 +522,7 @@ class Orders extends TOC_Controller
         $this->output->set_output(json_encode(array(EXT_JSON_READER_ROOT => $records)));
     }
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
     
     /**
      * Update the orders status
@@ -554,7 +554,7 @@ class Orders extends TOC_Controller
         $this->output->set_output(json_encode($response));
     }
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
     
     /**
      * Create the invoice
@@ -575,6 +575,440 @@ class Orders extends TOC_Controller
         
         $this->output->set_output(json_encode($response));
     }
+    
+	// ------------------------------------------------------------------------
+    
+    /**
+     * list the currencies
+     *
+     * @access public
+     * @return string
+     */
+    public function list_currencies() 
+    {
+		$records = array();
+    	
+    	foreach ($this->currencies->get_data() as $code => $currency) 
+    	{
+    		$records[] = array( 'id' => $code, 
+								'text' => $currency['title'], 
+								'symbol_left' => $currency['symbol_left'], 
+    							'symbol_right' => $currency['symbol_right'], 
+    							'decimal_places' => $currency['decimal_places']);
+    	}
+    	
+    	$this->output->set_output(json_encode(array(EXT_JSON_READER_ROOT => $records)));
+    }
+    
+	// ------------------------------------------------------------------------
+	
+    /**
+     * get the customer billing addresses or shipping addresses
+     *
+     * @access public
+     * @return string
+     */
+    public function get_customer_addresses() 
+    {
+    	//load libraries
+    	$this->load->library('order', $this->input->get('orders_id', TRUE));
+    	$this->load->library('customers');
+    	
+    	//get addresses
+    	$addresses = $this->customers->get_addressbook_data($this->order->get_customers_id());
+    	
+    	//build response
+    	$records = array(array('id' => '0', 'text' => lang('add_new_address')));
+    	if (count($addresses) > 0)
+    	{
+    		foreach ($addresses as $address)
+    		{
+    			$records[] = array( 'id' => $address['address_book_id'], 
+    								'text' => $address['firstname'] . ' ' . $address['lastname'] . ',' . $address['company'] . ',' . $address['street_address'] . ',' . $address['suburb'] . ',' . $address['city'] . ',' . $address['postcode'] . ',' . $address['state'] . ',' . $address['country_title']);
+    		}
+    	}
+    	
+    	$this->output->set_output(json_encode(array(EXT_JSON_READER_ROOT => $records)));
+    }
+    
+	// ------------------------------------------------------------------------
+
+    /**
+     * list countries
+     *
+     * @access public
+     * @return string
+     */
+    public function list_countries()
+    {
+    	//load countries model
+    	$this->load->model('countries_model');
+    	
+    	//get the countries
+    	$countires = $this->countries_model->get_countries();
+    	
+    	//build response
+    	$records = array();
+    	if ($countires !== NULL)
+    	{
+    		foreach ($countires as $country)
+    		{
+    			$records[] = array('countries_id' => $country['countries_id'], 'countries_name' => $country['countries_name']);
+    		}
+    	}
+    	
+    	$this->output->set_output(json_encode(array(EXT_JSON_READER_ROOT => $records)));
+    }
+    
+    // ------------------------------------------------------------------------
+    
+    /**
+     * list zones
+     *
+     * @access public
+     * @return string
+     */
+    public function list_zones()
+    {
+    	$zones = array();
+    	//check the cuntries id in the params
+    	$countries_id = $this->input->get('countries_id', TRUE);
+    	if ($countries_id > 0)
+    	{
+    		//load countries model
+    		$this->load->model('countries_model');
+    		
+    		//get the zones
+    		$zones = $this->countries_model->get_zones($countries_id);
+    	}
+    	
+    	$this->output->set_output(json_encode(array(EXT_JSON_READER_ROOT => $zones)));
+    }
+    
+    // ------------------------------------------------------------------------
+    
+    /**
+     * list payment methods
+     *
+     * @access public
+     * @return string
+     */
+    public function list_payment_methods()
+    {
+    	$this->load->helper('directory');
+    	
+    	$path_array = array('../system/tomatocart/libraries/payment/');
+    	 
+    	$payment_methods = array();
+    	foreach($path_array as $path)
+    	{
+    		$directories = directory_map($path, 1, TRUE);
+    		
+    		foreach ($directories as $file)
+    		{
+    			if ((strpos($file, '.php') !== FALSE) && ($file != 'payment_module.php'))
+    			{
+    				$module = substr($file, 0, strpos($file, '.php'));
+    				
+    				//load language xml file
+    				$this->lang->xml_load('modules/payment/' . str_replace('payment_', '', $module));
+    				
+    				//include path file
+    				include_once $path . $file;
+    				
+    				//get class
+    				$class = config_item('subclass_prefix') . $module;
+    				$class = str_replace('payment', 'Payment', $class);
+    				$class = new $class();
+    				
+    				//only get the installed payment methods
+    				if ($class->is_installed())
+    				{
+    					$payment_methods[] = array('id' => $class->get_code(), 'text' => $class->get_title());
+    				}
+    			}
+    		}
+    	}
+    	
+    	$this->output->set_output(json_encode(array(EXT_JSON_READER_ROOT => $payment_methods)));
+    }
+    
+    // ------------------------------------------------------------------------
+    
+    /**
+     * list orders edit products
+     *
+     * @access public
+     * @return string
+     */
+    public function list_orders_edit_products()
+    {
+    	//load libraries
+    	$this->load->library('tax');
+    	$this->load->library('weight');
+    	$this->load->library('order', $this->input->get('orders_id', TRUE));
+    	
+    	//build response
+    	$records = array();
+    	foreach ($this->order->get_products() as $products_id_string => $product)
+    	{
+    		//get the product name
+    		$product_info = $product['name'];
+    		if ( isset($product['variants']) && is_array($product['variants']) && (sizeof($product['variants']) > 0) )
+    		{
+    			foreach ($product['variants'] as $variants)
+    			{
+    				$product_info .= '<br /><nobr>&nbsp;&nbsp;&nbsp;<i>' . $variants['groups_name'] . ': ' . $variants['values_name'] . '</i></nobr>';
+    			}
+    		}
+    		
+    		//load product library
+    		$this->load->library('product', $product['id']);
+    		
+    		$records[] = array( 'orders_products_id' => $product['orders_products_id'], 
+								'products_id' => $product['id'], 
+    							'products_type' => $product['type'], 
+    							'products' => $product_info, 
+    							'quantity' => ($product['quantity'] > 0) ? $product['quantity'] : '', 
+    							'qty_in_stock' => $this->product->get_quantity($products_id_string), 
+    							'sku' => $product['sku'], 
+    							'tax' => $this->tax->display_tax_rate_value($product['tax']), 
+    							'price_net' => round($product['final_price'] * $this->order->get_currency_value(), 2), 
+    							'price_gross' => $this->currencies->display_price_with_tax_rate($product['final_price'], $product['tax'], 1, $this->order->get_currency(), $this->order->get_currency_value()), 
+    							'total_net' => $this->currencies->format($product['final_price'] * $product['quantity'], $this->order->get_currency(), $this->order->get_currency_value()), 
+    							'total_gross' => $this->currencies->display_price_with_tax_rate($product['final_price'], $product['tax'], $product['quantity'], $this->order->get_currency(), $this->order->get_currency_value()),
+    							'action' => array('class' => 'icon-delete-record', 'qtip' => ''));
+    	}
+    	
+    	//get order totals
+    	$order_totals = '<table cellspacing="5" cellpadding="5" width="300" border="0">';
+    	foreach ($this->order->get_totals() as $total)
+    	{
+    		$order_totals .= '<tr><td align="right">' . $total['title'] . '&nbsp;&nbsp;&nbsp;&nbsp;</td><td width="60">' . $total['text'] . '</td></tr>';
+    	}
+    	$order_totals .= '</table>';
+    	
+    	//get shipping method
+    	$shipping_method = $this->order->get_deliver_method();
+    	
+    	$this->output->set_output(json_encode(array(EXT_JSON_READER_ROOT => $records, 'totals' => $order_totals, 'shipping_method' => $shipping_method)));
+    }
+    
+    // ------------------------------------------------------------------------
+    
+    /**
+     * load order
+     *
+     * @access public
+     * @return string
+     */
+    public function load_order()
+    {
+    	//load libraries
+    	$this->load->library('order', $this->input->post('orders_id', TRUE));
+    	
+    	//get the customer
+    	$customer = $this->order->get_customer();
+    	
+    	$data = array('customers_name' => str_replace(' ', '&nbsp;', $customer['name']), 
+					  'currency' => $this->order->get_currency(), 
+    				  'email_address' => $customer['email_address'], 
+    				  'payment_method' => $this->order->get_payment_module(), 
+    				  'has_payment_method' => $this->order->has_payment_method(), 
+    				  'billing_address' => $this->get_address('billing'), 
+    				  'shipping_address' => $this->get_address('delivery'));
+    	
+    	$this->output->set_output(json_encode(array('success' => TRUE, 'data' => $data)));
+    }
+    
+    // ------------------------------------------------------------------------
+    
+    /**
+     * chnage the currency for the order
+     *
+     * @access public
+     * @return string
+     */
+    public function change_currency()
+    {
+    	//load libraries
+    	$this->load->library('tax');
+    	$this->load->library('weight');
+    	
+    	//load model
+    	$this->load->model('order_model');
+    	
+    	//default currency value
+    	$currency_value = 1;
+    	
+    	//get the currency value with currency code
+    	$currency_code = $this->input->post('currency', TRUE);
+    	foreach ($this->currencies->get_data() as $code => $currency)
+    	{
+    		//find the currency
+    		if ($code == $currency_code)
+    		{
+    			$currency_value = $currency['value'];
+    			break;
+    		}
+    	}
+    	
+    	//update the currency of the order
+    	$orders_id = $this->input->post('orders_id', TRUE);
+    	if ($this->order_model->update_currency($orders_id, $currency_code, $currency_value))
+    	{
+    		
+    		/**
+	    	 * load shopping cart adapter libray which is extended from order library.
+	    	 * The last boolean paramter is used to tell the system to load a extended library.
+	    	 * You could find the details under system/core/TOC_Loader.php. We overrided the ci library and _ci_load_class.
+	    	 * So, let the libray support the local sub-libraries extended from core tomatocart libraries.
+	    	 * Support the core tomatocart library extend from another library.
+	    	 * If the tomatocart library was extended from ci library, they will also work as expected.
+	    	 */
+    		$this->load->library('order', $orders_id, 'shopping_cart', TRUE);
+    		
+    		//recalculate the order
+    		$this->shopping_cart->calculate();
+    		
+    		//update the order totals
+    		if ($this->shopping_cart->update_order_totals())
+    		{
+    			$response = array('success' => TRUE , 'feedback' => lang('ms_success_action_performed'));
+    		}
+    		else
+    		{
+    			$response = array('success' => FALSE, 'feedback' => lang('ms_error_action_not_performed'));
+    		}
+    	}
+    	else
+    	{
+    		$response = array('success' => FALSE, 'feedback' => lang('ms_error_action_not_performed'));
+    	}
+    	
+    	$this->output->set_output(json_encode($response));
+    }
+    
+    // ------------------------------------------------------------------------
+    
+    /**
+     * Save billing / shipping address
+     *
+     * @access protected
+     * @return string
+     */
+    public function save_address()
+    {
+    	//get all the post data with xss clean
+    	$data = $this->input->post(NULL, TRUE);
+    	
+    	//get post data with xss clean
+    	$data = array(
+			'orders_id' => $this->input->post('orders_id', TRUE), 
+			'billing_name' => $this->input->post('billing_name', TRUE), 
+			'billing_company' => $this->input->post('billing_company', TRUE),
+			'billing_street_address' => $this->input->post('billing_street_address', TRUE),
+			'billing_suburb' => $this->input->post('billing_suburb', TRUE),
+			'billing_city' => $this->input->post('billing_city', TRUE),
+			'billing_postcode' => $this->input->post('billing_postcode', TRUE),
+			'billing_state' => $this->input->post('billing_state', TRUE),
+			'billing_zone_id' => $this->input->post('billing_zone_id', TRUE),
+			'billing_state_code' => $this->input->post('billing_state_code', TRUE),
+			'billing_country_id' => $this->input->post('billing_countries_id', TRUE),
+			'billing_country' => $this->input->post('billing_countries', TRUE),
+			'delivery_name' => $this->input->post('shipping_name', TRUE),
+			'delivery_company' => $this->input->post('shipping_company', TRUE),
+			'delivery_street_address' => $this->input->post('shipping_street_address', TRUE),
+			'delivery_suburb' => $this->input->post('shipping_suburb', TRUE),
+			'delivery_city' => $this->input->post('shipping_city', TRUE),
+			'delivery_postcode' => $this->input->post('shipping_postcode', TRUE),
+			'delivery_state' => $this->input->post('shipping_state', TRUE),
+			'delivery_zone_id' => $this->input->post('shipping_zone_id', TRUE),
+			'delivery_state_code' => $this->input->post('shipping_state_code', TRUE),
+			'delivery_country_id' => $this->input->post('shipping_countries_id', TRUE),
+			'delivery_country' => $this->input->post('shipping_countries', TRUE)
+		);
+    	
+    	/**
+    	 * load shopping cart adapter libray which is extended from order library.
+    	 * The last boolean paramter is used to tell the system to load a extended library.
+    	 * You could find the details under system/core/TOC_Loader.php. We overrided the ci library and _ci_load_class.
+    	 * So, let the libray support the local sub-libraries extended from core tomatocart libraries.
+    	 * Support the core tomatocart library extend from another library.
+    	 * If the tomatocart library was extended from ci library, they will also work as expected.
+    	 */
+    	$this->load->library('order', $data['orders_id'], 'shopping_cart', TRUE);
+    	
+    	if ($this->shopping_cart->update_order_info($data) === TRUE)
+    	{
+    		$response = array('success' => TRUE ,'feedback' => lang('ms_success_action_performed'));
+    	}
+    	else
+    	{
+    		$response = array('success' => FALSE, 'feedback' => lang('ms_error_action_not_performed'));
+    	}
+    	
+    	$this->output->set_output(json_encode($response));
+    }
+
+
+    // ------------------------------------------------------------------------
+    
+    /**
+     * Update payment method
+     *
+     * @access public
+     * @return string
+     */
+    public function update_payment_method()
+    {
+    	/**
+    	 * load shopping cart adapter libray which is extended from order library.
+    	 * The last boolean paramter is used to tell the system to load a extended library.
+    	 * You could find the details under system/core/TOC_Loader.php. We overrided the ci library and _ci_load_class.
+    	 * So, let the libray support the local sub-libraries extended from core tomatocart libraries.
+    	 * Support the core tomatocart library extend from another library.
+    	 * If the tomatocart library was extended from ci library, they will also work as expected.
+    	 */
+    	$this->load->library('order', $this->input->post('orders_id', TRUE), 'shopping_cart', TRUE);
+    	
+    	//ignore the store credit. It is necessary to be added later
+    	if ($this->shopping_cart->update_payment_method($this->input->post('payment_method', TRUE)))
+    	{
+    		$response = array('success' => TRUE, 'feedback' => lang('ms_success_action_performed'));
+    	}
+    	else
+    	{
+    		$response = array('success' => FALSE, 'feedback' => lang('ms_error_action_not_performed'));
+    	}
+    	
+    	$this->output->set_output(json_encode($response));
+    }
+    
+    // ------------------------------------------------------------------------
+    
+    /**
+     * load order
+     *
+     * @access protected
+     * @return string
+     */
+    protected function get_address($type)
+    {
+    	$method = "get_{$type}";
+    	
+    	$address = str_replace(',', ' ', $this->order->$method('name')) . ',' .
+				   $this->order->$method('company') . ',' .
+				   $this->order->$method('street_address') . ',' .
+				   $this->order->$method('suburb') . ',' .
+				   $this->order->$method('city') . ',' .
+				   $this->order->$method('postcode') . ',' .
+				   $this->order->$method('state') . ',' .
+				   $this->order->$method('country_title');
+    	
+    	return $address;
+    }
+
 }
 
 

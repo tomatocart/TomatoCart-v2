@@ -36,7 +36,7 @@ class TOC_Currencies {
     //if currency code is empty
     if (empty($currency_code) || ($this->exists($currency_code) == FALSE))
     {
-      $currency_code = ($this->ci->session->userdata('currency') === TRUE) ? $this->ci->session->userdata('currency') : config('DEFAULT_CURRENCY');
+      $currency_code = $this->ci->session->userdata('currency') ? $this->ci->session->userdata('currency') : config('DEFAULT_CURRENCY');
     }
     
     //if currency value is empty

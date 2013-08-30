@@ -827,6 +827,30 @@ class TOC_SUB_Order extends TOC_Order
 		
 		return $payment_methods;
 	}
+	
+	// --------------------------------------------------------------------
+	
+	/**
+	 * Get cart billing modules
+	 *
+	 * @access public
+	 * @return array
+	 */
+	public function get_cart_billing_modules()
+	{
+		$payment_modules = array();
+		
+// 		if ($this->isUseStoreCredit()) {
+// 			$payment_modules[] = 'store_credit';
+// 		}
+
+		if ($this->has_billing_method())
+		{
+			$payment_modules[] = $this->get_billing_method('id');
+		}
+		
+		return $payment_modules;
+	}
 }
 
 

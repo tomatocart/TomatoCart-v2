@@ -178,10 +178,8 @@ class Shopping_Cart_Model extends CI_Model
 	 */
 	public function update_payment_method($orders_id, $payment_method, $payment_module)
 	{
-		return $thid->db->update('orders', array('payment_method' => $payment_method, 'payment_module' => $payment_module), array('orders_id' => $orders_id));
+		return $this->db->update('orders', array('payment_method' => $payment_method, 'payment_module' => $payment_module), array('orders_id' => $orders_id));
 	}
-	
-	
 	
 	// --------------------------------------------------------------------
 	

@@ -86,7 +86,11 @@ class TOC_Order {
 
 	public function get_currency()
 	{
-		return $this->_currency['code'];
+		if (isset($this->_currency['code']))
+		{
+			return $this->_currency['code'];
+		}
+		
 	}
 
 	public function get_currency_value()
@@ -254,7 +258,7 @@ class TOC_Order {
 		return $this->_admin_comment;
 	}
 
-	public function get_total($id = 'total')
+	public function get_total_text($id = 'total')
 	{
 		if (!isset($this->_order_totals))
 		{

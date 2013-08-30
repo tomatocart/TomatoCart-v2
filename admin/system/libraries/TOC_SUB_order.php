@@ -156,6 +156,19 @@ class TOC_SUB_Order extends TOC_Order
 	 * @access public
 	 * @return int
 	 */
+	public function get_total()
+	{
+		return $this->_total;
+	}
+	
+	// --------------------------------------------------------------------
+	
+	/**
+	 * Get the sub total
+	 *
+	 * @access public
+	 * @return int
+	 */
 	public function get_sub_total()
 	{
 		return $this->_sub_total;

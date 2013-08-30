@@ -140,7 +140,7 @@ class TOC_Shipping_flat extends TOC_Shipping_Module
                                                        'cost' => $this->config['MODULE_SHIPPING_FLAT_COST'])),
                           	  'tax_class_id' => $this->tax_class);
 
-        if (!empty($this->icon)) $this->quotes['icon'] = image_url('shipping/' . $this->icon, $this->title);
+        if ( ! empty($this->icon) && file_exists(store_front_path() . 'images/shipping/' . $this->icon)) $this->quotes['icon'] = image_url('shipping/' . $this->icon, $this->title);
 
         return $this->quotes;
     }

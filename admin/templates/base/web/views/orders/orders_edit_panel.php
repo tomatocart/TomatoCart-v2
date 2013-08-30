@@ -589,7 +589,7 @@ Ext.define('Toc.orders.OrdersEditPanel', {
 	},
 	
 	onEditShippingMethod: function() {
-	
+		this.fireEvent('editShippingMethod', this.ordersId, this.grdProducts);
 	},
 	
 	mask: function() {

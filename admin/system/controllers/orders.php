@@ -988,6 +988,166 @@ class Orders extends TOC_Controller
     // ------------------------------------------------------------------------
     
     /**
+     * List shipping methods
+     *
+     * @access public
+     * @return string
+     */
+    public function list_shipping_methods()
+    {
+    	/**
+    	 * load shopping cart adapter libray which is extended from order library.
+    	 * The last boolean paramter is used to tell the system to load a extended library.
+    	 * You could find the details under system/core/TOC_Loader.php. We overrided the ci library and _ci_load_class.
+    	 * So, let the libray support the local sub-libraries extended from core tomatocart libraries.
+    	 * Support the core tomatocart library extend from another library.
+    	 * If the tomatocart library was extended from ci library, they will also work as expected.
+    	 */
+    	$this->load->library('order', $this->input->get('orders_id', TRUE), 'shopping_cart', TRUE);
+    	
+    	//load libraries
+    	$this->load->library('shipping');
+    	
+    	//calculate
+    	$this->shopping_cart->calculate();
+    	
+    	//unset the shipping quotes stored in the session
+    	$cart_contents = $this->session->userdata('cart_contents');
+    	unset($cart_contents['shipping_quotes']);
+    	
+    	//use the cheapest shpping quote
+    	if ($this->shopping_cart->has_shipping_method() === FALSE)
+    	{
+    		$this->shopping_cart->set_shipping_method($this->shipping->get_cheapest_quote());
+    	}
+    	
+    	//build the response
+    	$records = array();
+    	
+    	//get all of the shipping quotes
+    	$shipping_quotes = $this->shipping->get_quotes();
+    	
+    	if (count($shipping_quotes) > 0)
+    	{
+    		foreach ($shipping_quotes as $quote)
+    		{
+    			$module = $quote['module'];
+    			
+    			if (isset($quote['icon']) && ! empty($quote['icon']))
+    			{
+    				$module .= '&nbsp;<img src="' . $quote['icon'] . '" />';
+    			}
+    			
+    			//add the quote title row
+    			$records[] = array(
+					'title' => '<b>' . $module . '</b>',
+					'code' => $quote['id'],
+					'price' => '',
+					'action' => array()
+				);
+    			
+    			//add the quote error row
+    			if (isset($quote['error']))
+    			{
+    				$records[] = array(
+						'title' => '&nbsp;&nbsp;--&nbsp;<i>' . $quote['error'] . '</i>',
+						'code' => $quote['id'] . '_error',
+						'price' => '',
+						'action' => array()
+    				);
+    			}
+    			else
+    			{
+    				//add the quote methods
+    				foreach ($quote['methods'] as $method)
+    				{
+    					$records[] = array(
+							'title' => '&nbsp;&nbsp;--&nbsp;<i>' . $method['title'] . '</i>',
+							'code' => $quote['id'] . '_' . $method['id'],
+							'price' => $this->currencies->display_price($method['cost'], $quote['tax_class_id'], 1, $this->shopping_cart->get_currency()),
+    						'action' => array('class' => 'icon-add-record', 'qtip' => '')		
+						);
+    				}
+    			}
+    		}
+    	}
+    	
+    	$this->output->set_output(json_encode(array(EXT_JSON_READER_ROOT => $records)));
+    }
+    
+    // ------------------------------------------------------------------------
+    
+    /**
+     * Save shipping method
+     *
+     * @access public
+     * @return string
+     */
+    public function save_shipping_method()
+    {
+    	/**
+    	 * load shopping cart adapter libray which is extended from order library.
+    	 * The last boolean paramter is used to tell the system to load a extended library.
+    	 * You could find the details under system/core/TOC_Loader.php. We overrided the ci library and _ci_load_class.
+    	 * So, let the libray support the local sub-libraries extended from core tomatocart libraries.
+    	 * Support the core tomatocart library extend from another library.
+    	 * If the tomatocart library was extended from ci library, they will also work as expected.
+    	 */
+    	$this->load->library('order', $this->input->post('orders_id', TRUE), 'shopping_cart', TRUE);
+    	
+    	//load libraries
+    	$this->load->library('shipping');
+    	 
+    	//load models
+    	$this->load->model('extensions_model');
+    	
+    	//save shipping method
+    	if ($this->shipping->has_quotes())
+    	{
+    		$shipping_code = $this->input->post('code', TRUE);
+    		
+    		//the shipping code should be like flat_flat.
+    		if ( !empty($shipping_code) && strpos($shipping_code, '_'))
+    		{
+    			//load the shipping module
+    			list($module, $method) = explode('_', $shipping_code);
+    			$module = 'shipping_' . $module;
+    			$this->load->library('shipping/' . $module);
+    			
+    			//check whether it is installed and enabled
+    			if ($this->$module->is_installed() && $this->$module->is_enabled())
+    			{
+    				//get the shipping quote
+    				$quote = $this->shipping->get_quote($shipping_code);
+    				
+    				//check error
+    				if (isset($quote['error']))
+    				{
+    					$this->shopping_cart->reset_shipping_method();
+    				}
+    				//update the shipping method and save it to recalculate the order totals
+    				else
+    				{
+    					$this->shopping_cart->set_shipping_method($quote);
+    				}
+    			}
+    			else
+    			{
+    				$this->shopping_cart->reset_shipping_method();
+    			}
+    			
+    		}
+    	}
+    	
+    	//update order totals in the database
+    	$this->shopping_cart->update_order_totals();
+    	
+    	$this->output->set_output(json_encode(array('success' => TRUE ,'feedback' => lang('ms_success_action_performed'))));
+    }
+    
+    // ------------------------------------------------------------------------
+    
+    /**
      * load order
      *
      * @access protected

@@ -74,7 +74,7 @@ class TOC_Shipping_free extends TOC_Shipping_Module
         $this->icon = 'free.jpg';
         $this->title = lang('shipping_free_title');
         $this->description = lang('shipping_free_description');
-        $this->status = (isset($this->config['MODULE_SHIPPING_FREE_STATUS']) && ($this->config['MODULE_SHIPPING_FREE_STATUS'] == 'TRUE')) ? TRUE : FALSE;
+        $this->status = (isset($this->config['MODULE_SHIPPING_FREE_STATUS']) && ($this->config['MODULE_SHIPPING_FREE_STATUS'] == 'True')) ? TRUE : FALSE;
     }
 
     /**

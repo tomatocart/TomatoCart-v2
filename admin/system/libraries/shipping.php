@@ -84,7 +84,7 @@ class TOC_Shipping
 
         //get shipping modules
         $this->modules = $this->ci->extensions_model->get_modules('shipping');
-
+        
         if (!empty($this->modules))
         {
             if (!empty($module) && in_array(substr($module, 0, strpos($module, '_')), $this->modules))
@@ -186,7 +186,16 @@ class TOC_Shipping
             $module = $this->selected_module;
         }
 
-        list($module_id, $method_id) = explode('_', $module);
+        //prevent the Notice error: Undefined offset: 1
+        if (strpos($module, '_') !== FALSE)
+        {
+        	list($module_id, $method_id) = explode('_', $module);
+        }
+        else
+        {
+        	$module_id = $module;
+        	$method_id = $module;
+        }
 
         $rate = array();
 
@@ -278,15 +287,17 @@ class TOC_Shipping
         if (is_array($this->modules))
         {
             $include_quotes = array();
-
+            
             foreach ($this->modules as $module)
             {
                 $module_class = strtolower('shipping_' . $module);
+                
                 if ($this->ci->$module_class->is_enabled())
                 {
                     $include_quotes[] = $module_class;
                 }
             }
+            
 
             foreach ($include_quotes as $module)
             {

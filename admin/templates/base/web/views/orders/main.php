@@ -26,6 +26,7 @@
   include 'orders_products_grid.php';
   include 'orders_status_panel.php';
   include 'orders_edit_panel.php';
+  include('orders_choose_shipping_method_dialog.php');
   include 'orders_transaction_grid.php';
   include 'orders_delete_confirm_dialog.php';
 ?>
@@ -132,8 +133,33 @@ Ext.override(Toc.desktop.OrdersWindow, {
         this.onShowNotification(feedback);
       }, this);
       
+      //update shipping / billing address
       dlg.on('updateSuccess', function(feedback) {
         this.onShowNotification(feedback);
+      }, this);
+      
+      //edit shipping method
+      dlg.on('editShippingMethod', function(ordersId, grdProducts) {
+      	var dlgEditShippingMethod = this.createOrdersChooseShippingMethodDialog(ordersId, grdProducts);
+      	
+	    dlgEditShippingMethod.show();
+      }, this);
+    }
+    
+    return dlg;
+  },
+  
+  createOrdersChooseShippingMethodDialog: function (ordersId, grdProducts) {
+    var desktop = this.app.getDesktop();
+    var dlg = desktop.getWindow('orders-shipping-method-win');
+    
+    if (!dlg) {
+      dlg = desktop.createWindow({ordersId: ordersId}, Toc.orders.OrdersChooseShippingMethodDialog);
+      
+      dlg.on('saveSuccess', function(feedback) {
+      	grdProducts.getStore().load();
+      	
+        this.app.showNotification({title: TocLanguage.msgSuccessTitle, html: feedback});
       }, this);
     }
     

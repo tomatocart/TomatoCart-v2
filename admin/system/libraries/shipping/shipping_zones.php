@@ -249,7 +249,7 @@ class TOC_Shipping_zones extends TOC_Shipping_Module {
 								'cost' => $shipping_cost)),
 				'tax_class_id' => $this->tax_class);
 
-		if (!empty($this->icon))
+		if ( ! empty($this->icon) && file_exists(store_front_path() . 'images/shipping/' . $this->icon) )
 			$this->quotes['icon'] = image_url('shipping/' . $this->icon,
 					$this->title);
 

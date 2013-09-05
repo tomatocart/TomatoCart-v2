@@ -120,7 +120,7 @@ class TOC_Shipping_selfpickup extends TOC_Shipping_Module
                                                      'cost' => 0)),
                             'tax_class_id' => 0);
 
-        if (!empty($this->icon)) $this->quotes['icon'] = image_url('images/shipping/' . $this->icon, $this->title);
+        if ( ! empty($this->icon) && file_exists(store_front_path() . 'images/shipping/' . $this->icon) ) $this->quotes['icon'] = image_url('images/shipping/' . $this->icon, $this->title);
 
         return $this->quotes;
     }

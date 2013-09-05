@@ -943,6 +943,38 @@ class TOC_SUB_Order extends TOC_Order
 	// --------------------------------------------------------------------
 	
 	/**
+	 * Update the order product price
+	 *
+	 * @access public
+	 * @param int
+	 * @return bool
+	 */
+	public function update_product_price($orders_products_id, $price)
+	{
+		//load shopping cart model
+		$this->_ci->load->model('shopping_cart_model');
+		
+		//calculate the price with the currency value
+		$price = $price / $this->get_currency_value();
+		
+		//update successfully
+		if ($this->_ci->shopping_cart_model->update_product_price($orders_products_id, $price))
+		{
+			//recalculate the order totals
+			$this->calculate();
+			$this->update_order_totals();
+			
+			return TRUE;
+		}
+		
+		return FALSE;
+		
+		
+	}
+	
+	// --------------------------------------------------------------------
+	
+	/**
 	 * delete product
 	 *
 	 * @access public

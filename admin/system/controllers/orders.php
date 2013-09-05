@@ -1202,6 +1202,38 @@ class Orders extends TOC_Controller
     // ------------------------------------------------------------------------
     
     /**
+     * Update price of the order product
+     *
+     * @access public
+     * @return string
+     */
+    public function update_price()
+    {
+    	/**
+    	 * load shopping cart adapter libray which is extended from order library.
+    	 * The last boolean paramter is used to tell the system to load a extended library.
+    	 * You could find the details under system/core/TOC_Loader.php. We overrided the ci library and _ci_load_class.
+    	 * So, let the libray support the local sub-libraries extended from core tomatocart libraries.
+    	 * Support the core tomatocart library extend from another library.
+    	 * If the tomatocart library was extended from ci library, they will also work as expected.
+    	 */
+    	$this->load->library('order', $this->input->post('orders_id', TRUE), 'shopping_cart', TRUE);
+    	
+    	if ($this->shopping_cart->update_product_price( $this->input->post('orders_products_id', TRUE), $this->input->post('price'), TRUE) )
+    	{
+    		$response = array('success' => TRUE ,'feedback' => lang('ms_success_action_performed'));
+    	}
+    	else
+    	{
+    		$response = array('success' => FALSE, 'feedback' => lang('ms_error_action_not_performed'));
+    	}
+    	
+    	$this->output->set_output(json_encode($response));
+    }
+    
+    // ------------------------------------------------------------------------
+    
+    /**
      * load order
      *
      * @access protected

@@ -200,6 +200,21 @@ class Shopping_Cart_Model extends CI_Model
 	// --------------------------------------------------------------------
 	
 	/**
+	 * Update order product price
+	 *
+	 * @access public
+	 * @param int
+	 * @param int
+	 * @return mixed
+	 */
+	public function update_product_price($orders_products_id, $price)
+	{
+		return $this->db->update('orders_products', array('products_price' => $price, 'final_price' => $price), array('orders_products_id' => $orders_products_id));
+	}
+	
+	// --------------------------------------------------------------------
+	
+	/**
 	 * Get the country information
 	 *
 	 * @access prototected

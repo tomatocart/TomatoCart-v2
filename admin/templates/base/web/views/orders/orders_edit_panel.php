@@ -29,7 +29,7 @@ Ext.define('Toc.orders.OrdersEditPanel', {
 		
 		config.defaults = {autoScroll: true};
 		
-		this.addEvents({'updateSuccess': true});
+		this.addEvents({'updateSuccess': true, 'editProductsSuccess': true});
 		
 		this.callParent([config]);
 	},
@@ -222,6 +222,10 @@ Ext.define('Toc.orders.OrdersEditPanel', {
 		        this.cboPaymentMethods.disable();
 		        this.btnEditShippingMethod.disable();
 	      	}
+    	}, this);
+    	
+    	this.grdProducts.on('editProductsSuccess', function(feedback) {
+    		this.fireEvent('editProductsSuccess', feedback);
     	}, this);
 		
     

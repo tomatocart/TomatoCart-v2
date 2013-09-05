@@ -144,6 +144,11 @@ Ext.override(Toc.desktop.OrdersWindow, {
       	
 	    dlgEditShippingMethod.show();
       }, this);
+      
+      //edit orders products
+      dlg.on('editProductsSuccess', function(feedback) {
+      	this.onShowNotification(feedback);
+      }, this);
     }
     
     return dlg;

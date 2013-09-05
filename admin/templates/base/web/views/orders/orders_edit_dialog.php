@@ -41,7 +41,7 @@ Ext.define('Toc.orders.OrdersEditDialog', {
 			}
 	    ];
     
-    	this.addEvents({'updateSuccess': true, 'editShippingMethod': true});
+    	this.addEvents({'updateSuccess': true, 'editShippingMethod': true, 'editProductsSuccess': true});
     
     	this.callParent([config]);
 	},
@@ -56,6 +56,10 @@ Ext.define('Toc.orders.OrdersEditDialog', {
 		
 		this.frmOrderEdit.on('editShippingMethod', function(ordersId, grdProducts) {
 			this.fireEvent('editShippingMethod', ordersId, grdProducts);
+		}, this);
+		
+		this.frmOrderEdit.on('editProductsSuccess', function(feedback) {
+			this.fireEvent('editProductsSuccess', feedback);
 		}, this);
 		
 		this.tabOrders = Ext.create('Ext.TabPanel', {

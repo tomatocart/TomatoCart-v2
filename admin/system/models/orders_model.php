@@ -290,6 +290,21 @@ class Orders_Model extends CI_Model
         
         return $result->num_rows();
     }
+    
+    // ------------------------------------------------------------------------
+    
+    /**
+     * Update sku of the order product
+     *
+     * @access public
+     * @param int
+     * @param string
+     * @return bool
+     */
+    public function update_product_sku($orders_products_id, $products_sku)
+    {
+    	return $this->db->update('orders_products', array('products_sku' => $products_sku), array('orders_products_id' => $orders_products_id));
+    }
 }
 
 /* End of file orders_model.php */

@@ -123,7 +123,7 @@ Ext.define('Toc.orders.OrdersEditProductsGrid', {
 				}
 			},
 			{header: '<?php echo lang('table_heading_product_sku'); ?>', dataIndex: 'sku', width: 80, align: 'right', editor: 'textfield'},
-			{header: '<?php echo lang('table_heading_product_qty'); ?>', dataIndex: 'quantity', width: 60, align: 'center', editor: Ext.create('Ext.form.NumberField', {allowNegative: false, allowDecimals: false})},
+			{header: '<?php echo lang('table_heading_product_qty'); ?>', dataIndex: 'quantity', width: 60, align: 'center', editor: 'numberfield'},
 			{header: '<?php echo lang('table_heading_tax'); ?>', dataIndex: 'tax', align: 'center', width: 50,},
 			{header: '<?php echo lang('table_heading_price_net'); ?>', dataIndex: 'price_net', align: 'right', width: 80, editor: 'numberfield', renderer: formatPrice},
 			{header: '<?php echo lang('table_heading_price_gross'); ?>', dataIndex: 'price_gross', align: 'right', width: 80},
@@ -147,17 +147,101 @@ Ext.define('Toc.orders.OrdersEditProductsGrid', {
     	];
     	
 		config.listeners = {
-			afteredit: this.onAfterEdit,
+		 	beforeedit: this.onBeforeEdit,
+			edit: this.onAfterEdit,
 			scope: this
 		};
 		
-		this.addEvents({'delete': true});
+		this.addEvents({'delete': true, 'editProductsSuccess': true});
     
 		this.callParent([config]);
 	},
 	
-	onAfterEdit: function() {
+	onBeforeEdit: function(e) {
+	    if ((e.record.get('products_type') == '<?php echo PRODUCT_TYPE_GIFT_CERTIFICATE; ?>') && (e.column == 2)) {
+	      alert('<?php echo lang('error_gift_certificate_quantity_not_allowed');?>');
+	      return false;
+	    }
+	          
+	    return true;
+  	},
 	
+	onAfterEdit: function(editor, e) {
+		var url = null;
+		
+		var params = {
+      		product_id: e.record.get('products_id'),
+      		orders_products_id: e.record.get('orders_products_id'),
+      		orders_id: this.ordersId
+		};
+		
+		var verified = true;
+		
+		if (e.colIdx == 2) {
+			url = '<?php echo site_url('orders/update_sku'); ?>';
+			
+      		params.products_sku = e.value;
+		}else if (e.colIdx == 3) {
+			url = '<?php echo site_url('orders/update_quantity'); ?>';
+			
+			params.quantity = e.value;
+			
+			verified = this.verifyQuantity(e.value, e.record.get('quantity'), e.record.get('qty_in_stock'));
+			
+			
+			if (verified == false) {
+				 e.record.set('quantity', e.originalValue);
+        		 e.record.commit();
+			}
+		}else if (e.colIdx == 5) {
+			url = '<?php echo site_url('orders/update_price'); ?>';
+			
+			params.price = e.value;
+		}
+		
+		if (url !== null && verified === true) {
+			Ext.Ajax.request({
+		        waitMsg: TocLanguage.formSubmitWaitMsg,
+		        url: url,
+		        params: params,
+		        callback: function (options, success, response) {
+          			var result = Ext.decode(response.responseText);
+          			
+          			this.getStore().load();
+          
+          			if (result.success == false) {
+           	 			Ext.MessageBox.alert(TocLanguage.msgErrTitle, result.feedback);
+					}else {
+						this.fireEvent('editProductsSuccess', result.feedback);
+					}
+		        },
+		        scope: this
+	      	});
+		}
+	},
+	
+	verifyQuantity: function(new_qty, old_qty, qty_in_stock) {
+		var new_qty = parseInt(new_qty);
+    	var old_qty = parseInt(old_qty);
+    	var qty_in_stock = parseInt(qty_in_stock);
+    	
+    	<?php if (STOCK_ALLOW_CHECKOUT == '-1') {?>
+    	if ((new_qty - old_qty) > qty_in_stock) {
+			alert('<?php echo lang('error_max_stock_value_reached');?>');
+		    
+			return false;
+	    } else {
+      		return true;
+	    }
+    	<?php }elseif (STOCK_CHECK == '1') {?>
+	    if ((new_qty - old_qty) > qty_in_stock) {
+      		return confirm('<?php echo lang('warning_max_stock_value_reached');?>');
+	    } else {
+	      	return true;
+	    }
+    	<?php }?>
+    	
+    	return true;
 	},
 	
 	onDelete: function(record) {

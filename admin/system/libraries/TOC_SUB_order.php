@@ -864,6 +864,123 @@ class TOC_SUB_Order extends TOC_Order
 		
 		return $payment_modules;
 	}
+	
+	// --------------------------------------------------------------------
+	
+	/**
+	 * Update the order product quantity
+	 *
+	 * @access public
+	 * @param int
+	 * @param int
+	 * @return bool
+	 */
+	public function update_product_quantity($orders_products_id, $quantity)
+	{
+		$error = FALSE;
+		
+		//quantity must greater than 0. Otherwise, it is necessary to delete the order product
+		if ($quantity > 0)
+		{
+			//find products_id_string
+			$products_id_string = '';
+			if (count($this->_contents) > 0)
+			{
+				foreach ($this->_contents as $tmp_products_id_string => $tmp_product)
+				{
+					if ($orders_products_id == $this->_contents[$tmp_products_id_string]['orders_products_id'])
+					{
+						$products_id_string = $tmp_products_id_string;
+						break;
+					}
+				}
+			}
+			
+			//load shopping cart model
+			$this->_ci->load->model('shopping_cart_model');
+			
+			//update the quantity in the database
+			if ($this->_ci->shopping_cart_model->update_product_quantity($orders_products_id, $quantity))
+			{
+				//get products id
+				$products_id = get_product_id($products_id_string);
+				
+				$this->_ci->load->library('product', $products_id);
+				
+				//update stock
+				if ($quantity > $this->_contents[$products_id_string]['quantity'])
+				{
+					$this->_ci->product->update_stock($this->_order_id, $orders_products_id, $products_id, ($quantity - $this->_contents[$products_id_string]['quantity']));
+				}
+				//restock
+				elseif ($quantity < $this->_contents[$products_id_string]['quantity'])
+				{
+					$this->_ci->product->restock($this->_order_id, $orders_products_id, $products_id, ($this->_contents[$products_id_string]['quantity'] - $quantity));
+				}
+				
+				$this->_contents[$products_id_string]['quantity'] = $quantity;
+				
+				//recalculate the order
+				$this->calculate();
+				$this->update_order_totals();
+				
+				return TRUE;
+			}
+			
+		}
+		//delete product
+		else
+		{
+			if ($this->delete_product($orders_products_id))
+			{
+				return TRUE;
+			}
+		}
+		
+		return FALSE;
+	}
+	
+	// --------------------------------------------------------------------
+	
+	/**
+	 * delete product
+	 *
+	 * @access public
+	 * @param int
+	 * @return bool
+	 */
+	public function delete_product($orders_products_id)
+	{
+		//find products_id_string
+		$products_id_string = '';
+		foreach($this->_contents as $tmp_products_id_string => $tmp_product)
+		{
+			if ($orders_products_id == $this->_contents[$tmp_products_id_string]['orders_products_id'])
+			{
+				$products_id_string = $tmp_products_id_string;
+				break;
+			}
+		}
+		
+		//restock
+		$this->_ci->load->model(array('products_model', 'product_model'));
+		if ($this->_ci->products_model->restock($this->_order_id, $orders_products_id, get_product_id($products_id_string), $this->_contents[$products_id_string]['quantity']))
+		{
+			//delete orders product
+			if ($this->_ci->product_model->delete_orders_products($orders_products_id))
+			{
+				unset($this->_contents[$products_id_string]);
+				
+				$this->calculate(TRUE);
+				
+				$this->update_order_totals();
+				
+				return TRUE;
+			}
+		}
+		
+		return FALSE;
+	}
 }
 
 

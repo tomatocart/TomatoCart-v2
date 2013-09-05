@@ -512,7 +512,6 @@ class Products_Model extends CI_Model
         {
             if (is_numeric($id))
             {
-                echo 'delete';
                 $this->db->delete('products_accessories', array('products_id' => $products_id));
             }
             
@@ -1354,55 +1353,6 @@ class Products_Model extends CI_Model
             return TRUE;
         }
     }
-    
-    // ------------------------------------------------------------------------
-    
-    /**
-     * Get quantity of simple product or variant product
-     *
-     * @access public
-     * @param $id
-     * @param $is_variant
-     * @return mixed
-     */
-    public function get_quantity($id, $is_variant = FALSE)
-    {
-    	//simple product quantity
-    	if ($is_variant === FALSE)
-    	{
-    		$result = $this->db
-			->select('products_quantity as quantity')
-    		->from('products')
-    		->where('products_id', $id)
-    		->get();
-    		
-    		if ($result->num_rows() === 1)
-    		{
-    			$row = $result->row_array();
-    			
-    			return $row['quantity'];
-    		}
-    	}
-    	//variant product quantity
-    	else
-    	{
-    		$result = $this->db
-    		->select('products_quantity as quantity')
-    		->from('products_variants')
-    		->where('products_variants_id', $id)
-    		->get();
-    		
-    		if ($result->num_rows() === 1)
-    		{
-    			$row = $result->row_array();
-    			
-    			return $row['quantity'];
-    		}
-    	}
-    	
-    	return NULL;
-    }
-    
 }
 
 /* End of file products_model.php */

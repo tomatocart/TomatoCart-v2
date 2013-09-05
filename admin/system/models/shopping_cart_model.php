@@ -184,6 +184,22 @@ class Shopping_Cart_Model extends CI_Model
 	// --------------------------------------------------------------------
 	
 	/**
+	 * Update quantity of order product
+	 *
+	 * @access public
+	 * @param int
+	 * @param int
+	 * @param int
+	 * @return bool
+	 */
+	public function update_product_quantity($orders_products_id, $quantity)
+	{
+		return $this->db->update('orders_products', array('products_quantity' => $quantity), array('orders_products_id' => $orders_products_id));
+	}
+	
+	// --------------------------------------------------------------------
+	
+	/**
 	 * Get the country information
 	 *
 	 * @access prototected

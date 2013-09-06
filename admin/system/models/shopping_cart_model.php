@@ -215,6 +215,114 @@ class Shopping_Cart_Model extends CI_Model
 	// --------------------------------------------------------------------
 	
 	/**
+	 * Update order product
+	 *
+	 * @access public
+	 * @param array
+	 * @return bool
+	 */
+	public function update_product($data)
+	{
+		return $this->db->update('orders_products', 
+					array('products_quantity' => $data['products_quantity'], 
+						  'products_price' => $data['products_price'],
+						  'final_price' => $data['final_price'],
+						  'products_type' => $data['products_type']), 
+					array('orders_products_id' => $data['orders_products_id']));
+	}
+	
+	// --------------------------------------------------------------------
+	
+	/**
+	 * Add order product
+	 *
+	 * @access public
+	 * @param array
+	 * @param array
+	 * @return mixed
+	 */
+	public function add_product($data, $variants)
+	{
+		//error check
+		$error = FALSE;
+		
+		//start transaction
+		$this->db->trans_begin();
+		
+		//inser the product
+		$this->db->insert('orders_products', $data);
+		
+		if ($this->db->affected_rows() > 0)
+		{
+			$orders_products_id = $this->db->insert_id();
+			
+			//deal with the orders variants
+			if ( is_array($variants) && (count($variants) > 0) )
+			{
+				foreach ($variants as $groups_id => $values_id)
+				{
+					//get the variant group name and variant name
+					$result = $this->db
+					->select('pvg.products_variants_groups_name, pvv.products_variants_values_name')
+					->from('products_variants pv')
+					->join('products_variants_entries pve', 'pv.products_variants_id = pve.products_variants_id')
+					->join('products_variants_groups pvg', 'pve.products_variants_groups_id = pvg.products_variants_groups_id')
+					->join('products_variants_values pvv', 'pve.products_variants_values_id = pvv.products_variants_values_id')
+					->where(array(
+						'pv.products_id' => $data['products_id'], 
+					  	'pve.products_variants_groups_id' => $groups_id, 
+						'pve.products_variants_values_id' => $values_id, 
+						'pvg.language_id' => lang_id(), 'pvv.language_id' => lang_id()))
+					->get();
+					
+					$variant = $result->row_array();
+					$result->free_result();
+					
+					//insert the order product variant
+					$this->db->insert('orders_products_variants', 
+						array('orders_id' => $data['orders_id'], 
+							  'orders_products_id' => $orders_products_id, 
+							  'products_variants_groups_id' => $groups_id, 
+							  'products_variants_groups' => $variant['products_variants_groups_name'], 
+							  'products_variants_values_id' => $values_id, 
+							  'products_variants_values' => $variant['products_variants_values_name']));
+					
+					if ($this->db->affected_rows() < 0)
+					{
+						break;
+						
+						$error = TRUE;
+					}
+					
+					//currently, ingore the downloadable product and gift certificate
+				}
+			}
+			
+			return $orders_products_id;
+		}
+		else
+		{
+			$error = TRUE;
+		}
+		
+		if ($error === FALSE)
+		{
+			//commit
+			$this->db->trans_commit();
+			
+			return $orders_products_id;
+		}
+		
+		//rollback
+		$this->db->trans_rollback();
+		
+		return FALSE;
+		
+	}
+	
+	// --------------------------------------------------------------------
+	
+	/**
 	 * Get the country information
 	 *
 	 * @access prototected

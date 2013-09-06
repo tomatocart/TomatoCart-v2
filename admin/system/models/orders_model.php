@@ -305,6 +305,44 @@ class Orders_Model extends CI_Model
     {
     	return $this->db->update('orders_products', array('products_sku' => $products_sku), array('orders_products_id' => $orders_products_id));
     }
+    
+    // ------------------------------------------------------------------------
+    
+    /**
+     * Get the products available to be choosed
+     *
+     * @access public
+     * @param int
+     * @param int
+     * @param string
+     * @return mixed
+     */
+    public function get_choose_products($start = NULL, $limit = NULL)
+    {
+    	$result = array('products' => array(), 'total' => 0);
+    	
+    	$this->db
+    	->select('p.products_id, p.products_moq')
+    	->from('products p')
+    	->join('products_description pd', 'p.products_id = pd.products_id')
+    	->where(array('p.products_status' => 1, 'pd.language_id' => lang_id()));
+    	
+    	//clone the $this->db object to calculate the total rows
+    	$clone_db = clone $this->db;
+    	$result['total'] = $clone_db->count_all_results();
+    	
+    	$this->db->order_by('p.products_id');
+    	
+    	if ($start !== NULL && $limit !== NULL)
+    	{
+    		$this->db->limit($limit, $start);
+    	}
+    	
+    	
+    	$result['products'] = $this->db->get()->result_array();
+    	
+        return $result;
+    }
 }
 
 /* End of file orders_model.php */

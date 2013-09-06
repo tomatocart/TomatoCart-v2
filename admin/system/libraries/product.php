@@ -30,7 +30,7 @@ class TOC_Product
 	protected $data = array();
 	protected $customers_id = null;
 	protected $customers_groups_id = null;
-	protected $customer_group_discount = null;
+	protected $_customer_group_discount = null;
 
 	/**
 	 * Shopping Class Constructor
@@ -43,20 +43,14 @@ class TOC_Product
 		//initialize the ci instance
 		$this->ci = get_instance();
 
-		//cache
-		$this->ci->load->driver('cache', array('adapter' => 'file'));
+		//products help
+		$this->ci->load->helper('products');
 
 		if (!empty($id)) 
 		{
-			$this->data = $this->ci->cache->get('product-' . $id . '-' . $this->ci->lang->get_code());
-
-			if ($this->data === FALSE) 
-			{
-				$this->ci->load->model('product_model');
-				$this->data = $this->ci->product_model->get_data($id);
-
-				$this->ci->cache->save('product-' . $id . '-' . $this->ci->lang->get_code(), $this->data, 30000);
-			}
+				
+			$this->ci->load->model('product_model');
+			$this->data = $this->ci->product_model->get_data($id);
 
 			//format the variants display price
 			if ( isset($this->data['variants']) && is_array($this->data['variants']) )
@@ -189,27 +183,27 @@ class TOC_Product
 
 	function get_title()
 	{
-		return $this->data['products_name'];
+		return $this->data['name'];
 	}
 
 	function get_product_type()
 	{
-		return $this->data['products_type'];
+		return $this->data['type'];
 	}
 
 	function is_simple()
 	{
-		return (isset($this->data['products_type']) && ($this->data['products_type'] == PRODUCT_TYPE_SIMPLE));
+		return (isset($this->data['type']) && ($this->data['type'] == PRODUCT_TYPE_SIMPLE));
 	}
 
 	function is_virtual()
 	{
-		return (isset($this->data['products_type']) && ($this->data['products_type'] == PRODUCT_TYPE_VIRTUAL));
+		return (isset($this->data['type']) && ($this->data['type'] == PRODUCT_TYPE_VIRTUAL));
 	}
 
 	function is_downloadable()
 	{
-		return (isset($this->data['products_type']) && ($this->data['products_type'] == PRODUCT_TYPE_DOWNLOADABLE));
+		return (isset($this->data['type']) && ($this->data['type'] == PRODUCT_TYPE_DOWNLOADABLE));
 	}
 
 	function has_sample_file()
@@ -224,7 +218,7 @@ class TOC_Product
 
 	function is_gift_certificate()
 	{
-		return (isset($this->data['products_type']) && ($this->data['products_type'] == PRODUCT_TYPE_GIFT_CERTIFICATE));
+		return (isset($this->data['type']) && ($this->data['type'] == PRODUCT_TYPE_GIFT_CERTIFICATE));
 	}
 
 	function get_gift_certificate_type()
@@ -239,22 +233,22 @@ class TOC_Product
 
 	function is_email_gift_certificate()
 	{
-		return (isset($this->data['products_type']) && ($this->data['products_type'] == PRODUCT_TYPE_GIFT_CERTIFICATE) && ($this->data['gift_certificates_type'] == GIFT_CERTIFICATE_TYPE_EMAIL));
+		return (isset($this->data['type']) && ($this->data['type'] == PRODUCT_TYPE_GIFT_CERTIFICATE) && ($this->data['gift_certificates_type'] == GIFT_CERTIFICATE_TYPE_EMAIL));
 	}
 
 	function is_physical_gift_certificate()
 	{
-		return (isset($this->data['products_type']) && ($this->data['products_type'] == PRODUCT_TYPE_GIFT_CERTIFICATE) && ($this->data['gift_certificates_type'] == GIFT_CERTIFICATE_TYPE_PHYSICAL));
+		return (isset($this->data['type']) && ($this->data['type'] == PRODUCT_TYPE_GIFT_CERTIFICATE) && ($this->data['gift_certificates_type'] == GIFT_CERTIFICATE_TYPE_PHYSICAL));
 	}
 
 	function is_fix_amount_gift_certificate()
 	{
-		return (isset($this->data['products_type']) && ($this->data['products_type'] == PRODUCT_TYPE_GIFT_CERTIFICATE) && ($this->data['gift_certificates_amount_type'] == GIFT_CERTIFICATE_TYPE_FIX_AMOUNT));
+		return (isset($this->data['type']) && ($this->data['type'] == PRODUCT_TYPE_GIFT_CERTIFICATE) && ($this->data['gift_certificates_amount_type'] == GIFT_CERTIFICATE_TYPE_FIX_AMOUNT));
 	}
 
 	function is_open_amount_gift_certificate()
 	{
-		return (isset($this->data['products_type']) && ($this->data['products_type'] == PRODUCT_TYPE_GIFT_CERTIFICATE) && ($this->data['gift_certificates_amount_type'] == GIFT_CERTIFICATE_TYPE_OPEN_AMOUNT));
+		return (isset($this->data['type']) && ($this->data['type'] == PRODUCT_TYPE_GIFT_CERTIFICATE) && ($this->data['gift_certificates_amount_type'] == GIFT_CERTIFICATE_TYPE_OPEN_AMOUNT));
 	}
 
 	function get_open_amount_min_value()
@@ -269,24 +263,24 @@ class TOC_Product
 
 	function get_short_description()
 	{
-		return $this->data['products_short_description'];
+		return $this->data['short_description'];
 	}
 
 	function get_description()
 	{
-		return $this->data['products_description'];
+		return $this->data['description'];
 	}
 
 	function has_model() 
 	{
-		return (isset($this->data['products_model']) && !empty($this->data['products_model']));
+		return (isset($this->data['model']) && !empty($this->data['model']));
 	}
 
 	function get_model($variants = null) 
 	{
 		if ($variants == null || empty($variants)) 
 		{
-			return $this->data['products_model'];
+			return $this->data['model'];
 		} 
 		else 
 		{
@@ -298,16 +292,16 @@ class TOC_Product
 
 	function has_sku() 
 	{
-		return (isset($this->data['products_sku']) && !empty($this->data['products_sku']));
+		return (isset($this->data['sku']) && !empty($this->data['sku']));
 	}
 
 	function get_sku($variants = null) 
 	{
 		if ($variants == null || empty($variants))
 		{
-			$sku = $this->data['products_sku'];
+			$sku = $this->data['sku'];
 
-			if (is_array($this->data['default_variant']) && !empty($this->data['default_variant']))
+			if (isset($this->data['default_variant']) && is_array($this->data['default_variant']) && !empty($this->data['default_variant']))
 			{
 				$sku = $this->data['default_variant']['sku'];
 			}
@@ -324,12 +318,12 @@ class TOC_Product
 
 	function has_keyword()
 	{
-		return (isset($this->data['products_keyword']) && !empty($this->data['products_keyword']));
+		return (isset($this->data['keyword']) && !empty($this->data['keyword']));
 	}
 
 	function get_keyword()
 	{
-		return $this->data['products_keyword'];
+		return $this->data['keyword'];
 	}
 
 	function has_page_title()
@@ -374,7 +368,7 @@ class TOC_Product
 
 	function get_moq()
 	{
-		return $this->data['products_moq'];
+		return $this->data['moq'];
 	}
 
 	function get_max_order_quantity()
@@ -396,11 +390,11 @@ class TOC_Product
 	{
 		//get product price
 		$product_price = $this->data['price'];
-
+		
 		//get variant price
 		if (is_array($variants) && !empty($variants))
 		{
-			$product_id_string = osc_get_product_id_string($this->id, $variants);
+			$product_id_string = get_product_id_string($this->id, $variants);
 			if (isset($this->data['variants'][$product_id_string]))
 				$product_price = $this->data['variants'][$product_id_string]['price'];
 		}
@@ -420,7 +414,20 @@ class TOC_Product
 		$customer_grp_discount = is_numeric($this->_customer_group_discount) ? $this->_customer_group_discount : 0;
 
 		$product_price = round($product_price * (1 - $qty_discount/100) * (1 - $customer_grp_discount/100), 2);
+		
 		return $product_price;
+	}
+	
+	/**
+	 * Get formated product price with currency symbol
+	 *
+	 * @access public
+	 * @param $with_special
+	 * @return string
+	 */
+	public function get_price_formated()
+	{
+		return $this->ci->currencies->display_price($this->get_price(), $this->get_tax_class_id(), 1);
 	}
 
 	function get_category_id() 

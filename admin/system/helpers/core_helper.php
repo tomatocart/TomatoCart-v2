@@ -16,45 +16,6 @@
 // ------------------------------------------------------------------------
 
 /**
- * Generate a product ID string value containing its product variants combinations
- *
- * @param string $id The product ID
- * @param array $params An array of product variants
- * @access public
- */
-
-if ( ! function_exists('get_product_id_string') )
-{
-    function get_product_id_string($id, $params) {
-        $string = (int)$id;
-
-        if (is_array($params) && !empty($params)) {
-            $variants_check = true;
-            $variants_ids = array();
-
-            //lei:sort the variant by the options id
-            ksort($params);
-
-            foreach ($params as $group => $value) {
-                if (is_numeric($group) && is_numeric($value)) {
-                    $variants_ids[] = (int)$group . ':' . (int)$value;
-                } else {
-                    $variants_check = false;
-                    break;
-                }
-            }
-
-            if ($variants_check === true) {
-                $string .= '#' . implode(';', $variants_ids);
-            }
-        }
-
-        return $string;
-    }
-}
-// ------------------------------------------------------------------------
-
-/**
  * Call a function given in string format used by configuration set and use functions
  *
  * @param string $function The complete function to call
@@ -299,6 +260,21 @@ if( ! function_exists('toc_gd_resize'))
             return FALSE;
         }
     }
+}
+
+/**
+ * Display Image
+ *
+ * @access public
+ * @param string $image the image to show
+ * @return string
+ */
+if( ! function_exists('image_url'))
+{
+	function image_url($image)
+	{
+		return base_url() . '../images/' . $image;
+	}
 }
 
 // ------------------------------------------------------------------------

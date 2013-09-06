@@ -508,8 +508,8 @@ class TOC_Order {
 		$this->_ci->load->helper('core');
 
 		$order_products = $this->_ci->order_model->get_products($this->_order_id);
-
-		if (!empty($order_products))
+		
+		if ( ! empty($order_products))
 		{
 			foreach($order_products as $order_product)
 			{
@@ -527,22 +527,23 @@ class TOC_Order {
 								'weight' => $order_product['products_weight'],
 								'tax_class_id' => $order_product['products_tax_class_id'],
 								'weight_class_id' => $order_product['products_weight_class']);
+				
+				//currently, just support simple product
+// 				if ($product['type'] == PRODUCT_TYPE_GIFT_CERTIFICATE)
+// 				{
+// 					$certificate = $this->_ci->order_model->get_certificate($this->_order_id, $product['orders_products_id']);
 
-				if ($product['type'] == PRODUCT_TYPE_GIFT_CERTIFICATE)
-				{
-					$certificate = $this->_ci->order_model->get_certificate($this->_order_id, $product['orders_products_id']);
-
-					if (!empty($certificate))
-					{
-						$product['gift_certificates_type'] = $certificate['gift_certificates_type'];
-						$product['gift_certificates_code'] = $certificate['gift_certificates_code'];
-						$product['senders_name'] = $certificate['senders_name'];
-						$product['senders_email'] = $certificate['senders_email'];
-						$product['recipients_name'] = $certificate['recipients_name'];
-						$product['recipients_email'] = $certificate['recipients_email'];
-						$product['messages'] = $certificate['messages'];
-					}
-				}
+// 					if (!empty($certificate))
+// 					{
+// 						$product['gift_certificates_type'] = $certificate['gift_certificates_type'];
+// 						$product['gift_certificates_code'] = $certificate['gift_certificates_code'];
+// 						$product['senders_name'] = $certificate['senders_name'];
+// 						$product['senders_email'] = $certificate['senders_email'];
+// 						$product['recipients_name'] = $certificate['recipients_name'];
+// 						$product['recipients_email'] = $certificate['recipients_email'];
+// 						$product['messages'] = $certificate['messages'];
+// 					}
+// 				}
 
 				$variants_result = $this->_ci->order_model->get_variants($this->_order_id, $product['orders_products_id']);
 

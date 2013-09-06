@@ -26,6 +26,8 @@
   include 'orders_products_grid.php';
   include 'orders_status_panel.php';
   include 'orders_edit_panel.php';
+  include 'orders_choose_product_dialog.php';
+  include 'orders_choose_product_grid.php';
   include('orders_choose_shipping_method_dialog.php');
   include 'orders_transaction_grid.php';
   include 'orders_delete_confirm_dialog.php';
@@ -148,6 +150,39 @@ Ext.override(Toc.desktop.OrdersWindow, {
       //edit orders products
       dlg.on('editProductsSuccess', function(feedback) {
       	this.onShowNotification(feedback);
+      }, this);
+      
+       //delete orders products
+      dlg.on('deleteProductsSuccess', function(feedback) {
+      	this.onShowNotification(feedback);
+      }, this);
+      
+      //add orders products
+      dlg.on('addOrdersProduct', function(ordersId, grdProducts) {
+      	var dlgAddProduct = this.createOrdersChooseProductDialog(ordersId);
+      	
+		dlgAddProduct.on('saveSuccess', function() {
+	      grdProducts.getStore().load();
+	      
+	      dlgAddProduct.close();
+		}, this);
+		
+		dlgAddProduct.show();
+      }, this);
+    }
+    
+    return dlg;
+  },
+  
+  createOrdersChooseProductDialog: function(ordersId) {
+    var desktop = this.app.getDesktop();
+    var dlg = desktop.getWindow('orders-choose-product-win');
+    
+    if (!dlg) {
+      dlg = desktop.createWindow({ordersId: ordersId}, Toc.orders.OrdersChooseProductDialog);
+      
+      dlg.on('saveSuccess', function(feedback) {
+        this.app.showNotification({title: TocLanguage.msgSuccessTitle, html: feedback});
       }, this);
     }
     

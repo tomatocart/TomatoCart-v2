@@ -152,7 +152,9 @@ Ext.define('Toc.orders.OrdersEditProductsGrid', {
 			scope: this
 		};
 		
-		this.addEvents({'delete': true, 'editProductsSuccess': true});
+		config.buttons = [{text: '<?php echo lang('button_add_product');?>', iconCls:'add', handler: this.onAddProduct, scope: this}];
+		
+		this.addEvents({'deleteSuccess': true, 'editProductsSuccess': true, 'addProduct': true});
     
 		this.callParent([config]);
 	},
@@ -220,6 +222,10 @@ Ext.define('Toc.orders.OrdersEditProductsGrid', {
 		}
 	},
 	
+	onAddProduct: function() {
+		this.fireEvent('addProduct', this.ordersId, this);
+	},
+	
 	verifyQuantity: function(new_qty, old_qty, qty_in_stock) {
 		var new_qty = parseInt(new_qty);
     	var old_qty = parseInt(old_qty);
@@ -245,6 +251,26 @@ Ext.define('Toc.orders.OrdersEditProductsGrid', {
 	},
 	
 	onDelete: function(record) {
+		Ext.Ajax.request({
+        	waitMsg: TocLanguage.formSubmitWaitMsg,
+			url: '<?php echo site_url('orders/delete_product'); ?>',
+			params: {
+				orders_products_id: record.get('orders_products_id'),
+              	orders_id: this.ordersId,
+              	products_id: record.get('products_id')
+			},
+			callback: function (options, success, response) {
+				var result = Ext.decode(response.responseText);
+          			
+				if (result.success == false) {
+					Ext.MessageBox.alert(TocLanguage.msgErrTitle, result.feedback);
+				}else {
+					this.getStore().load();
+					this.fireEvent('deleteSuccess', result.feedback);
+				}
+	        },
+	        scope: this
+      	});
 	}
 });
 

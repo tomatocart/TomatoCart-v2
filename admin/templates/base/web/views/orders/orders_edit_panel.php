@@ -29,7 +29,7 @@ Ext.define('Toc.orders.OrdersEditPanel', {
 		
 		config.defaults = {autoScroll: true};
 		
-		this.addEvents({'updateSuccess': true, 'editProductsSuccess': true});
+		this.addEvents({'updateSuccess': true, 'editProductsSuccess': true, 'deleteProductsSuccess': true, 'addOrdersProduct': true});
 		
 		this.callParent([config]);
 	},
@@ -226,6 +226,14 @@ Ext.define('Toc.orders.OrdersEditPanel', {
     	
     	this.grdProducts.on('editProductsSuccess', function(feedback) {
     		this.fireEvent('editProductsSuccess', feedback);
+    	}, this);
+    	
+    	this.grdProducts.on('deleteSuccess', function(feedback) {
+    		this.fireEvent('deleteProductsSuccess', feedback);
+    	}, this);
+    	
+    	this.grdProducts.on('addProduct', function(ordersId, grdProducts) {
+    		this.fireEvent('addOrdersProduct', ordersId, grdProducts);
     	}, this);
 		
     

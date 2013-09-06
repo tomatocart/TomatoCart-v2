@@ -203,49 +203,14 @@ class TOC_SUB_Order extends TOC_Order
 	// --------------------------------------------------------------------
 	
 	/**
-	 * Get the content type
+	 * Get the content type, currently, just support the simple product
 	 *
 	 * @access public
 	 * @return string
 	 */
 	public function get_content_type()
 	{
-		if ($this->has_contents())
-		{
-			$products = array_values($this->_contents);
-			
-			foreach ($products as $product)
-			{
-				if ( ($product['type'] == PRODUCT_TYPE_SIMPLE) || ($product['type'] == PRODUCT_TYPE_GIFT_CERTIFICATE && $product['gc_data']['type'] == GIFT_CERTIFICATE_TYPE_PHYSICAL) )
-				{
-					switch ($this->_content_type)
-					{
-						case 'virtual':
-							$this->_content_type = 'mixed';
-						
-							return $this->_content_type;
-							break;
-						default:
-							$this->_content_type = 'physical';
-							break;
-					}
-				}
-				else
-				{
-					switch ($this->_content_type) 
-					{
-						case 'physical':
-							$this->_content_type = 'mixed';
-					
-							return $this->_content_type;
-							break;
-						default:
-							$this->_content_type = 'virtual';
-							break;
-					}
-				}
-			}
-		}
+		$this->_content_type = 'physical';
 		
 		return $this->_content_type;
 	}
@@ -1009,6 +974,123 @@ class TOC_SUB_Order extends TOC_Order
 				
 				return TRUE;
 			}
+		}
+		
+		return FALSE;
+	}
+	
+	// --------------------------------------------------------------------
+	
+	/**
+	 * add the order product
+	 *
+	 * @access public
+	 * @param mixed
+	 * @param int
+	 * @param array
+	 * @return bool
+	 */
+	public function add_product($products_id_string, $quantity, $gift_certificate_data = NULL)
+	{
+		//error flag
+		$error = FALSE;
+		
+		//get product id and variants
+		$products_id = get_product_id($products_id_string);
+		$variants = parse_variants_from_id_string($products_id_string);
+		
+		//load product library
+		$this->_ci->load->library('product', $products_id);
+		
+		//load shopping cart model
+		$this->_ci->load->model('shopping_cart_model');
+		
+		//if the product or variant product exists in the order, then increase the order quantity
+		if (isset($this->_contents[$products_id_string]))
+		{
+			$orders_products_id = $this->_contents[$products_id_string]['orders_products_id'];
+			$new_quantity = $this->_contents[$products_id_string]['quantity'] + $quantity;
+			
+			//get the product data
+			$products_price = $this->_ci->product->get_price($variants, $new_quantity);
+			$data = array(
+				'products_quantity' => $new_quantity, 
+				'products_price' => $products_price, 
+				'final_price' => $products_price, 
+				'orders_products_id' => $orders_products_id, 
+				'products_type' => $this->_ci->product->get_product_type()
+			);
+			
+			//update product successfully
+			if ($this->_ci->shopping_cart_model->update_product($data))
+			{
+				$this->_contents[$products_id_string]['quantity'] = $new_quantity;
+				$this->_contents[$products_id_string]['price'] = $products_price;
+				$this->_contents[$products_id_string]['final_price'] = $products_price;
+			}
+			else
+			{
+				$error = TRUE;
+			}
+		}
+		//new product need to be added
+		else
+		{
+			//get the product data
+			$products_price = $this->_ci->product->get_price($variants, $quantity);
+			$products_name = $this->_ci->product->get_title();
+			$products_tax = $this->_ci->tax->get_tax_rate($this->_ci->product->get_tax_class_id(), $this->_shipping_address['country_id'], $this->_shipping_address['zone_id']);
+			$data = array(
+				'products_id' => $products_id,
+				'products_name' => $products_name,
+				'products_sku' => $this->_ci->product->get_sku(),
+				'products_quantity' => $quantity,
+				'products_price' => $products_price,
+				'final_price' => $products_price,
+				'products_type' => $this->_ci->product->get_product_type(),
+				'products_tax' => $products_tax,
+				'orders_id' => $this->_order_id
+			);
+			
+			if ( FALSE !== ($orders_products_id = $this->_ci->shopping_cart_model->add_product($data, $variants)) )
+			{
+				$this->_contents[$products_id_string] = array(
+					'id' => $products_id,
+					'orders_products_id' => $orders_products_id,
+					'quantity' => $quantity,
+					'name' => $products_name,
+					'sku' => $this->_ci->product->get_sku($variants),
+					'tax' => $products_tax,
+					'price' => $products_price,
+					'final_price' => $products_price,
+					'type' => $this->_ci->product->get_product_type(),
+					'weight' => $this->_ci->product->get_weight($variants),
+					'tax_class_id' => $this->_ci->product->get_tax_class_id(),
+					'weight_class_id' => $this->_ci->product->get_weight_class()
+				);
+			}
+			else
+			{
+				$error = TRUE;
+			}
+		}
+		
+		//update stock
+		if ($error === FALSE && isset($orders_products_id) && $orders_products_id > 0)
+		{
+			if ( ! $this->_ci->product->update_stock($this->_order_id, $orders_products_id, $products_id, $quantity))
+			{
+				$error = TRUE;
+			}
+		}
+		
+		//recalculate the order totals
+		if ($error === FALSE)
+		{
+			$this->calculate();
+			$this->update_order_totals();
+			
+			return TRUE;
 		}
 		
 		return FALSE;

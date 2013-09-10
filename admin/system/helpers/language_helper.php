@@ -131,41 +131,5 @@ if( ! function_exists('encrypt_string'))
   }
 }
 
-/**
- * Generate a product ID string value containing its product variants combinations
- *
- * @param string $id The product ID
- * @param array $params An array of product variants
- * @access public
- */
-if( ! function_exists('get_product_id_string'))
-{
-  function get_product_id_string($id, $params) {
-    $string = (int)$id;
-
-    if (is_array($params) && !empty($params)) {
-      $variants_check = true;
-      $variants_ids = array();
-
-      //lei:sort the variant by the options id
-      ksort($params);
-
-      foreach ($params as $group => $value) {
-        if (is_numeric($group) && is_numeric($value)) {
-          $variants_ids[] = (int)$group . ':' . (int)$value;
-        } else {
-          $variants_check = false;
-          break;
-        }
-      }
-
-      if ($variants_check === true) {
-        $string .= '#' . implode(';', $variants_ids);
-      }
-    }
-
-    return $string;
-  }
-}
 /* End of file language_helper.php */
 /* Location: ./application/helpers/MY_language_helper.php */

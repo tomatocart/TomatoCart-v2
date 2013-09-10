@@ -394,7 +394,7 @@ class TOC_Product
 		//get variant price
 		if (is_array($variants) && !empty($variants))
 		{
-			$product_id_string = get_product_id_string($this->id, $variants);
+			$product_id_string = get_product_id_string($this->get_id(), $variants);
 			if (isset($this->data['variants'][$product_id_string]))
 				$product_price = $this->data['variants'][$product_id_string]['price'];
 		}

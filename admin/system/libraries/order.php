@@ -97,6 +97,11 @@ class TOC_Order {
 	{
 		return $this->_currency['value'];
 	}
+	
+	public function get_order_total()
+	{
+		return $this->_total;
+	}
 
 	public function get_totals()
 	{

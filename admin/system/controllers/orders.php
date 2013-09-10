@@ -39,6 +39,7 @@ class Orders extends TOC_Controller
         parent::__construct();
         
         $this->load->model('orders_model');
+        $this->load->helper('products');
     }
     
 	// ------------------------------------------------------------------------
@@ -353,7 +354,7 @@ class Orders extends TOC_Controller
         $response['customers_comment'] = $this->order->get_customers_comment();
         $response['admin_comment'] = $this->order->get_admin_comment();
         
-        $response['total'] = '<p style="margin-left:10px;">' . $this->order->get_total().'</p>' . 
+        $response['total'] = '<p style="margin-left:10px;">' . $this->order->get_order_total().'</p>' . 
                              '<p style="margin-left:10px;">' . 
                                lang('number_of_products') . ' ' . $this->order->get_number_of_products() . '<br />' . 
                                lang('number_of_items') . ' ' . $this->order->get_number_of_items() . 
@@ -1220,6 +1221,180 @@ class Orders extends TOC_Controller
     	$this->load->library('order', $this->input->post('orders_id', TRUE), 'shopping_cart', TRUE);
     	
     	if ($this->shopping_cart->update_product_price( $this->input->post('orders_products_id', TRUE), $this->input->post('price'), TRUE) )
+    	{
+    		$response = array('success' => TRUE ,'feedback' => lang('ms_success_action_performed'));
+    	}
+    	else
+    	{
+    		$response = array('success' => FALSE, 'feedback' => lang('ms_error_action_not_performed'));
+    	}
+    	
+    	$this->output->set_output(json_encode($response));
+    }
+    
+    // ------------------------------------------------------------------------
+    
+    /**
+     * Delete order product
+     *
+     * @access public
+     * @return string
+     */
+    public function delete_product()
+    {
+    	/**
+    	 * load shopping cart adapter libray which is extended from order library.
+    	 * The last boolean paramter is used to tell the system to load a extended library.
+    	 * You could find the details under system/core/TOC_Loader.php. We overrided the ci library and _ci_load_class.
+    	 * So, let the libray support the local sub-libraries extended from core tomatocart libraries.
+    	 * Support the core tomatocart library extend from another library.
+    	 * If the tomatocart library was extended from ci library, they will also work as expected.
+    	 */
+    	$this->load->library('order', $this->input->post('orders_id', TRUE), 'shopping_cart', TRUE);
+    	
+    	$this->load->library('product', $this->input->post('products_id', TRUE));
+    	
+    	if ( $this->shopping_cart->delete_product($this->input->post('orders_products_id', TRUE)) )
+    	{
+    		if (count($this->shopping_cart->get_products()) === 0)
+    		{
+    			//currently, ignore the delete the coupon
+//     			$this->shopping_cart->delete_coupon();
+				$this->shopping_cart->update_order_totals();
+    		}
+    		
+    		$response = array('success' => TRUE ,'feedback' => lang('ms_success_action_performed'));
+    	}
+    	else
+    	{
+    		$response = array('success' => FALSE, 'feedback' => lang('ms_error_action_not_performed'));
+    	}
+    	
+    	$this->output->set_output(json_encode($response));
+    }
+    
+    // ------------------------------------------------------------------------
+    
+    /**
+     * List the products available to be choosed
+     *
+     * @access public
+     * @return string
+     */
+    public function list_choose_products()
+    {
+    	$this->load->model('orders_model');
+    	$this->load->library('order', $this->input->get('orders_id', TRUE));
+    	$this->load->library('tax');
+    	
+    	//get the request params
+    	$start = $this->input->get('start', TRUE);
+    	$limit = $this->input->get('limit', TRUE);
+    	
+    	$start = empty($start) ? 0 : $start;
+    	$limit = empty($limit) ? MAX_DISPLAY_SEARCH_RESULTS : $limit;
+    	
+    	//get the products available to be choosed
+    	$result = $this->orders_model->get_choose_products($start, $limit);
+    	
+    	//set the currency
+    	$this->session->set_userdata('currency', $this->order->get_currency());
+    	
+    	//build the response
+    	$records = array();
+    	if (count($result['products']) > 0)
+    	{
+    		foreach ($result['products'] as $product)
+    		{
+    			$object_name = 'product_' . $product['products_id'];
+    			$this->load->library('product', $product['products_id'], $object_name);
+    			
+    			if ( ! $this->$object_name->has_variants())
+    			{
+    				//currently, ignore the gift certificate
+
+    				$records[] =  array(
+						'products_id' => $product['products_id'],
+	    				'products_name' => $this->$object_name->get_title(),
+						'products_type' => $this->$object_name->get_product_type(),
+						'products_sku' => $this->$object_name->get_sku(),
+						'products_price' => $this->$object_name->get_price_formated(),
+						'products_quantity' => $this->$object_name->get_quantity(),
+						'new_qty' => $product['products_moq'],
+						'has_variants' => FALSE
+					);
+    			}
+    			//variants products
+    			else
+    			{
+    				$records[] = array(
+						'products_id' => $product['products_id'],
+	    				'products_name' => $this->$object_name->get_title(),
+						'products_type' => NULL,
+						'products_sku' => NULL,
+						'products_price' => NULL,
+						'products_quantity' => NULL,
+						'new_qty' => NULL,
+						'has_variants' => TRUE
+					);
+    				
+    				//add the variants products
+    				foreach ($this->$object_name->get_variants() as $product_id_string => $variant)
+    				{
+    					$variants = '';
+    					foreach ($variant['groups_name'] as $groups_name => $values_name)
+    					{
+    						$variants .= '&nbsp;&nbsp;&nbsp;<i>' . $groups_name . ' : ' . $values_name . '</i><br />';
+    					}
+    					
+    					$records[] = array(
+							'products_id' => $product_id_string,
+							'products_name' => $variants,
+							'products_type' => $this->$object_name->get_product_type(),
+							'products_sku' => $this->$object_name->get_sku(parse_variants_from_id_string($product_id_string)),
+							'products_price' => $this->currencies->format($this->$object_name->get_price(parse_variants_from_id_string($product_id_string), $this->order->get_currency())),
+							'products_quantity' => $variant['quantity'],
+							'new_qty' => $product['products_moq'],
+							'has_variants' => FALSE			
+						);
+    				}
+    			}
+    		}
+    	}
+    	
+    	//unset currency in the session data
+    	$this->session->unset_userdata('currency');
+    	
+    	$response = array(EXT_JSON_READER_TOTAL => $result['total'], EXT_JSON_READER_ROOT => $records);
+    	
+    	$this->output->set_output(json_encode($response));
+    }
+    
+    // ------------------------------------------------------------------------
+    
+    /**
+     * Add order product
+     *
+     * @access public
+     * @return string
+     */
+    public function add_product()
+    {
+    	/**
+    	 * load shopping cart adapter libray which is extended from order library.
+    	 * The last boolean paramter is used to tell the system to load a extended library.
+    	 * You could find the details under system/core/TOC_Loader.php. We overrided the ci library and _ci_load_class.
+    	 * So, let the libray support the local sub-libraries extended from core tomatocart libraries.
+    	 * Support the core tomatocart library extend from another library.
+    	 * If the tomatocart library was extended from ci library, they will also work as expected.
+    	 */
+    	$this->load->library('order', $this->input->post('orders_id', TRUE), 'shopping_cart', TRUE);
+    	
+    	$this->load->library('tax');
+    	
+    	//currently, ignore the gift certificate
+    	
+    	if ( $this->shopping_cart->add_product( $this->input->post('products_id', TRUE), $this->input->post('new_qty', TRUE) ) )
     	{
     		$response = array('success' => TRUE ,'feedback' => lang('ms_success_action_performed'));
     	}

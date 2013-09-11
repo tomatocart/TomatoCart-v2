@@ -9,6 +9,7 @@ if(!defined('K_TCPDF_EXTERNAL_CONFIG')) {
 require(APPPATH.'config/tcpdf'.EXT);
 require_once($tcpdf['base_directory'].'/tcpdf.php');
 
+
 define('TOC_PDF_POS_START_X', 70);
 define('TOC_PDF_POS_START_Y', 50);
 define('TOC_PDF_LOGO_UPPER_LEFT_CORNER_X', 100);
@@ -49,7 +50,19 @@ define('TOC_PDF_SHIP_TO_TITLE_FONT_SIZE', 11);
  * @package tcpdf_ci
  ***********************************************************/
 class TOC_Pdf extends TCPDF {
+	/**
+	 * Hold the customer infomation
+	 *
+	 * @var array
+	 */
+	protected $customer_info = array();
 	
+	/**
+	 * Override Default cell height ratio to prevent the notice error
+	 * @access protected
+	 * @since 3.0.014 (2008-05-23)
+	 */
+	protected $cell_height_ratio = 0;
 	
 	/**
 	 * TCPDF system constants that map to settings in our config file
@@ -65,6 +78,7 @@ class TOC_Pdf extends TCPDF {
 		'K_PATH_IMAGES'	=> 'image_directory',
 		'K_BLANK_IMAGE' => 'blank_image',
 		'K_SMALL_RATIO'	=> 'small_font_ratio',
+		'K_CELL_HEIGHT_RATIO' => 'cell_height_ratio'
 	);
 	
 	
@@ -88,13 +102,12 @@ class TOC_Pdf extends TCPDF {
 		$this->_config = $tcpdf;
 		unset($tcpdf);
 		
-		
-		
 		# set the TCPDF system constants
 		foreach($this->cfg_constant_map as $const => $cfgkey) {
 			if(!defined($const)) {
 				define($const, $this->_config[$cfgkey]);
-				#echo sprintf("Defining: %s = %s\n<br />", $const, $this->_config[$cfgkey]);
+				
+// 				echo sprintf("Defining: %s = %s\n<br />", $const, $this->_config[$cfgkey]);
 			}
 		}
 		
@@ -155,6 +168,16 @@ class TOC_Pdf extends TCPDF {
 		
 	}
 	
+	// --------------------------------------------------------------------
 	
-	
+	/**
+	 * Set customer information
+	 *
+	 * @param	array
+	 * @return	void
+	 */
+	public function set_customer_info($customer_info)
+	{
+		$this->_customer_info = $customer_info;
+	}
 }

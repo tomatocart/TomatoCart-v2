@@ -244,6 +244,10 @@ Ext.define('Toc.orders.OrdersGrid', {
 	
 		this.callParent([config]);
 	},
+	
+	onDelete: function(record) {
+		this.fireEvent('delete', record);
+	},
 
 	onBatchDelete: function() {
 		var selections = this.selModel.getSelection();

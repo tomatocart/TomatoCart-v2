@@ -39,7 +39,7 @@ class Invoices_Model extends CI_Model
         parent::__construct();
     }
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
     
     /**
      * Get the invoices
@@ -50,59 +50,11 @@ class Invoices_Model extends CI_Model
      * @param $orders_id
      * @param $customers_id
      * @param $status
-     * @return mixed
+     * @return array
      */
     public function get_invoices($start, $limit, $orders_id, $customers_id, $status)
     {
-        $this->query($orders_id, $customers_id, $status);
-        
-        $result = $this->db
-        ->order_by('o.date_purchased desc, o.last_modified desc, o.invoice_number desc')
-        ->limit($limit, $start)
-        ->get();
-        
-        if ($result->num_rows() > 0)
-        {
-            return $result->result_array();
-        }
-        
-        return NULL;
-    }
-    
-// ------------------------------------------------------------------------
-    
-    /**
-     * Get the total number of invoices
-     *
-     * @access public
-     * @param $orders_id
-     * @param $customers_id
-     * @param $status
-     * @return int
-     */
-    public function get_total($orders_id, $customers_id, $status)
-    {
-        $this->query($orders_id, $customers_id, $status);
-        
-        $result= $this->db->get();
-        
-        return $result->num_rows();
-    }
-    
-// ------------------------------------------------------------------------
-    
-    /**
-     * Build the query
-     *
-     * @access private
-     * @param $orders_id
-     * @param $customers_id
-     * @param $status
-     * @return void
-     */
-    private function query($orders_id, $customers_id, $status)
-    {
-        $this->db
+    	$this->db
         ->select('o.orders_id, o.customers_ip_address, o.customers_name, o.payment_method, o.date_purchased, o.last_modified, o.currency, o.currency_value, o.invoice_number, o.invoice_date, s.orders_status_name, ot.text as order_total')
         ->from('orders o')
         ->join('orders_total ot', 'o.orders_id = ot.orders_id and ot.class = "total"')
@@ -110,6 +62,7 @@ class Invoices_Model extends CI_Model
         ->where('o.invoice_number IS NOT NULL')
         ->where('s.language_id', lang_id());
         
+    	//search fields
         if (!empty($orders_id))
         {
            $this->db->where('o.orders_id', $orders_id);
@@ -124,6 +77,17 @@ class Invoices_Model extends CI_Model
         {
             $this->db->where('s.orders_status_id', $status);
         }
+        
+        //clone the db object to get the total number of invoices
+        $db_total = clone $this->db;
+        
+        //get the invoices
+        $result = $this->db
+        ->order_by('o.date_purchased desc, o.last_modified desc, o.invoice_number desc')
+        ->limit($limit, $start)
+        ->get();
+        
+        return array('invoices' => $result->result_array(), 'total' => $db_total->count_all_results());
     }
 }
 

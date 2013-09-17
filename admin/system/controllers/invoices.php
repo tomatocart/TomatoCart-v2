@@ -33,7 +33,7 @@ Class Invoices extends TOC_Controller
      *
      * @var array
      */
-    private $_customer_info;
+    protected $_customer_info;
     
     /**
      * Constructor
@@ -46,7 +46,7 @@ Class Invoices extends TOC_Controller
         parent::__construct();
     }
     
-// ------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
     
     /**
      * List the invoices
@@ -56,28 +56,33 @@ Class Invoices extends TOC_Controller
      */
     public function list_invoices()
     {
-        $this->load->library('currencies');
         $this->load->library('address');
-        $this->load->helper('date');
-        
+        $this->load->helper(array('date', 'products'));
         $this->load->model('invoices_model');
         
-        $start = $this->input->get_post('start') ? $this->input->get_post('start') : 0;
-        $limit = $this->input->get_post('limit') ? $this->input->get_post('limit') : MAX_DISPLAY_SEARCH_RESULTS;
+        $start = $this->input->get_post('start');
+        $limit = $this->input->get_post('limit');
+        
+      	$start = empty($start) ? 0 : $start;
+        $limit = empty($limit) ? MAX_DISPLAY_SEARCH_RESULTS : $limit;
+        
         $orders_id = $this->input->get_post('orders_id');
         $customers_id = $this->input->get_post('customers_id');
         $status = $this->input->get_post('status');
         
-        $invocies = $this->invoices_model->get_invoices($start, $limit, $orders_id, $customers_id, $status);
+        //get invoices
+        $result = $this->invoices_model->get_invoices($start, $limit, $orders_id, $customers_id, $status);
         
+        //build response
         $records = array();
-        if ($invocies != NULL)
+        if ($result['invoices'] != NULL)
         {
-            foreach($invocies as $invoice)
+            foreach($result['invoices'] as $invoice)
             {
-                $this->load->library('order', $invoice['orders_id']);
-                
-                $order_details = $this->get_order_total($this->order);
+            	//get order details
+            	$order_name = 'order_' . $invoice['orders_id'];
+                $this->load->library('order', $invoice['orders_id'], $order_name);
+                $order_details = $this->get_order_total($this->$order_name);
                 
                 $records[] = array('orders_id' => $invoice['orders_id'], 
                                    'customers_name' => $invoice['customers_name'], 
@@ -86,16 +91,16 @@ Class Invoices extends TOC_Controller
                                    'orders_status_name' => $invoice['orders_status_name'], 
                                    'invoices_number' => $invoice['invoice_number'], 
                                    'invoices_date' => mdate('%Y-%m-%d', human_to_unix($invoice['invoice_date'])), 
-                                   'shipping_address' => $this->address->format($this->order->get_delivery(), '<br />'),
-                                   'shipping_method' => $this->order->get_deliver_method(),
-                                   'billing_address' => $this->address->format($this->order->get_billing(), '<br />'),
-                                   'payment_method' => $this->order->get_payment_method(), 
+                                   'shipping_address' => $this->address->format($this->$order_name->get_delivery(), '<br />'),
+                                   'shipping_method' => $this->$order_name->get_deliver_method(),
+                                   'billing_address' => $this->address->format($this->$order_name->get_billing(), '<br />'),
+                                   'payment_method' => $this->$order_name->get_payment_method(), 
                                    'products' => $order_details['products_table'], 
                                    'totals' => $order_details['order_total']);
             }
         }
         
-        $this->output->set_output(json_encode(array(EXT_JSON_READER_TOTAL => $this->invoices_model->get_total($orders_id, $customers_id, $status),
+        $this->output->set_output(json_encode(array(EXT_JSON_READER_TOTAL => $result['total'],
                                                     EXT_JSON_READER_ROOT => $records)));
     }
     
@@ -418,7 +423,7 @@ Class Invoices extends TOC_Controller
                 $product_info .= '</p>';
             }
             
-            $products_table .= '<tr><td>' . $product_info . '</td><td width="60" valign="top" align="right">' . $this->currencies->display_price_with_tax_rate($product['final_price'], $product['tax'], 1, $this->order->get_currency(), $this->order->get_currency_value()) . '</td></tr>';
+            $products_table .= '<tr><td>' . $product_info . '</td><td width="60" valign="top" align="right">' . $this->currencies->display_price_with_tax_rate($product['final_price'], $product['tax'], 1, $order->get_currency(), $order->get_currency_value()) . '</td></tr>';
         }
         $products_table .= '</table>';
         

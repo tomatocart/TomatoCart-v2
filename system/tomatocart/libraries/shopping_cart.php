@@ -1358,7 +1358,7 @@ class TOC_Shopping_Cart
      */
     function calculate($set_shipping = TRUE)
     {
-        $this->sub_total = 0;
+        $this->subtotal = 0;
         $this->total = 0;
         $this->weight = 0;
         $this->tax = 0;
@@ -1390,7 +1390,7 @@ class TOC_Shopping_Cart
 
                 $shown_price = $this->ci->currencies->add_tax_rate_to_price($data['final_price'], $tax, $data['quantity']);
 
-                $this->sub_total += $shown_price;
+                $this->subtotal += $shown_price;
                 $this->total += $shown_price;
 
                 if (config('DISPLAY_PRICE_WITH_TAX') == '1')

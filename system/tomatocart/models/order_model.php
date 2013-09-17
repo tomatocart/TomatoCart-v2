@@ -200,6 +200,7 @@ class Order_Model extends CI_Model
         $data = array(
         	'orders_id' => $orders_id, 
         	'orders_status_id' => $status_id, 
+            'date_added' => date('Y-m-d H:i:s',now()),
         	'customer_notified' => (config('SEND_EMAILS') == '1') ? '1' : '0', 
         	'comments' => $comments);
 

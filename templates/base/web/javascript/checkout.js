@@ -136,9 +136,6 @@ jQuery.Toc.override(jQuery.Toc.Checkout, {
             var $me = $(this);
             var form = $me.parent().parent().attr('id');
             
-            console.log($this.currentStep);
-            console.log($this.steps[form]);
-            
             //if the current step is large than the clicked page
             if ($this.currentStep > $this.steps[form]) {
                 //hide the active panel

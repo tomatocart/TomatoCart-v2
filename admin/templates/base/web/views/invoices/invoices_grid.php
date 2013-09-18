@@ -23,6 +23,7 @@ Ext.define('Toc.invoices.InvoicesGrid', {
     config = config || {};
     
     config.border = false;
+    config.defaults = {autoScroll: true};
     config.viewConfig = {emptyText: TocLanguage.gridNoRecords};
     
     config.store = Ext.create('Ext.data.Store', {

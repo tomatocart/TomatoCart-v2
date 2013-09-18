@@ -23,7 +23,7 @@ Ext.define('Toc.orders.OrdersGrid', {
 		config = config || {};
 
 		config.border = false;
-		config.autoScroll = true;
+		config.defaults = {autoScroll: true};
 		config.viewConfig = {
 			emptyText: TocLanguage.gridNoRecords
 		};

@@ -538,12 +538,14 @@ check column
 
 .order_details strong {font-weight: bolder;}
 
-.order_details .order_products {margin: 15px 0;}
+.order_details .order_products {margin: 10px 0;}
 
 .pnlSummary p {
   padding: 10px;
   margin-left: 10px;
 }
+
+.order_details table td {vertical-align:top;}
 
 /*Start Configuration*/
 

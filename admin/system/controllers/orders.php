@@ -89,19 +89,20 @@ class Orders extends TOC_Controller
         {
             foreach($orders as $order)
             {
-                $this->load->library('order', $order['orders_id']);
+            	$order_name = 'order_' . $order['orders_id'];
+                $this->load->library('order', $order['orders_id'], $order_name);
                 
-                $order_details = $this->get_order_total($this->order);
+                $order_details = $this->get_order_total($this->$order_name);
                 
                 $records[] = array('orders_id' => $order['orders_id'],
                                    'customers_name' => $order['customers_name'],
                                    'order_total' => strip_tags($order['order_total']),
                                    'date_purchased' => mdate('%Y-%m-%d', human_to_unix($order['date_purchased'])),
                                    'orders_status_name' => $order['orders_status_name'],
-                                   'shipping_address' => $this->address->format($this->order->get_delivery(), '<br />'),
-                                   'shipping_method' => $this->order->get_deliver_method(),
-                                   'billing_address' => $this->address->format($this->order->get_billing(), '<br />'),
-                                   'payment_method' => $this->order->get_payment_method(),
+                                   'shipping_address' => $this->address->format($this->$order_name->get_delivery(), '<br />'),
+                                   'shipping_method' => $this->$order_name->get_deliver_method(),
+                                   'billing_address' => $this->address->format($this->$order_name->get_billing(), '<br />'),
+                                   'payment_method' => $this->$order_name->get_payment_method(),
                                    'products' => $order_details['products_table'],
                                    'action_class' => empty($order['invoice_number']) ? 'icon-invoice-record' : 'icon-invoice-gray-record',
                                    'totals' => $order_details['order_total']);
@@ -182,7 +183,7 @@ class Orders extends TOC_Controller
               $product_info .= '</p>';
           }
           
-          $products_table .= '<tr><td>' . $product_info . '</td><td width="60" valign="top" align="right">' . $this->currencies->display_price_with_tax_rate($product['final_price'], $product['tax'], 1, $this->order->get_currency(), $this->order->get_currency_value()) . '</td></tr>';
+          $products_table .= '<tr><td>' . $product_info . '</td><td width="60" valign="top" align="right">' . $this->currencies->display_price_with_tax_rate($product['final_price'], $product['tax'], 1, $order->get_currency(), $order->get_currency_value()) . '</td></tr>';
         }
         $products_table .= '</table>';
         

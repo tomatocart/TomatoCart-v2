@@ -13,7 +13,8 @@ create_credit_slip_heading_title = Create Credit Slip
 create_store_credit_heading_title = Create Store Credit
 
 operation_heading_order_id = Order ID
-operation_heading_customer_id = Customer ID
+operation_heading_customer_name = Customer Name
+operation_heading_status = Status
 
 table_heading_customers = Customers
 table_heading_order_total = Order Total

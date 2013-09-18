@@ -52,7 +52,7 @@ class Invoices_Model extends CI_Model
      * @param $status
      * @return array
      */
-    public function get_invoices($start, $limit, $orders_id, $customers_id, $status)
+    public function get_invoices($start, $limit, $orders_id, $customers_name, $status)
     {
     	$this->db
         ->select('o.orders_id, o.customers_ip_address, o.customers_name, o.payment_method, o.date_purchased, o.last_modified, o.currency, o.currency_value, o.invoice_number, o.invoice_date, s.orders_status_name, ot.text as order_total')
@@ -68,14 +68,14 @@ class Invoices_Model extends CI_Model
            $this->db->where('o.orders_id', $orders_id);
         }
         
-        if (!empty($customers_id))
+        if (!empty($customers_name))
         {
-            $this->db->where('o.customers_id', $customers_id);
+            $this->db->like('o.customers_name', $customers_name);
         }
         
         if (!empty($status))
         {
-            $this->db->where('s.orders_status_id', $status);
+            $this->db->like('s.orders_status_name', $status);
         }
         
         //clone the db object to get the total number of invoices

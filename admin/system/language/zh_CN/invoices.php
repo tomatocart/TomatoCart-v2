@@ -13,7 +13,8 @@ create_credit_slip_heading_title = 创建退款单据
 create_store_credit_heading_title = 创建虚拟货币
 
 operation_heading_order_id = 订单编号
-operation_heading_customer_id = 会员编号
+operation_heading_customer_name = 会员名
+operation_heading_status = 状态
 
 table_heading_customers = 会员
 table_heading_order_total = 订单总价

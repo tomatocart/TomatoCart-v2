@@ -126,9 +126,14 @@ Ext.define('Toc.invoices.InvoicesGrid', {
       emptyText: '<?php echo lang('operation_heading_order_id'); ?>'
     });
     
-    this.txtCustomerId = Ext.create('Ext.form.TextField', {
+    this.txtCustomerName = Ext.create('Ext.form.TextField', {
       width: 120,
-      emptyText: '<?php echo lang('operation_heading_customer_id'); ?>'
+      emptyText: '<?php echo lang('operation_heading_customer_name'); ?>'
+    });
+    
+    this.txtStatus = Ext.create('Ext.form.TextField', {
+      width: 120,
+      emptyText: '<?php echo lang('operation_heading_status'); ?>'
     });
     
     config.tbar = [
@@ -141,7 +146,9 @@ Ext.define('Toc.invoices.InvoicesGrid', {
       '->',
       this.txtOrderId,
       ' ',
-      this.txtCustomerId,
+      this.txtCustomerName,
+      ' ',
+      this.txtStatus,
       {
         name: 'search',
         handler: this.onSearch,
@@ -170,7 +177,8 @@ Ext.define('Toc.invoices.InvoicesGrid', {
     var proxy = this.getStore().getProxy();
     
     proxy.extraParams['orders_id'] = this.txtOrderId.getValue() || null;
-    proxy.extraParams['customers_id'] = this.txtCustomerId.getValue() || null;
+    proxy.extraParams['customers_name'] = this.txtCustomerName.getValue() || null;
+    proxy.extraParams['status'] = this.txtStatus.getValue() || null;
     
     this.onRefresh();
   },

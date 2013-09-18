@@ -67,11 +67,11 @@ Class Invoices extends TOC_Controller
         $limit = empty($limit) ? MAX_DISPLAY_SEARCH_RESULTS : $limit;
         
         $orders_id = $this->input->get_post('orders_id');
-        $customers_id = $this->input->get_post('customers_id');
+        $customers_name = $this->input->get_post('customers_name');
         $status = $this->input->get_post('status');
         
         //get invoices
-        $result = $this->invoices_model->get_invoices($start, $limit, $orders_id, $customers_id, $status);
+        $result = $this->invoices_model->get_invoices($start, $limit, $orders_id, $customers_name, $status);
         
         //build response
         $records = array();

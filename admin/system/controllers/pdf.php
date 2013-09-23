@@ -37,9 +37,6 @@ class Pdf extends TOC_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		
-		//load the orders language definitions
-		$this->lang->ini_load('orders.php');
 	}
 	
 	// ------------------------------------------------------------------------
@@ -59,12 +56,24 @@ class Pdf extends TOC_Controller
 		
 		$this->output->set_content_type('application/pdf')->set_output($pdf_output);
 	}
+	
+	// ------------------------------------------------------------------------
+	/**
+	 * Print invoice pdf
+	 *
+	 * @access public
+	 * @return string
+	 */
+	public function print_invoice($orders_id)
+	{
+		//load inoice pdf library under pdf sub-directory
+		$this->load->library('pdf/invoice_pdf', $orders_id);
+		
+		$pdf_output = $this->invoice_pdf->render();
+		
+		$this->output->set_content_type('application/pdf')->set_output($pdf_output);
+	}
 }
-
-
-
-
-
 
 /* End of file pdf.php */
 /* Location: ./system/controllers/pdf.php */

@@ -18,7 +18,7 @@
 // ------------------------------------------------------------------------
 
 /**
- * Order Pdf Module Class
+ * Invoice Pdf Module Class
  *
  * This class is the parent class for all toc pdf classes
  *
@@ -32,7 +32,7 @@
 //load the parent pdf module class
 require_once('pdf_module.php');
 
-class TOC_Order_Pdf extends TOC_Pdf_Module
+class TOC_Invoice_Pdf extends TOC_Pdf_Module
 {
 	/**
 	 * Constructor
@@ -44,16 +44,16 @@ class TOC_Order_Pdf extends TOC_Pdf_Module
 	{
 		parent::__construct($orders_id);
 		
-		//load the orders language definitions
-		$this->CI->lang->ini_load('orders.php');
+		//load the invoices language definitions
+		$this->CI->lang->ini_load('invoices.php');
 		
-		log_message('debug', 'TOC Order Pdf Class Initialized');
+		log_message('debug', 'TOC Invoice Pdf Class Initialized');
 	}
 	
 	// --------------------------------------------------------------------
 	
 	/**
-	 * Set general information of order pdf
+	 * Set general information of invoice pdf
 	 *
 	 * @access protected
 	 * @return void
@@ -61,14 +61,14 @@ class TOC_Order_Pdf extends TOC_Pdf_Module
 	protected function set_general_info()
 	{
 		parent::set_general_info();
-	
-		$this->CI->pdf->SetTitle('Order');
+		
+		$this->CI->pdf->SetTitle('Invoice');
 	}
 	
 	// --------------------------------------------------------------------
 	
 	/**
-	 * Set the header of order pdf
+	 * Set the header of invoice pdf
 	 *
 	 * @access protected
 	 * @return void
@@ -76,24 +76,28 @@ class TOC_Order_Pdf extends TOC_Pdf_Module
 	protected function set_header()
 	{
 		parent::set_header();
-	
+		
 		//set head fields
 		$fields = array(
-						'titles' => array(
-										lang('operation_heading_order_date'),
-										lang('operation_heading_order_id')
-						),
-						'values' => array(
-										mdate($this->CI->lang->get_date_format_short(), mysql_to_unix($this->CI->order->get_date_created())),
-										$this->CI->order->get_order_id()
-						)
+			'titles' => array(
+				lang('operation_heading_invoice_number'), 
+				lang('operation_heading_invoice_date'), 
+				lang('operation_heading_order_id')
+			), 
+			'values' => array(
+				$this->CI->order->get_invoice_number(),
+				mdate($this->CI->lang->get_date_format_short(), mysql_to_unix($this->CI->order->get_invoice_date())),
+				$this->CI->order->get_order_id()
+			)
 		);
-	
+		
 		$this->set_head_fields($fields);
 	}
 	
+	// --------------------------------------------------------------------
+	
 	/**
-	 * Render the order pdf
+	 * Render the invoice pdf
 	 *
 	 * @access public
 	 * @param boolean
@@ -106,14 +110,14 @@ class TOC_Order_Pdf extends TOC_Pdf_Module
 		//return output pdf
 		if ($return === TRUE)
 		{
-			return $this->CI->pdf->Output("Order", "S");
+			return $this->CI->pdf->Output("Invoice", "S");
 		}
 		else
 		{
-			$this->CI->pdf->Output("Order", "I");
+			$this->CI->pdf->Output("Invoice", "I");
 		}
 	}
 }
 
-/* End of order_pdf.php */
-/* Location: ./system/libraries/order_pdf.php */
+/* End of file invoice_pdf.php */
+/* Location: ./system/libraries/pdf/invoice_pdf.php */

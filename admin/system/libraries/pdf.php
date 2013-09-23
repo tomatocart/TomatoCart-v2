@@ -14,8 +14,6 @@ define('TOC_PDF_POS_START_X', 70);
 define('TOC_PDF_POS_START_Y', 50);
 define('TOC_PDF_LOGO_UPPER_LEFT_CORNER_X', 100);
 define('TOC_PDF_LOGO_UPPER_LEFT_CORNER_Y', 10);
-define('TOC_PDF_LOGO_WIDTH', 80);
-define('TOC_PDF_LOGO_HEIGHT', 20);
 
 define('TOC_PDF_POS_ADDRESS_INFO_Y', TOC_PDF_POS_START_Y);
 define('TOC_PDF_POS_STORE_ADDRESS_Y', TOC_PDF_POS_START_Y);
@@ -50,13 +48,6 @@ define('TOC_PDF_SHIP_TO_TITLE_FONT_SIZE', 11);
  * @package tcpdf_ci
  ***********************************************************/
 class TOC_Pdf extends TCPDF {
-	/**
-	 * Hold the customer infomation
-	 *
-	 * @var array
-	 */
-	protected $customer_info = array();
-	
 	/**
 	 * Override Default cell height ratio to prevent the notice error
 	 * @access protected
@@ -165,19 +156,24 @@ class TOC_Pdf extends TCPDF {
 		
 		# image settings
 		$this->imgscale = $this->_config['image_scale'];
-		
 	}
 	
 	// --------------------------------------------------------------------
 	
 	/**
-	 * Set customer information
-	 *
-	 * @param	array
-	 * @return	void
+	 * Magic method to get the property automatically
+	 * 
+	 * @access public
+	 * @param string
+	 * @return mixed
 	 */
-	public function set_customer_info($customer_info)
+	public function __get($name)
 	{
-		$this->_customer_info = $customer_info;
+		if (isset($this->$name))
+		{
+			return $this->$name;
+		}
+		
+		return NULL;
 	}
 }

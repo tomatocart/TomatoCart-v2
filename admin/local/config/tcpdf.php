@@ -170,8 +170,8 @@
 	 * TCPDF default document creator and author strings
 	 ***********************************************************/
 	
-	$tcpdf['creator'] = 'TCPDF';
-	$tcpdf['author'] = 'TCPDF';
+	$tcpdf['creator'] = 'TomatoCart';
+	$tcpdf['author'] = 'TomatoCart';
 	
 	
 	/************************************************************
@@ -213,8 +213,8 @@
 	$tcpdf['header_margin'] = 5;
 	$tcpdf['header_title'] = 'TCPDF Example';
 	$tcpdf['header_string'] = "by Nicola Asuni - Tecnick.com\nwww.tcpdf.org";
-	$tcpdf['header_logo'] = 'tcpdf_logo.jpg';
-	$tcpdf['header_logo_width'] = 30;
+	$tcpdf['header_logo'] = 'store_logo.jpg';
+	$tcpdf['header_logo_width'] = 80;
 	
 	
 	/************************************************************

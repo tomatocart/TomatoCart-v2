@@ -82,7 +82,7 @@ Ext.define('Toc.invoices.InvoicesGrid', {
           handler: function(grid, rowIndex, colIndex) {
             var rec = grid.getStore().getAt(rowIndex);
             
-            this.onInvoice(rec);
+            this.onPrintInvoice(rec);
           },
           scope: this
         }]
@@ -169,8 +169,8 @@ Ext.define('Toc.invoices.InvoicesGrid', {
     this.callParent([config]);
   },
   
-  onInvoice: function(record){
-    this.openWin('<?php echo site_url('invoices/create_invoice'); ?>/' + record.get('orders_id'), 900, 500);
+  onPrintInvoice: function(record){
+    this.openWin('<?php echo site_url('pdf/print_invoice'); ?>/' + record.get('orders_id'), 900, 500);
   },
   
   onSearch: function() {

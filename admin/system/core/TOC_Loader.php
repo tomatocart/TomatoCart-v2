@@ -106,6 +106,7 @@ class TOC_Loader extends CI_Loader {
 	 * @param	string	the item that is being loaded
 	 * @param	mixed	any additional parameters
 	 * @param	string	an optional object name
+	 * @param   boolean tomatocart core class extend from another core class
 	 * @return	void
 	 */
 	protected function _ci_load_class($class, $params = NULL, $object_name = NULL, $extend = FALSE)

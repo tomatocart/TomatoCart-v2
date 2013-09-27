@@ -27,6 +27,30 @@
  * @link		http://tomatocart.com/wiki/
 */
 class TOC_Loader extends CI_Loader {
+	
+	/**
+	 * Constructor
+	 *
+	 * Sets the path to the view files and gets the initial output buffering level
+	 *
+	 * @return	void
+	 */
+	public function __construct()
+	{
+		parent::__construct();
+		
+		/**
+		 * Add the library path of the store front and library path of local into the _ci_library_paths
+		 * When load libary in the controller, the sytem will search the class in current app path, and then in the ci library.
+		 * If the class isn't searched, the libary directory of the store front and of local application will be searched separately.
+		 * 
+		 * The FRONTPATH constant is pointed to ../system/tomatocart path.
+		 * The LOCALAPPPAH constant is pointed to admin/local path.
+		 * Both fo them are defined in the admin/index.php
+		 */
+		array_push($this->_ci_library_paths, FRONTPATH, LOCALAPPPATH);
+		
+	}
 
 	// --------------------------------------------------------------------
 
@@ -106,61 +130,20 @@ class TOC_Loader extends CI_Loader {
 		// We'll test for both lowercase and capitalized versions of the file name
 		foreach (array(ucfirst($class), strtolower($class)) as $class)
 		{
-			//support the local sub class
+			/**
+			 * Support: the local sub-classes extened from toc core classed of the admin application
+			 * 
+			 * For example, you could extend the TOC_Customers under admin > system > libraries
+			 * You just need to add a config_item('local_subclass_prefix').customers file under admin > local >libraries and then define the class in it
+			 * You could define any local sublcass prefix in local/config.php
+			 * 
+			 * If the toc core class is extended from ci core class, it will also works as expected
+			 */
 			$local_subclass = LOCALAPPPATH . 'libraries/'.$subdir.config_item('local_subclass_prefix').$class.'.php';
 
 			// Whether it is a local class extension request
 			if (file_exists($local_subclass))
 			{
-				$subclass = APPPATH.'libraries/'.$subdir.config_item('subclass_prefix').$class.'.php';
-
-				// the core tomatocart class is also a sub-class of the ci
-				if (file_exists($subclass))
-				{
-					$baseclass = BASEPATH.'libraries/'.ucfirst($class).'.php';
-
-					if ( ! file_exists($baseclass))
-					{
-						log_message('error', 'Unable to load the requested class: '.$class);
-						show_error('Unable to load the requested class: '.$class);
-					}
-
-					// Safety: Was the class already loaded by a previous call?
-					if (in_array($local_subclass, $this->_ci_loaded_files))
-					{
-						// Before we deem this to be a duplicate request, let's see
-						// if a custom object name is being supplied. If so, we'll
-						// return a new instance of the object
-						if ( ! is_null($object_name))
-						{
-							$CI =& get_instance();
-							if ( ! isset($CI->$object_name))
-							{
-								return $this->_ci_init_class($class, config_item('local_subclass_prefix'), $params, $object_name);
-							}
-						}
-
-						$is_duplicate = TRUE;
-						log_message('debug', $class.' class already loaded. Second attempt ignored.');
-						return;
-					}
-
-					include_once($baseclass);
-					include_once($subclass);
-					include_once($local_subclass);
-					$this->_ci_loaded_files[] = $local_subclass;
-
-					return $this->_ci_init_class($class, config_item('local_subclass_prefix'), $params, $object_name);
-				}
-
-				//core tomatocart base class
-				$base_class = APPPATH.'libraries/'.$subdir.$class.'.php';
-				if ( ! file_exists($base_class))
-				{
-					log_message('error', 'Unable to load the requested class: '.$class);
-					show_error('Unable to load the requested class: '.$class);
-				}
-
 				// Safety: Was the class already loaded by a previous call?
 				if (in_array($local_subclass, $this->_ci_loaded_files))
 				{
@@ -175,22 +158,82 @@ class TOC_Loader extends CI_Loader {
 							return $this->_ci_init_class($class, config_item('local_subclass_prefix'), $params, $object_name);
 						}
 					}
-
+				
 					$is_duplicate = TRUE;
 					log_message('debug', $class.' class already loaded. Second attempt ignored.');
 					return;
 				}
 
+				// extend the core tomatocart class which is also a sub-class of the ci core class
+				$subclass = APPPATH.'libraries/'.$subdir.config_item('subclass_prefix').$class.'.php';
+
+				if (file_exists($subclass))
+				{
+					$baseclass = BASEPATH.'libraries/'.ucfirst($class).'.php';
+
+					if ( ! file_exists($baseclass))
+					{
+						log_message('error', 'Unable to load the requested class: '.$class);
+						show_error('Unable to load the requested class: '.$class);
+					}
+
+					include_once($baseclass);
+					include_once($subclass);
+					include_once($local_subclass);
+					$this->_ci_loaded_files[] = $local_subclass;
+
+					return $this->_ci_init_class($class, config_item('local_subclass_prefix'), $params, $object_name);
+				}
+
+				//just extend from core tomatocart base class
+				$base_class = APPPATH.'libraries/'.$subdir.$class.'.php';
+				if ( ! file_exists($base_class))
+				{
+					log_message('error', 'Unable to load the requested class: '.$class);
+					show_error('Unable to load the requested class: '.$class);
+				}
+				
+				include_once($baseclass);
+				include_once($local_subclass);
+				$this->_ci_loaded_files[] = $local_subclass;
+				
+				return $this->_ci_init_class($class, config_item('local_subclass_prefix'), $params, $object_name);
 			}
 
 			/**
-			 * Support tomatoCart Core Class Extension
+			 * Support: tomatocart core class extend from another core class
 			 *
-			 * For example: we have A and B classes in the tomatocart core libraries. A is extended B.
+			 * For example: we have toc_customers class in the tomatocart core libraries. You wish to create a sub-class from toc_customers
+			 * In this case, you just need to create a file named config_item('toc_subclass_prefix').customers.php
+			 * 
+			 * You have to pass the param - extend as true into load->libarary to create the sub-class instance directly
+			 * 
+			 * If the parent class is extend from ci core class, it will still work
+			 * 
 			 */
 			if ($extend === TRUE)
 			{
 				$toc_subclass = APPPATH.'libraries/'.$subdir.config_item('toc_subclass_prefix').$class.'.php';
+				
+				// Safety: Was the class already loaded by a previous call?
+				if (in_array($toc_subclass, $this->_ci_loaded_files))
+				{
+					// Before we deem this to be a duplicate request, let's see
+					// if a custom object name is being supplied. If so, we'll
+					// return a new instance of the object
+					if ( ! is_null($object_name))
+					{
+						$CI =& get_instance();
+						if ( ! isset($CI->$object_name))
+						{
+							return $this->_ci_init_class($class, config_item('toc_subclass_prefix'), $params, $object_name);
+						}
+					}
+				
+					$is_duplicate = TRUE;
+					log_message('debug', $class.' class already loaded. Second attempt ignored.');
+					return;
+				}
 
 				if (file_exists($toc_subclass))
 				{
@@ -205,26 +248,6 @@ class TOC_Loader extends CI_Loader {
 						{
 							log_message('error', 'Unable to load the requested class: '.$class);
 							show_error('Unable to load the requested class: '.$class);
-						}
-
-						// Safety: Was the class already loaded by a previous call?
-						if (in_array($toc_subclass, $this->_ci_loaded_files))
-						{
-							// Before we deem this to be a duplicate request, let's see
-							// if a custom object name is being supplied. If so, we'll
-							// return a new instance of the object
-							if ( ! is_null($object_name))
-							{
-								$CI =& get_instance();
-								if ( ! isset($CI->$object_name))
-								{
-									return $this->_ci_init_class($class, config_item('toc_subclass_prefix'), $params, $object_name);
-								}
-							}
-
-							$is_duplicate = TRUE;
-							log_message('debug', $class.' class already loaded. Second attempt ignored.');
-							return;
 						}
 
 						include_once($baseclass);
@@ -244,36 +267,15 @@ class TOC_Loader extends CI_Loader {
 						show_error('Unable to load the requested class: '.$class);
 					}
 
-					// Safety: Was the class already loaded by a previous call?
-					if (in_array($toc_subclass, $this->_ci_loaded_files))
-					{
-						// Before we deem this to be a duplicate request, let's see
-						// if a custom object name is being supplied. If so, we'll
-						// return a new instance of the object
-						if ( ! is_null($object_name))
-						{
-							$CI =& get_instance();
-							if ( ! isset($CI->$object_name))
-							{
-								return $this->_ci_init_class($class, config_item('toc_subclass_prefix'), $params, $object_name);
-							}
-						}
-
-						$is_duplicate = TRUE;
-						log_message('debug', $class.' class already loaded. Second attempt ignored.');
-						return;
-					}
-
 					include_once($toc_baseclass);
 					include_once($toc_subclass);
 					$this->_ci_loaded_files[] = $toc_subclass;
 
 					return $this->_ci_init_class($class, config_item('toc_subclass_prefix'), $params, $object_name);
-
 				}
 			}
 				
-			//TomatoCart core class
+			//Just load a TomatoCart core class which is extended from core ci class
 			$subclass = APPPATH.'libraries/'.$subdir.config_item('subclass_prefix').$class.'.php';
 
 			// Is this a class extension request?
@@ -359,7 +361,7 @@ class TOC_Loader extends CI_Loader {
 			$path = strtolower($class).'/'.$class;
 			return $this->_ci_load_class($path, $params);
 		}
-
+		
 		// If we got this far we were unable to find the requested class.
 		// We do not issue errors if the load call failed due to a duplicate request
 		if ($is_duplicate === FALSE)

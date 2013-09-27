@@ -57,6 +57,7 @@ if (defined('ENVIRONMENT'))
     switch (ENVIRONMENT)
     {
         case 'development':
+        	ini_set('display_errors', 1);
             error_reporting(E_ALL & ~E_DEPRECATED);
             break;
         case 'testing':
@@ -138,6 +139,15 @@ if (defined('ENVIRONMENT'))
  */
 
     $root_path = '../';
+    
+/*
+ *---------------------------------------------------------------
+ * The front application path of the site
+ *---------------------------------------------------------------
+ * This path is used to get the resources such as libraries, helpers, models etc in the front application.
+ */
+    
+ 	$front_application_path = '../system/tomatocart';
 
 /*
  *---------------------------------------------------------------
@@ -162,14 +172,21 @@ if (defined('ENVIRONMENT'))
  * THIRD PARTY LIBRARY PATH CONSTANTS
  *---------------------------------------------------------------
  */
-  define('THIRDPARTY', $third_party_folder . '/');
+  	define('THIRDPARTY', $third_party_folder . '/');
 
 /*
  *---------------------------------------------------------------
  * ROOT PATH CONSTANTS
  *---------------------------------------------------------------
  */
-    define('ROOTPATH', str_replace("\\", "/", $root_path));
+   	define('ROOTPATH', str_replace("\\", "/", $root_path));
+   	
+/*
+ *---------------------------------------------------------------
+ * Front application path
+ * -------------------------------------------------------------- 
+ */
+   	define('FRONTPATH', str_replace("\\", "/", $front_application_path));
 
 /*
  *---------------------------------------------------------------

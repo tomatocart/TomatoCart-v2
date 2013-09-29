@@ -186,7 +186,7 @@ if (defined('ENVIRONMENT'))
  * Front application path
  * -------------------------------------------------------------- 
  */
-   	define('FRONTPATH', str_replace("\\", "/", $front_application_path));
+   	define('FRONTPATH', realpath(str_replace("\\", "/", $front_application_path)) . '/');
 
 /*
  *---------------------------------------------------------------

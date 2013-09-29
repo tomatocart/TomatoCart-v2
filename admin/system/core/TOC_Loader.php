@@ -50,6 +50,13 @@ class TOC_Loader extends CI_Loader {
 		 */
 		array_push($this->_ci_library_paths, FRONTPATH, LOCALAPPPATH);
 		
+		/**
+		 * Add the model path of the store front and model path of local into the _ci_model_paths
+		 * When load model in the controller, the sytem will search the class in current app path, and then in the ci library.
+		 * If the class isn't searched, the model directory of the store front and of local application will be searched separately.
+		 *
+		 */
+		array_push($this->_ci_model_paths, FRONTPATH, LOCALAPPPATH);
 	}
 
 	// --------------------------------------------------------------------

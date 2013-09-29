@@ -7,7 +7,7 @@
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License v2 (1991)
 # as published by the Free Software Foundation.
-heading_title = 邮件模板
+heading_email_templates_title = 邮件模板
 
 table_heading_email_template_name = 邮件模板
 table_heading_email_title = 邮件标题

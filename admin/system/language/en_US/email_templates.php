@@ -7,7 +7,7 @@
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License v2 (1991)
 # as published by the Free Software Foundation.
-heading_title = Email Templates
+heading_email_templates_title = Email Templates
 
 table_heading_email_template_name = Email Template Name
 table_heading_email_title = Email Title

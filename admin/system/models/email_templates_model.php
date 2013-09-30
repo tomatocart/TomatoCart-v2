@@ -148,6 +148,68 @@ class Email_Templates_Model extends CI_Model
 	
 		return NULL;
 	}
+	
+	/**
+	 * Save the email template
+	 *
+	 * @access public
+	 * @param int
+	 * @param array
+	 * @return mixed
+	 */
+	public function save($id, $data)
+	{
+		$error = FALSE;
+		
+		//start transaction
+		$this->db->trans_begin();
+		
+		//update email template table
+		$this->db->update('email_templates', array('email_templates_status' => $data['email_templates_status']), array('email_templates_id' => $id));
+		
+		//update error
+		if ($this->db->trans_status() === FALSE)
+		{
+			$error = TRUE;
+		}
+		//update email template description
+		else
+		{
+			foreach (lang_get_all() as $l)
+			{
+				$this->db->update('email_templates_description', 
+					array(
+						'email_title' => $data['email_title'][$l['id']], 
+						'email_content' => $data['email_content'][$l['id']]
+					),
+					array(
+						'email_templates_id' => $id,
+						'language_id' => $l['id']				
+					)
+				);
+				
+				//error happened
+				if ($this->db->trans_status() === FALSE)
+				{
+					$error = TRUE;
+					break;
+				}
+			}
+		}
+		
+		//commit transaction
+		if ($error === FALSE)
+		{
+			$this->db->trans_commit();
+			
+			return TRUE;
+		}
+		
+		//rollbak transaction
+		$this->db->trans_rollback();
+		
+		return FALSE;
+	}
 }
 
 /* End of file email_templates_model.php */

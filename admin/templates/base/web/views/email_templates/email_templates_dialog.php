@@ -211,7 +211,7 @@ Ext.define('Toc.email_templates.EmailTemplatesDialog', {
 							fieldLabel: \'' . lang('field_email_content') . '\',
 							name: \'email_content[' . $l['id'] . ']\', 
 						 	id: \'email-template-content' . $l['id'] . '\',
-							height: \'auto\',
+							height: 200,
 							width: 520,
 							listeners: {
 								editmodechange: this.onEditModeChange
@@ -249,7 +249,7 @@ Ext.define('Toc.email_templates.EmailTemplatesDialog', {
 	
 	buildForm: function() {
 		this.frmEmailTemplate = Ext.create('Ext.form.FormPanel', {
-			url: '<?php echo site_url('email_templates/email_templates'); ?>',
+			url: '<?php echo site_url('email_templates/save_email_template'); ?>',
 			baseParams: {},
 			layout: 'border',
 			width: 700,

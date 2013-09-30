@@ -125,6 +125,67 @@ class Email_Templates extends TOC_Controller
 		
 		$this->output->set_output(json_encode($response));
 	}
+	
+	// ------------------------------------------------------------------------
+	
+	/**
+	 * Save the email template
+	 *
+	 * @access public
+	 * @return string
+	 */
+	public function save_email_template()
+	{
+		$data = array(
+			'email_templates_status' => $this->input->post('email_templates_status'), 
+			'email_title' => $this->input->post('email_title'),
+			'email_content' => $this->input->post('email_content')
+		);
+		
+		//error flag
+		$error = FALSE;
+		$feedback = array();
+		
+		//check email template title
+		$languages = lang_get_all();
+		foreach ($data['email_title'] as $language_id => $title)
+		{
+			if (empty($title))
+			{
+				$error = TRUE;
+				$feedback[] = lang('ms_error_email_title_empty') . '(' . $this->lang->get_data($key, 'name') . ')';
+			}
+		}
+		
+		//check email template content
+		foreach ($data['email_content'] as $language_id => $content)
+		{
+			if (empty($content))
+			{
+				$error = TRUE;
+				$feedback[] = lang('ms_error_email_content_empty') . '(' . $this->lang->get_data($key, 'name') . ')';
+			}
+		}
+		
+		//save email templates
+		if ($error === FALSE)
+		{
+			if ($this->email_templates_model->save($this->input->post('email_templates_id'), $data))
+			{
+				$response = array('success' => TRUE, 'feedback' => lang('ms_success_action_performed'));
+			}
+			else
+			{
+				$response = array('success' => FALSE, 'feedback' => lang('ms_error_action_not_performed'));
+			}
+		}
+		else
+		{
+			$response = array('success' => FALSE, 'feedback' => lang('ms_error_action_not_performed') . '<br />' . implode('<br />', $feedback));
+		}
+		
+		$this->output->set_output(json_encode($response));
+	}
 }
 
 /* End of file email_templates.php */

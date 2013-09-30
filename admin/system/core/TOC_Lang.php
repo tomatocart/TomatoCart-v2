@@ -518,6 +518,40 @@ class TOC_Lang extends CI_Lang
     {
         return $this->languages[$this->code]['charset'];
     }
+    
+    // --------------------------------------------------------------------
+    
+    /**
+     * Get the language data
+     *
+     * @access  public
+     * @param int
+     * @param string
+     * @return mixed
+     */
+    public function get_data($id, $key = NULL)
+    {
+    	$result = null;
+    	
+    	foreach ($this->languages as $language)
+    	{
+    		//find the language data
+    		if ($language['id'] == $id)
+    		{
+    			$result = $language;
+    			
+    			break;
+    		}
+    	}
+    	
+    	if ($result !== NULL && $key !== NULL && isset($result[$key]))
+    	{
+    		return $result[$key];
+    	}
+    	
+    	return $result;
+    		
+    }
 
     // --------------------------------------------------------------------
 

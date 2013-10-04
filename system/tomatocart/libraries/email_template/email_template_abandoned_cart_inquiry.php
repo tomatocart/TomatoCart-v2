@@ -33,7 +33,7 @@ class TOC_Email_Template_abandoned_cart_inquiry extends TOC_Email_Template_Modul
 	/**
 	 * Email Template Name
 	 *
-	 * @access private
+	 * @access protected
 	 * @var string
 	 */
 	protected $template_name = 'abandoned_cart_inquiry';

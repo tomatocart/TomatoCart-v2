@@ -73,10 +73,8 @@ class TOC_Email_Template_out_of_stock_alerts extends TOC_Email_Template_Module
 	 *
 	 * @access public
 	 * @param string 
-	 * @param string
-	 * @param string
-	 * @param string
 	 * @param int
+	 * @param string
 	 * @return void
 	 */
 	public function set_data($products_name, $products_quantity, $products_variants = '')

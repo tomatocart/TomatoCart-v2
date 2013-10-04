@@ -33,7 +33,7 @@ class TOC_Email_Template_create_account_email extends TOC_Email_Template_Module
     /**
      * Email Template Name
      *
-     * @access private
+     * @access protected
      * @var string
      */
     protected $template_name = 'create_account_email';

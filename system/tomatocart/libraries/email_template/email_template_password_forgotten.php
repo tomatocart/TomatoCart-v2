@@ -33,7 +33,7 @@ class toC_Email_Template_password_forgotten extends TOC_Email_Template_Module
     /**
      * Email Template Name
      *
-     * @access private
+     * @access protected
      * @var string
      */
     var $template_name = 'password_forgotten';
@@ -41,7 +41,7 @@ class toC_Email_Template_password_forgotten extends TOC_Email_Template_Module
     /**
      * Email Template Keywords
      *
-     * @access private
+     * @access protected
      * @var array
      */
     protected $keywords = array( '%%greeting_text%%',

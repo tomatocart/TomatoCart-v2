@@ -33,7 +33,7 @@ class TOC_Email_Template_active_gift_certificate extends TOC_Email_Template_Modu
 	/**
 	 * Email Template Name
 	 *
-	 * @access private
+	 * @access protected
 	 * @var string
 	 */
 	protected $template_name = 'active_gift_certificate';

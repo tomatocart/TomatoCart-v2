@@ -33,7 +33,7 @@ class TOC_Email_Template_admin_create_order_store_credit extends TOC_Email_Templ
 	/**
 	 * Email Template Name
 	 *
-	 * @access private
+	 * @access protected
 	 * @var string
 	 */
 	protected $template_name = 'admin_create_order_store_credit';

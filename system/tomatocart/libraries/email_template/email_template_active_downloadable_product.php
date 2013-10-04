@@ -33,7 +33,7 @@ class TOC_Email_Template_active_downloadable_product extends TOC_Email_Template_
 	/**
 	 * Email Template Name
 	 *
-	 * @access private
+	 * @access protected
 	 * @var string
 	 */
 	protected $template_name = 'active_downloadable_product';

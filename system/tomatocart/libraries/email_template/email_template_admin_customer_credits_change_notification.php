@@ -33,7 +33,7 @@ class TOC_Email_Template_admin_customer_credits_change_notification extends TOC_
 	/**
 	 * Email Template Name
 	 *
-	 * @access private
+	 * @access protected
 	 * @var string
 	 */
 	protected $template_name = 'admin_customer_credits_change_notification';

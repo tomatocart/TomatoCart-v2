@@ -114,42 +114,52 @@ require_once 'shipping_module.php';
   Shipping Tables and Zone Countries.
  *
  */
-class TOC_Shipping_zones extends TOC_Shipping_Module {
+class TOC_Shipping_zones extends TOC_Shipping_Module 
+{
 
-	var $code = 'zones';
-	var $numzones = 1;
-	/**
-	 * Template Module Params
-	 *
-	 * @access private
-	 * @var array
-	 */
-	var $params = array(
-			array('name' => 'MODULE_SHIPPING_ZONES_STATUS',
-					'title' => 'Enable Zones Method', 'type' => 'combobox',
-					'mode' => 'local', 'value' => 'True',
-					'description' => 'Do you want to offer zone rate shipping?',
-					'values' => array(array('id' => 'True', 'text' => 'True'),
-							array('id' => 'False', 'text' => 'False'))),
-			array('name' => 'MODULE_SHIPPING_ZONES_HANDLING',
-					'title' => 'Handling Cost', 'type' => 'numberfield',
-					'value' => '0',
-					'description' => 'The handling cost for all orders using this shipping method.'),
-			array('name' => 'MODULE_SHIPPING_ZONES_TAX_CLASS',
-					'title' => 'Tax Class', 'type' => 'combobox',
-					'mode' => 'remote', 'value' => '0',
-					'description' => 'Use the following tax class on the shipping fee.',
-					'action' => 'config/get_tax_class'),
-			array('name' => 'MODULE_SHIPPING_ZONES_WEIGHT_UNIT',
-					'title' => 'Module weight Unit', 'type' => 'combobox',
-					'mode' => 'remote', 'value' => '0',
-					'description' => 'What unit of weight does this shipping module use?.',
-					'action' => 'config/get_weight_classes'),
-			array('name' => 'MODULE_SHIPPING_ZONES_SORT_ORDER',
-					'title' => 'Sort Order', 'type' => 'numberfield',
-					'value' => '0', 'description' => 'Sort order of display.'));
+	protected $code = 'zones';
+	protected $numzones = 1;
+	
+	protected $params = array(
+		array(
+			'name' => 'MODULE_SHIPPING_ZONES_STATUS',
+			'title' => 'Enable Zones Method', 'type' => 'combobox',
+			'mode' => 'local', 'value' => 'True',
+			'description' => 'Do you want to offer zone rate shipping?',
+			'values' => array(
+				array('id' => 'True', 'text' => 'True'),
+				array('id' => 'False', 'text' => 'False')
+			)
+		),
+		array(
+			'name' => 'MODULE_SHIPPING_ZONES_HANDLING',
+			'title' => 'Handling Cost', 'type' => 'numberfield',
+			'value' => '0',
+			'description' => 'The handling cost for all orders using this shipping method.'
+		),
+		array(
+			'name' => 'MODULE_SHIPPING_ZONES_TAX_CLASS',
+			'title' => 'Tax Class', 'type' => 'combobox',
+			'mode' => 'remote', 'value' => '0',
+			'description' => 'Use the following tax class on the shipping fee.',
+			'action' => 'config/get_tax_class'
+		),
+		array(
+			'name' => 'MODULE_SHIPPING_ZONES_WEIGHT_UNIT',
+			'title' => 'Module weight Unit', 'type' => 'combobox',
+			'mode' => 'remote', 'value' => '0',
+			'description' => 'What unit of weight does this shipping module use?.',
+			'action' => 'config/get_weight_classes'
+		),
+		array(
+			'name' => 'MODULE_SHIPPING_ZONES_SORT_ORDER',
+			'title' => 'Sort Order', 'type' => 'numberfield',
+			'value' => '0', 'description' => 'Sort order of display.'
+		)
+	);
 
-	public function __construct() {
+	public function __construct() 
+	{
 		parent::__construct();
 
 		// $this->icon = 'zones.jpg';
@@ -165,11 +175,14 @@ class TOC_Shipping_zones extends TOC_Shipping_Module {
 		
 	}
 	
-	protected function _construct() {
-		for($i = 1; $i <= $this->numzones ; $i++) {
+	protected function _construct() 
+	{
+		for($i = 1; $i <= $this->numzones ; $i++) 
+		{
 			$default_countries = '';
 			
-			if ($i == 1) {
+			if ($i == 1) 
+			{
 				$default_countries = 'US,CA';
 			}
 			$this->params[] = array('name' => 'MODULE_SHIPPING_ZONES_COUNTRIES_' . $i,
@@ -192,15 +205,22 @@ class TOC_Shipping_zones extends TOC_Shipping_Module {
 	 *
 	 * @access public
 	 */
-	public function initialize() {
-
+	public function initialize() 
+	{
 		$this->tax_class = $this->config['MODULE_SHIPPING_ZONES_TAX_CLASS'];		
 	}
-
-	public function quote() {
+	
+	/**
+	 * Set the shipping module quote methods
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public function quote_methods()
+	{
 		$dest_country = $this->ci->shopping_cart->get_shipping_address('country_iso_code_2');
 		$dest_zone = 0;
-		$error = false;
+		$error = FALSE;
 		
 		$this->ci->load->library('weight');
 		
@@ -208,51 +228,56 @@ class TOC_Shipping_zones extends TOC_Shipping_Module {
 							config('SHIPPING_WEIGHT_UNIT'),
 							$this->config['MODULE_SHIPPING_ZONES_WEIGHT_UNIT']);
 		
-		for ($i = 1; $i <= $this->numzones; $i++) {
+		for ($i = 1; $i <= $this->numzones; $i++) 
+		{
 			$countries_table = $this->config['MODULE_SHIPPING_ZONES_COUNTRIES_' . $i];
 			$country_zones = split("[,]", $countries_table);
-			if (in_array($dest_country, $country_zones)) {
+			if (in_array($dest_country, $country_zones)) 
+			{
 				$dest_zone = $i;
 				break;
 			}
 		}
-		if ($dest_zone == 0) {
-			$error = true;
-		} else {
+		
+		if ($dest_zone == 0) 
+		{
+			$error = TRUE;
+		} 
+		else 
+		{
 			$shipping = -1;
 			$zones_cost = $this->config['MODULE_SHIPPING_ZONES_COST_' . $dest_zone];
-			
+				
 			$zones_table = split("[:,]" , $zones_cost);
 			$size = sizeof($zones_table);
-			for ($i=0; $i<$size; $i+=2) {
-				if ($shipping_weight <= $zones_table[$i]) {
+			for ($i = 0; $i < $size; $i += 2) 
+			{
+				if ($shipping_weight <= $zones_table[$i]) 
+				{
 					$shipping = $zones_table[$i+1];
-					$shipping_method = lang('shipping_zones_method') . ' ' . $dest_country . ' : ' . 
-					$this->ci->weight->display($this->ci->shopping_cart->get_weight(), $this->config['MODULE_SHIPPING_ZONES_WEIGHT_UNIT']);
+					$shipping_method = lang('shipping_zones_method') . ' ' . $dest_country . ' : ' .
+										$this->ci->weight->display($this->ci->shopping_cart->get_weight(), $this->config['MODULE_SHIPPING_ZONES_WEIGHT_UNIT']);
 					break;
 				}
 			}
-			
-			if ($shipping == -1) {
+				
+			if ($shipping == -1) 
+			{
 				$shipping_cost = 0;
 				$shipping_method = lang('shipping_zones_undefined_rate');
-			} else {
+			} 
+			else 
+			{
 				$shipping_cost = ($shipping * $this->ci->shopping_cart->$shipping_weight()) + $this->config['MODULE_SHIPPING_ZONES_HANDLING_' . $dest_zone];
 			}
 		}
-
-
-		$this->quotes = array('id' => $this->code, 'module' => $this->title,
-				'methods' => array(
-						array('id' => $this->code,
-								'title' => lang('shipping_zones_method'),
-								'cost' => $shipping_cost)),
-				'tax_class_id' => $this->tax_class);
-
-		if (!empty($this->icon))
-			$this->quotes['icon'] = image_url('shipping/' . $this->icon,
-					$this->title);
-
-		return $this->quotes;
+										
+		$this->quotes['methods'] = array(
+			array(
+				'id' => $this->code,
+				'title' => lang('shipping_zones_method'),
+				'cost' => $shipping_cost
+			)
+		);
 	}
 }

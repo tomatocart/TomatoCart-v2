@@ -13,7 +13,7 @@
  * @link		http://tomatocart.com
  * @since		Version 2.0
  * @filesource
- */
+*/
 
 // ------------------------------------------------------------------------
 
@@ -28,101 +28,107 @@ require_once 'shipping_module.php';
  * @author		TomatoCart Dev Team
  * @link		http://tomatocart.com/wiki/
  */
-class TOC_Shipping_self_pickup extends TOC_Shipping_Module 
+class TOC_Shipping_self_pickup extends TOC_Shipping_Module
 {
 
-    var $code = 'self_pickup';
-    
-    /**
-     * Template Module Params
-     *
-     * @access private
-     * @var array
-     */
-    var $params = array(
-        array('name' => 'MODULE_SHIPPING_SELF_PICKUP_STATUS',
-              'title' => 'Enable Item Shipping', 
-              'type' => 'combobox',
-              'mode' => 'local',
-              'value' => 'True',
-              'description' => 'Do you want to offer self pickup shipping?',
-              'values' => array(
-                  array('id' => 'True', 'text' => 'True'),
-                  array('id' => 'False', 'text' => 'False'))),
-        array('name' => 'MODULE_SHIPPING_SELF_PICKUP_ZONE',
-              'title' => 'Shipping Zone', 
-              'type' => 'combobox',
-              'mode' => 'remote',
-		   	  'value' => '0',
-              'description' => 'If a zone is selected, only enable this shipping method for that zone.',
-              'action' => 'config/get_shipping_zone'),
-        array('name' => 'MODULE_SHIPPING_SELF_PICKUP_SORT_ORDER',
-                        'title' => 'Sort Order', 
-                        'type' => 'numberfield',
-                        'value' => '0',
-                        'description' => 'Sort order of display.'));
-        
-    /**
-     * Constructor
-     *
-     * @access public
-     */
-    public function __construct() {
-        parent::__construct();
-        
-        $this->icon = 'selfpickup.jpg';
-        $this->title = lang('shipping_self_pickup_title');
-        $this->description = lang('shipping_self_pickup_description');
-        $this->status = (isset($this->config['MODULE_SHIPPING_SELF_PICKUP_STATUS']) && ($this->config['MODULE_SHIPPING_SELF_PICKUP_STATUS'] == 'True')) ? TRUE : FALSE;
-        $this->sort_order = isset($this->config['MODULE_SHIPPING_SELF_PICKUP_SORT_ORDER']) ? $this->config['MODULE_SHIPPING_SELF_PICKUP_SORT_ORDER'] : null;
-    }
+	protected $code = 'self_pickup';
 
-    /**
-     * Initialize the shipping module
-     *
-     * @access public
-     */
-    public function initialize() {
-        if ( ($this->status === TRUE) && ((int)$this->config['MODULE_SHIPPING_SELF_PICKUP_ZONE'] > 0) )
-        {
-            $this->ci->load->model('address_model');
+	protected $params = array(
+		array(
+			'name' => 'MODULE_SHIPPING_SELF_PICKUP_STATUS',
+			'title' => 'Enable Item Shipping',
+			'type' => 'combobox',
+			'mode' => 'local',
+			'value' => 'True',
+			'description' => 'Do you want to offer self pickup shipping?',
+			'values' => array(
+				array('id' => 'True', 'text' => 'True'),
+				array('id' => 'False', 'text' => 'False')
+			)
+		),
+		array(
+			'name' => 'MODULE_SHIPPING_SELF_PICKUP_ZONE',
+			'title' => 'Shipping Zone',
+			'type' => 'combobox',
+			'mode' => 'remote',
+			'value' => '0',
+			'description' => 'If a zone is selected, only enable this shipping method for that zone.',
+			'action' => 'config/get_shipping_zone'
+		),
+		array(
+			'name' => 'MODULE_SHIPPING_SELF_PICKUP_SORT_ORDER',
+			'title' => 'Sort Order',
+			'type' => 'numberfield',
+			'value' => '0',
+			'description' => 'Sort order of display.'
+		)
+	);
 
-            $zones = $this->ci->address_model->get_zone_id_via_geo_zone($this->ci->shopping_cart->get_shipping_address('country_id'), $this->config['MODULE_SHIPPING_FLAT_ZONE']);
+	/**
+	 * Constructor
+	 *
+	 * @access public
+	*/
+	public function __construct() 
+	{
+		parent::__construct();
 
-            $check_flag = FALSE;
-            if ($zones !== NULL)
-            {
-                foreach($zones as $zone_id)
-                {
-                    if ($zone_id < 1) {
-                        $check_flag = TRUE;
-                        break;
-                    } elseif ($zone_id == $this->ci->shopping_cart->get_shipping_address('zone_id')) {
-                        $check_flag = TRUE;
-                        break;
-                    }
-                }
-            }
+		$this->icon = 'selfpickup.jpg';
+		$this->title = lang('shipping_self_pickup_title');
+		$this->description = lang('shipping_self_pickup_description');
+		$this->status = (isset($this->config['MODULE_SHIPPING_SELF_PICKUP_STATUS']) && ($this->config['MODULE_SHIPPING_SELF_PICKUP_STATUS'] == 'True')) ? TRUE : FALSE;
+		$this->sort_order = isset($this->config['MODULE_SHIPPING_SELF_PICKUP_SORT_ORDER']) ? $this->config['MODULE_SHIPPING_SELF_PICKUP_SORT_ORDER'] : null;
+	}
 
-            if ($check_flag == FALSE) {
-                $this->status = FALSE;
-            }
-        }
-    }
+	/**
+	 * Initialize the shipping module
+	 *
+	 * @access public
+	 */
+	public function initialize() 
+	{
+		if ( ($this->status === TRUE) && ((int)$this->config['MODULE_SHIPPING_SELF_PICKUP_ZONE'] > 0) )
+		{
+			$this->ci->load->model('address_model');
 
-    public function quote() {
-        global $osC_Language;
+			$zones = $this->ci->address_model->get_zone_id_via_geo_zone($this->ci->shopping_cart->get_shipping_address('country_id'), $this->config['MODULE_SHIPPING_FLAT_ZONE']);
 
-        $this->quotes = array('id' => $this->code,
-                            'module' => $this->title,
-                            'methods' => array(array('id' => $this->code,
-                                                     'title' => lang('shipping_self_pickup_method'),
-                                                     'cost' => 0)),
-                            'tax_class_id' => 0);
+			$check_flag = FALSE;
+			if ($zones !== NULL)
+			{
+				foreach($zones as $zone_id)
+				{
+					if ($zone_id < 1) {
+						$check_flag = TRUE;
+						break;
+					} elseif ($zone_id == $this->ci->shopping_cart->get_shipping_address('zone_id')) {
+						$check_flag = TRUE;
+						break;
+					}
+				}
+			}
 
-        if (!empty($this->icon)) $this->quotes['icon'] = image_url('images/shipping/' . $this->icon, $this->title);
+			if ($check_flag == FALSE) {
+				$this->status = FALSE;
+			}
+		}
+	}
 
-        return $this->quotes;
-    }
+	/**
+	 * Set the shipping module quote methods
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public function quote_methods()
+	{
+		$this->quotes['methods'] = array(
+			array(
+				'id' => $this->code,
+				'title' => lang('shipping_self_pickup_method'),
+				'cost' => 0
+			)
+		);
+	}
 }
 ?>

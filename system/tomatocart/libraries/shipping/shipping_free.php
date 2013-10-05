@@ -31,43 +31,46 @@ require_once 'shipping_module.php';
 class TOC_Shipping_free extends TOC_Shipping_Module 
 {
 
-    var $code = 'free';
+    protected $code = 'free';
     
-    /**
-     * Template Module Params
-     *
-     * @access private
-     * @var array
-     */
-    var $params = array(
-        array('name' => 'MODULE_SHIPPING_FREE_STATUS',
-              'title' => 'Enable Free Shipping', 
-              'type' => 'combobox',
-              'mode' => 'local',
-              'value' => 'True',
-              'description' => 'Do you want to offer flat rate shipping?',
-              'values' => array(
-                  array('id' => 'True', 'text' => 'True'),
-                  array('id' => 'False', 'text' => 'False'))),
-        array('name' => 'MODULE_SHIPPING_FREE_MINIMUM_ORDER',
-              'title' => 'Shipping Cost', 
-              'type' => 'numberfield',
-              'value' => '20',
-              'description' => 'The minimum order amount to apply free shipping to.'),
-        array('name' => 'MODULE_SHIPPING_FREE_ZONE',
-              'title' => 'Shipping Zone', 
-              'type' => 'combobox',
-              'mode' => 'remote',
-		   	  'value' => '0',
-              'description' => 'If a zone is selected, only enable this shipping method for that zone.',
-              'action' => 'config/get_shipping_zone'));
+    protected $params = array(
+        array(
+			'name' => 'MODULE_SHIPPING_FREE_STATUS',
+			'title' => 'Enable Free Shipping', 
+			'type' => 'combobox',
+			'mode' => 'local',
+			'value' => 'True',
+			'description' => 'Do you want to offer flat rate shipping?',
+			'values' => array(
+				array('id' => 'True', 'text' => 'True'),
+				array('id' => 'False', 'text' => 'False')
+			)
+		),
+        array(
+			'name' => 'MODULE_SHIPPING_FREE_MINIMUM_ORDER',
+			'title' => 'Shipping Cost', 
+			'type' => 'numberfield',
+			'value' => '20',
+			'description' => 'The minimum order amount to apply free shipping to.'
+		),
+        array(
+			'name' => 'MODULE_SHIPPING_FREE_ZONE',
+			'title' => 'Shipping Zone', 
+			'type' => 'combobox',
+			'mode' => 'remote',
+			'value' => '0',
+			'description' => 'If a zone is selected, only enable this shipping method for that zone.',
+			'action' => 'config/get_shipping_zone'
+		)
+	);
 
     /**
      * Constructor
      *
      * @access public
      */
-    public function __construct() {
+    public function __construct() 
+    {
         parent::__construct();
 
         //initialize 
@@ -95,12 +98,17 @@ class TOC_Shipping_free extends TOC_Shipping_Module
                     $zones = $this->ci->address_model->get_zone_id_via_geo_zone($this->ci->shopping_cart->get_shipping_address('country_id'), $this->config['MODULE_SHIPPING_FREE_ZONE']);
 
                     $check_flag = FALSE;
-                    if ($zones !== NULL) {
-                        foreach($zones as $zone_id) {
-                            if ($zone_id < 1) {
+                    if ($zones !== NULL) 
+                    {
+                        foreach($zones as $zone_id) 
+                        {
+                            if ($zone_id < 1) 
+                            {
                                 $check_flag = TRUE;
                                 break;
-                            } elseif ($zone_id == $this->ci->shopping_cart->get_shipping_address('zone_id')) {
+                            } 
+                            elseif ($zone_id == $this->ci->shopping_cart->get_shipping_address('zone_id')) 
+                            {
                                 $check_flag = TRUE;
                                 break;
                             }
@@ -114,27 +122,28 @@ class TOC_Shipping_free extends TOC_Shipping_Module
                     $this->status = TRUE;
                 }
             }
-        } else {
+        } 
+        else 
+        {
             $this->status = FALSE;
         }
     }
-
+    
     /**
-     * Calculate the shipping module quote
+     * Set the shipping module quote methods
      *
      * @access public
+     * @return void
      */
-    public function quote() {
-        $this->quotes = array('id' => $this->code,
-                              'module' => $this->title,
-                              'methods' => array(array('id' => $this->code,
-                                                     'title' => sprintf(lang('shipping_free_for_amount'), $this->ci->currencies->format($this->config['MODULE_SHIPPING_FREE_MINIMUM_ORDER'])),
-                                                     'cost' => 0)),
-                              'tax_class_id' => 0);
-
-        if (!empty($this->icon)) $this->quotes['icon'] = image_url('images/shipping/' . $this->icon, $this->title);
-
-        return $this->quotes;
+    public function quote_methods()
+    {
+    	$this->quotes['methods'] = array(
+			array(
+				'id' => $this->code,
+				'title' => sprintf(lang('shipping_free_for_amount'), $this->ci->currencies->format($this->config['MODULE_SHIPPING_FREE_MINIMUM_ORDER'])),
+				'cost' => 0
+			)
+    	);
     }
 }
 

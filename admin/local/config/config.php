@@ -110,6 +110,30 @@ $config['enable_hooks'] = FALSE;
 */
 $config['subclass_prefix'] = 'TOC_';
 
+/*
+|--------------------------------------------------------------------------
+| TomatoCart Sub-Class Prefix
+|--------------------------------------------------------------------------
+|
+| Support: tomatocart core class extend from another core class
+| For example: we have toc_customers class in the tomatocart core libraries. You wish to create a sub-class from toc_customers
+| In this case, you just need to create a file named config_item('toc_subclass_prefix').customers.php
+|
+*/
+$config['toc_subclass_prefix'] = 'TOC_SUB_';
+
+/*
+|--------------------------------------------------------------------------
+| Local Sub-Class Prefix
+|--------------------------------------------------------------------------
+|
+| Support: the local sub-classes extened from toc core classed of the admin application
+| For example, you could extend the TOC_Customers under admin > system > libraries
+| ou just need to add a config_item('local_subclass_prefix').customers file under admin > local >libraries and then define the class in it
+|
+*/
+$config['local_subclass_prefix'] = 'LOCAL_';
+
 
 /*
 |--------------------------------------------------------------------------
@@ -268,8 +292,8 @@ $config['sess_time_to_update']	= 300;
 |
 */
 $config['cookie_prefix']	= "";
-$config['cookie_domain']	= "";
-$config['cookie_path']		= "/";
+$config['cookie_domain']	= '';
+$config['cookie_path']		= '';
 $config['cookie_secure']	= FALSE;
 
 /*

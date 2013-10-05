@@ -175,9 +175,11 @@ class TOC_Shipping
     }
 
     /**
-     * Get all quotes
-     *
-     * @return array quotes
+     * Get qutoe
+     * 
+     * @access pubilc
+     * @param string
+     * @return array
      */
     public function get_quote($module = '')
     {
@@ -185,31 +187,33 @@ class TOC_Shipping
         {
             $module = $this->selected_module;
         }
-
-        list($module_id, $method_id) = explode('-', $module);
-
+        
         $rate = array();
-
-        foreach ($this->quotes as $quote)
+        if ( ! empty($module))
         {
-            if ($quote['id'] == $module_id)
-            {
-                foreach ($quote['methods'] as $method)
-                {
-                    if ($method['id'] == $method_id)
-                    {
-                        $rate = array('id' => $module,
-                                      'title' => $quote['module'] . ((empty($method['title']) === FALSE) ? ' (' . $method['title'] . ')' : ''),
-                                      'cost' => $method['cost'],
-                                      'tax_class_id' => $quote['tax_class_id'],
-                                      'is_cheapest' => null);
-
-                        break 2;
-                    }
-                }
-            }
+        	list($module_id, $method_id) = explode('-', $module);
+        	
+        	foreach ($this->quotes as $quote)
+        	{
+        		if ($quote['id'] == $module_id)
+        		{
+        			foreach ($quote['methods'] as $method)
+        			{
+        				if ($method['id'] == $method_id)
+        				{
+        					$rate = array('id' => $module,
+        									'title' => $quote['module'] . ((empty($method['title']) === FALSE) ? ' (' . $method['title'] . ')' : ''),
+        									'cost' => $method['cost'],
+        									'tax_class_id' => $quote['tax_class_id'],
+        									'is_cheapest' => null);
+        	
+        					break 2;
+        				}
+        			}
+        		}
+        	}
         }
-
+        
         return $rate;
     }
 

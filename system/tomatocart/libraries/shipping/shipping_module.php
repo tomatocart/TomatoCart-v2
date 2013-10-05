@@ -29,7 +29,8 @@
  * @link		http://tomatocart.com/wiki/
  */
 
-abstract class TOC_Shipping_Module {
+abstract class TOC_Shipping_Module 
+{
 
     /**
      * Module group
@@ -164,7 +165,8 @@ abstract class TOC_Shipping_Module {
      * @access public
      * @return boolean
      */
-    public function install() {
+    public function install() 
+    {
         //load extensions model
         $this->ci->load->model('extensions_model');
 
@@ -213,7 +215,8 @@ abstract class TOC_Shipping_Module {
      * @access public
      * @return boolean
      */
-    public function uninstall() {
+    public function uninstall() 
+    {
         //load extensions model
         $this->ci->load->model('extensions_model');
 

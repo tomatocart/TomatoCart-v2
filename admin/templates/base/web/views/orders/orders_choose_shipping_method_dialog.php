@@ -69,6 +69,7 @@ Ext.define('Toc.orders.OrdersChooseShippingMethodDialog', {
 	    });
 	    
 	    this.grdShippingMethod = Ext.create('Ext.grid.GridPanel', {
+	    	border: false,
 	    	store: dsShippingMethod,
 	    	columns: [
 	    		{id: 'orders_shipping_methods_title', header: '<?php echo lang('table_heading_shipping_method'); ?>', dataIndex: 'title', flex: 1},

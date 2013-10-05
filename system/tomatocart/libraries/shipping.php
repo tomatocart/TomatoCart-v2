@@ -191,7 +191,7 @@ class TOC_Shipping
         $rate = array();
         if ( ! empty($module))
         {
-        	list($module_id, $method_id) = explode('-', $module);
+        	list($module_id, $method_id) = explode('_', $module);
         	
         	foreach ($this->quotes as $quote)
         	{

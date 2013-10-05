@@ -37,6 +37,7 @@ class Order_Model extends CI_Model
 		->select('title, text, value, class')
 		->from('orders_total')
 		->where('orders_id', $id)
+		->order_by('sort_order')
 		->get();
 
 		return $Qtotals->result_array();

@@ -29,7 +29,7 @@
  * @link		http://tomatocart.com/wiki/
  */
 
-class TOC_Shipping_Module {
+abstract class TOC_Shipping_Module {
 
     /**
      * Module group
@@ -118,6 +118,21 @@ class TOC_Shipping_Module {
      * @var array
      */
     protected $quotes = array();
+    
+    /**
+     * shipping module tax class id
+     *
+     * @access protected
+     * @var int
+     */
+    protected $tax_class = 0;
+    
+    /**
+     * abstract funciton - set the shipping quote methods
+     *
+     * @access protected
+     */
+    abstract protected function quote_methods();
 
     /**
      * Constructor
@@ -317,6 +332,30 @@ class TOC_Shipping_Module {
     public function get_quote()
     {
         return $this->quotes;
+    }
+    
+    /**
+     * Calculate the shipping module quote
+     *
+     * @access public
+     * @return array
+     */
+    public function quote()
+    {
+    	$this->quotes = array(
+			'id' => $this->code,
+			'module' => $this->title,
+    		'tax_class_id' => $this->tax_class
+		);
+    	
+    	$this->quote_methods();
+    	
+    	if ( ! empty($this->icon) && file_exists(image_url('images/shipping/') . $this->icon))
+    	{
+    		$this->quotes['icon'] = image_url('images/shipping/' . $this->icon, $this->title);
+    	}
+    	
+    	return $this->quotes;
     }
 }
 

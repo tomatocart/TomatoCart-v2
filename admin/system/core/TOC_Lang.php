@@ -496,6 +496,18 @@ class TOC_Lang extends CI_Lang {
     }
 
     /**
+     * Get the country iso.
+     * 
+     * @return string
+     * 
+     * @since   2.0.0
+     */
+    public function get_country_iso()
+    {
+        return $this->languages[$this->code]['country_iso'];
+    }
+
+    /**
      * Get the date format short of the current language.
      * 
      * @param   boolean $with_time
@@ -647,9 +659,9 @@ class TOC_Lang extends CI_Lang {
                         'definition_value' => (string) $definition->value
                     );
 
-                    if ( ! $this->ci->languages_model->check($data))
+                    if ( ! $this->ci->languages_model->check_definition($data))
                     {
-                        $this->ci->languages_model->insert($data);
+                        $this->ci->languages_model->insert_definition($data);
                     }
                 }
 

@@ -91,4 +91,4 @@ class TOC_Loader extends CI_Loader {
 }
 
 /* End of file TOC_Loader.php */
-/* Location: ./system/tomatocart/core/TOC_Loader.php */
+/* Location: ./admin/system/core/TOC_Loader.php */

@@ -1,109 +1,113 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
  * TomatoCart Open Source Shopping Cart Solution
- *
+ * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License v3 (2007)
  * as published by the Free Software Foundation.
- *
- * @package		TomatoCart
- * @author		TomatoCart Dev Team
- * @copyright	Copyright (c) 2009 - 2012, TomatoCart. All rights reserved.
- * @license		http://www.gnu.org/licenses/gpl.html
- * @link		http://tomatocart.com
- * @since		Version 2.0
- * @filesource
+ * 
+ * @package     TomatoCart
+ * @author      TomatoCart Dev Team
+ * @copyright   Copyright (c) 2009 - 2013, TomatoCart. All rights reserved.
+ * @license     http://www.gnu.org/licenses/gpl.html
+ * @link        http://tomatocart.com
+ * @since       2.0.0
+ * @filesource  
  */
-
-// ------------------------------------------------------------------------
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
- * TOC Lang
- *
- * @package		TomatoCart
- * @subpackage	tomatocart
- * @category	template-module-controller
- * @author		TomatoCart Dev Team
- * @link		http://tomatocart.com/wiki/
+ * TOC Language Class
+ * 
+ * @package     TomatoCart
+ * @subpackage  Libraries
+ * @category    Language
+ * @author      TomatoCart Dev Team
+ * @link        http://tomatocart.com/wiki/
  */
-class TOC_Lang extends CI_Lang
-{
-    /**
-     * ci instance
-     *
-     * @access private
-     * @var object
-     */
-    private $ci = NULL;
+class TOC_Lang extends CI_Lang {
 
     /**
-     * language code
+     * Reference to CodeIgniter instance
      *
-     * @access private
-     * @var string
+     * @var     object
+     * 
+     * @since   2.0.0
      */
-    private $code = FALSE;
+    protected $ci = NULL;
 
     /**
-     * languages
+     * Language code
      *
-     * @access private
-     * @var array
+     * @var     string
+     * 
+     * @since   2.0.0
      */
-    private $languages = array();
+    protected $code = FALSE;
 
     /**
-     * Constructor
+     * Languages
      *
-     * @access  public
+     * @var     array
+     * 
+     * @since   2.0.0
+     */
+    protected $languages = array();
+
+    /**
+     * Class constructor
+     * 
+     * @return  void
+     * 
+     * @since   2.0.0
      */
     public function __construct()
     {
         parent::__construct();
 
-        log_message('debug', "TOC Language Class Initialized");
+        log_message('debug', 'TOC Language Class Initialized');
     }
-
-    // --------------------------------------------------------------------
 
     /**
      * Initialize the languages class.
-     *
+     * 
      * The class must be initialized in the controller
-     *
-     * @access public
+     * 
+     * @return  void
+     * 
+     * @since   2.0.0
      */
     public function initialize()
     {
         if ($this->ci === NULL)
         {
-            $this->ci = &get_instance();
+            $this->ci =& get_instance();
 
-            //initialize languages
+            // Initialize languages
             $this->ci->load->model('languages_model');
-            $this->languages = $this->ci->languages_model->get_languages();
+            $this->languages = $this->ci->languages_model->get_all();
         }
 
-        //check the language in the query language and set in the system
-        $language = ($this->ci->input->get('admin_language') !== FALSE) ? $this->ci->input->get('admin_language') : '';
-        
-        //set the language to system
+        // Check the language in the query language and set in the system
+        $language = ($this->ci->input->get('language') !== FALSE) ? $this->ci->input->get('language') : '';
+
+        // Set the language to system
         $this->set($language);
     }
 
-    // --------------------------------------------------------------------
-
     /**
-     * Load a language file
-     *
-     * @access  public
-     * @param mixed the name of the language file to be loaded. Can be an array
-     * @param string  the language (english, etc.)
-     * @return  mixed
+     * Load a language group in the database.
+     * 
+     * @param   mixed   $group  The group of the file to be loaded. Can be an array.
+     * @param   boolean $return Whether to return the loaded array of translations.
+     * 
+     * @return  boolean If $group exists return key/value pair with the language definition, otherwise return NULL.
+     * 
+     * @since   2.0.0
      */
     public function db_load($group = '', $return = FALSE)
     {
-        //check if the language group is loaded
+        // Check if the language group is loaded
         if (in_array($group, $this->is_loaded, TRUE))
         {
             return;
@@ -114,7 +118,7 @@ class TOC_Lang extends CI_Lang
         $this->is_loaded[] = $group;
         unset($definitions);
 
-        if ($return == TRUE)
+        if ($return === TRUE)
         {
             return $definitions;
         }
@@ -124,30 +128,35 @@ class TOC_Lang extends CI_Lang
         return TRUE;
     }
 
-    // --------------------------------------------------------------------
-
     /**
-     * Parse a language file for admin panel
-     *
-     * @access  private
-     * @param string the filename to be loaded
-     * @param string the comment start sign
-     * @param string the language code
-     * @return  array
+     * Parses a language file.
+     * 
+     * @param   string  $filename       The filename to be loaded.
+     * @param   string  $comment        The comment start sign.
+     * @param   string  $language_code  The language code.
+     * 
+     * @return  array   Array holding the found languages as filename => real name pairs.
+     * 
+     * @since   2.0.0
      */
     public function parse_ini_file($filename = NULL, $comment = '#', $language_code = NULL)
     {
-        if ( is_null($filename) )
+        $filename = str_replace('.php', '', $filename);
+
+        if ($filename === NULL)
         {
-            $filename = $this->code . '.php';
+            $filename = $this->code;
         }
 
-        if ( is_null($language_code) )
+        $filename .= '.php';
+
+        if ($language_code === NULL)
         {
             $language_code = $this->code;
         }
 
-        $ini_array = array();
+        $languages = array();
+
         foreach (get_instance()->load->get_package_paths(TRUE) as $package_path)
         {
             if (file_exists($package_path . 'language/' . $language_code . '/' . $filename))
@@ -160,7 +169,7 @@ class TOC_Lang extends CI_Lang
 
                     $firstchar = substr($line, 0, 1);
 
-                    if ( !empty($line) && ( $firstchar != $comment) )
+                    if ( ! empty($line) && ($firstchar !== $comment))
                     {
                         $delimiter = strpos($line, '=');
 
@@ -169,98 +178,103 @@ class TOC_Lang extends CI_Lang
                             $key = trim(substr($line, 0, $delimiter));
                             $value = trim(substr($line, $delimiter + 1));
 
-                            $ini_array[$key] = $value;
+                            $languages[$key] = $value;
                         }
-                        elseif ( isset($key) )
+                        elseif (isset($key))
                         {
-                            $ini_array[$key] .= trim($line);
+                            $languages[$key] .= trim($line);
                         }
                     }
                 }
             }
         }
 
-        log_message('debug', 'Parse Ini File Succeed: ' . $filename);
+        log_message('debug', 'Parse Ini File loaded: ' . $filename);
 
-        return $ini_array;
+        return $languages;
     }
 
-    // --------------------------------------------------------------------
-
     /**
-     * Load a language file for admin panel
-     *
-     * @access  public
-     * @param string the group
-     * @param string the comment line singal
-     * @param string the language code
+     * Gets a single language file and appends the results to the existing strings.
+     * 
+     * @param   string  $filename       The filename to be loaded.
+     * @param   string  $comment        The comment start sign.
+     * @param   string  $language_code  The language code.
+     * 
+     * @return  boolean True if the file has successfully loaded.
+     * 
+     * @since   2.0.0
      */
     public function ini_load($filename = NULL, $comment = '#', $language_code = NULL)
     {
-        if ( is_null($filename) )
+        if ($filename === NULL)
         {
-            $filename = $this->code . '.php';
+            $filename = $this->code;
         }
 
-        if ( is_null($language_code) )
+        $filename .= '.php';
+
+        if ($language_code === NULL)
         {
             $language_code = $this->code;
         }
 
-        //check if the language file is loaded
         if (in_array($filename, $this->is_loaded, TRUE))
         {
             return TRUE;
         }
 
-        $ini_array = $this->parse_ini_file($filename, $comment, $language_code);
+        $languages = $this->parse_ini_file($filename, $comment, $language_code);
 
-        $this->language = array_merge($this->language, $ini_array);
+        $this->language = array_merge($this->language, $languages);
         $this->is_loaded[] = $filename;
-        unset($ini_array);
+        unset($languages);
 
         log_message('debug', 'Language File loaded: ' . $filename);
 
         return TRUE;
     }
 
-    // --------------------------------------------------------------------
-
     /**
-     * Load a xml language file
-     *
-     * @access  public
-     * @param string the xml file
-     * @param string the language code
+     * Load a xml language file.
+     * 
+     * @param   string $filename        The XML filename to be loaded.
+     * @param   string $language_code   The language code.
+     * 
+     * @return  boolean True if the file has successfully loaded.
+     * 
+     * @since   2.0.0
      */
-    public function xml_load($module, $language_code = NULL)
+    public function xml_load($filename, $language_code = NULL)
     {
-        if ( is_null($language_code) )
+        if ($language_code === NULL)
         {
             $language_code = $this->code;
         }
 
-        //check if the language file is loaded
-        if (in_array($module, $this->is_loaded, TRUE))
+        if (in_array($filename, $this->is_loaded, TRUE))
         {
             return TRUE;
         }
 
-        $file = '../system/tomatocart/language/' . $language_code . '/' . $module . '.xml';
+        $file = '../system/application/language/' . $language_code . '/' . $filename . '.xml';
+
         if (file_exists($file))
         {
             $xml = @simplexml_load_file($file);
+
             if (isset($xml->definitions->definition))
             {
-                $ini_array = array();
+                $languages = array();
+
                 foreach($xml->definitions->definition as $definition)
                 {
-                    $ini_array[(string) $definition->key] = (string)$definition->value;
+                    $languages[(string) $definition->key] = (string)$definition->value;
                 }
 
-                $this->language = array_merge($this->language, $ini_array);
-                $this->is_loaded[] = $module;
-                unset($ini_array);
+                $this->language = array_merge($this->language, $languages);
+                $this->is_loaded[] = $filename;
+                unset($languages);
 
                 return TRUE;
             }
@@ -269,141 +283,122 @@ class TOC_Lang extends CI_Lang
         return FALSE;
     }
 
-    // --------------------------------------------------------------------
-
     /**
-     * Fetch a single line of text from the language array
-     *
-     * @access  public
-     * @param string  $line the language line
-     * @return  string
+     * Language line.
+     * 
+     * Fetches a single line of text from the language array
+     * 
+     * @param   string  $line       Language line key
+     * @param   boolean $log_errors Whether to log an error message if the line is not found
+     * 
+     * @return  string  Translation
+     * 
+     * @since   2.0.0
      */
-    public function line($key = '')
+    public function line($line = '', $log_errors = TRUE)
     {
-        $value = ($key == '' OR ! isset($this->language[$key])) ? $key : $this->language[$key];
+        $value = ($line === '' or ! isset($this->language[$line])) ? $line : $this->language[$line];
 
         // Because killer robots like unicorns!
-        if ($value === $key)
+        if ($value === $line && $log_errors === TRUE)
         {
-            log_message('error', 'Could not find the language definition "' . $key . '"');
+            log_message('error', 'Could not find the language line "'.$line.'"');
         }
 
         return $value;
     }
 
-    // --------------------------------------------------------------------
-
     /**
-     * Set the language code
-     *
-     * @access  public
-     * @param string  The language code
+     * Set the language.
+     * 
+     * @param   string  $code   Language code.
+     * 
+     * @return  void
+     * 
+     * @since   2.0.0
      */
     public function set($code = '')
     {
         $this->code = $code;
 
-        //if the language code is empty then we try to get the code from session or cookie
+        // If the language code is empty then we try to get the code from session or cookie
         if (empty($this->code))
         {
-            //get language code from session
+            // Get language code from session
             if ($this->ci->session->userdata('admin_language') !== FALSE)
             {
                 $this->code = $this->ci->session->userdata('admin_language');
-
             }
-            //get language code from cookie
             elseif ($this->ci->input->cookie('admin_language') !== FALSE)
             {
                 $this->code = $this->ci->input->cookie('admin_language');
             }
-            //get language code from browser setting
             else
             {
                 $this->code = $this->get_browser_setting();
             }
         }
 
-        //no language found? then get the sytem default language
+        // No language found? then get the sytem default language
         if (empty($this->code) || ($this->exists($this->code) === FALSE))
         {
             $this->code = config('DEFAULT_LANGUAGE');
         }
 
-        //set language code in cookie
-        $language = $this->ci->input->cookie('language');
-        if (($language === FALSE) || (($language !== FALSE) && ($language != $this->code)))
+        // Set language code in cookie
+        $cookie = $this->ci->input->cookie('admin_language');
+        if (($cookie === FALSE) || (($cookie !== FALSE) && ($cookie !== $this->code)))
         {
             $this->ci->input->set_cookie('admin_language', $this->code, time() + 60*60*24*90);
         }
 
-        //set language code in session
-        $language = $this->ci->session->userdata('admin_language');
-        if (($language === FALSE) || (($language !== FALSE) && ($language != $this->code)))
+        // Set language code in session
+        $session = $this->ci->session->userdata('admin_language');
+        if (($session === FALSE) || (($session !== FALSE) && ($session !== $this->code)))
         {
             $this->ci->session->set_userdata('admin_language', $this->code);
         }
     }
 
-    // --------------------------------------------------------------------
-
     /**
-     * Get the browser setting language
-     *
-     * @access  public
-     * @return string
+     * Get the browser setting language.
+     * 
+     * @return  mixed
+     * 
+     * @since   2.0.0
      */
     public function get_browser_setting()
     {
-        if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) && !empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
-            $browserlanguages = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
+        if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) && !empty($_SERVER['HTTP_ACCEPT_LANGUAGE']))
+        {
+            $browsers = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
 
-            $languages = array('ar' => 'ar([-_][[:alpha:]]{2})?|arabic',
-                         'bg' => 'bg|bulgarian',
-                         'br' => 'pt[-_]br|brazilian portuguese',
-                         'ca' => 'ca|catalan',
-                         'cs' => 'cs|czech',
-                         'da' => 'da|danish',
-                         'de' => 'de([-_][[:alpha:]]{2})?|german',
-                         'el' => 'el|greek',
-                         'en' => 'en([-_][[:alpha:]]{2})?|english',
-                         'es' => 'es([-_][[:alpha:]]{2})?|spanish',
-                         'et' => 'et|estonian',
-                         'fi' => 'fi|finnish',
-                         'fr' => 'fr([-_][[:alpha:]]{2})?|french',
-                         'gl' => 'gl|galician',
-                         'he' => 'he|hebrew',
-                         'hu' => 'hu|hungarian',
-                         'id' => 'id|indonesian',
-                         'it' => 'it|italian',
-                         'ja' => 'ja|japanese',
-                         'ko' => 'ko|korean',
-                         'ka' => 'ka|georgian',
-                         'lt' => 'lt|lithuanian',
-                         'lv' => 'lv|latvian',
-                         'nl' => 'nl([-_][[:alpha:]]{2})?|dutch',
-                         'no' => 'no|norwegian',
-                         'pl' => 'pl|polish',
-                         'pt' => 'pt([-_][[:alpha:]]{2})?|portuguese',
-                         'ro' => 'ro|romanian',
-                         'ru' => 'ru|russian',
-                         'sk' => 'sk|slovak',
-                         'sr' => 'sr|serbian',
-                         'sv' => 'sv|swedish',
-                         'th' => 'th|thai',
-                         'tr' => 'tr|turkish',
-                         'uk' => 'uk|ukrainian',
-                         'tw' => 'zh[-_]tw|chinese traditional',
-                         'zh' => 'zh|chinese simplified');
-
-            foreach ($browserlanguages as $browser_language)
+            foreach ($browsers as $browser)
             {
-                foreach ($languages as $key => $value)
+                $browser = substr($browser, 0, strcspn($browser, ';'));
+
+                $primary = substr($browser, 0, 2);
+
+                foreach ($this->languages as $language)
                 {
-                    if (preg_match('/^(' . $value . ')(;q=[0-9]\\.[0-9])?$/i', $browser_language) && $this->exists($key))
+                    $lang = $language['code'];
+
+                    if (strlen($lang) < 6)
                     {
-                        return $key;
+                        if (strtolower($browser) === strtolower(substr($language['code'], 0, strlen($browser))))
+                        {
+                            return $language['code'];
+                        }
+                        elseif ($primary === substr($language['code'], 0, 2))
+                        {
+                            $detect = $language['code'];
+                        }
                     }
+                }
+
+                if (isset($detect))
+                {
+                    return $detect;
                 }
             }
         }
@@ -411,272 +406,250 @@ class TOC_Lang extends CI_Lang
         return FALSE;
     }
 
-    // --------------------------------------------------------------------
-
     /**
-     * Whether the language code is existed
-     *
-     * @access public
-     * @param string The language code
-     * @return boolean
+     * Whether the language code is existed.
+     * 
+     * @param   string  $code   The language code.
+     * 
+     * @return  boolean
+     * 
+     * @since   2.0.0
      */
     public function exists($code)
     {
         return array_key_exists($code, $this->languages);
     }
 
-    // --------------------------------------------------------------------
-
     /**
-     * Get all the languages
-     *
-     * @access  public
-     * @return array
-     */
-    public function get_languages()
-    {
-        return $this->languages;
-    }
-
-    // --------------------------------------------------------------------
-
-    /**
-     * Get all the languages
-     *
-     * @access  public
-     * @return array
+     * Get all the languages.
+     * 
+     * @return  array
+     * 
+     * @since   2.0.0
      */
     public function get_all()
     {
         return $this->languages;
     }
 
-    // --------------------------------------------------------------------
-
     /**
-     * Get the language id of the current language
-     *
-     * @access  public
-     * @return int
+     * Get the language id of the current language.
+     * 
+     * @return  integer
+     * 
+     * @since   2.0.0
      */
     public function get_id()
     {
-        if (!empty($this->code))
+        if ( ! empty($this->code))
         {
             return $this->languages[$this->code]['id'];
         }
     }
 
-    // --------------------------------------------------------------------
-
     /**
-     * Get the language name of the current language
-     *
-     * @access  public
-     * @return string
+     * Get the language name of the current language.
+     * 
+     * @return  string
+     * 
+     * @since   2.0.0
      */
     public function get_name()
     {
         return $this->languages[$this->code]['name'];
     }
 
-    // --------------------------------------------------------------------
-
     /**
-     * Get the language code of the current language
-     *
-     * @access  public
-     * @return string
+     * Get the language code of the current language.
+     * 
+     * @return  string
+     * 
+     * @since   2.0.0
      */
     public function get_code()
     {
         return $this->code;
     }
 
-    // --------------------------------------------------------------------
-
     /**
-     * Get the locale of the current language
-     *
-     * @access  public
-     * @return string
+     * Get the locale of the current language.
+     * 
+     * @return  string
+     * 
+     * @since   2.0.0
      */
     public function get_locale()
     {
         return $this->languages[$this->code]['locale'];
     }
 
-    // --------------------------------------------------------------------
-
     /**
-     * Get the charset of the current language
-     *
-     * @access  public
-     * @return string
+     * Get the charset of the current language.
+     * 
+     * @return  string
+     * 
+     * @since   2.0.0
      */
-    public function get_character_set()
+    public function get_charset()
     {
         return $this->languages[$this->code]['charset'];
     }
 
-    // --------------------------------------------------------------------
-
     /**
-     * Get the format short of the current language
-     *
-     * @access  public
-     * @param bool
-     * @return string
+     * Get the date format short of the current language.
+     * 
+     * @param   boolean $with_time
+     * 
+     * @return  string
+     * 
+     * @since   2.0.0
      */
     public function get_date_format_short($with_time = FALSE)
     {
-        if ($with_time === true) {
-            return $this->languages[$this->code]['date_format_short'] . ' ' . $this->getTimeFormat();
+        if ($with_time === TRUE)
+        {
+            return $this->languages[$this->code]['date_format_short'] . ' ' . $this->get_time_format();
         }
 
         return $this->languages[$this->code]['date_format_short'];
     }
 
-    // --------------------------------------------------------------------
-
     /**
-     * Get the date format long of the current language
-     *
-     * @access  public
-     * @return string
+     * Get the date format long of the current language.
+     * 
+     * @return  string
+     * 
+     * @since   2.0.0
      */
     public function get_date_format_long()
     {
         return $this->languages[$this->code]['date_format_long'];
     }
 
-    // --------------------------------------------------------------------
-
     /**
-     * Get the time format of the current language
-     *
-     * @access  public
-     * @return string
+     * Get the time format of the current language.
+     * 
+     * @return  string
+     * 
+     * @since   2.0.0
      */
     public function get_time_format()
     {
         return $this->languages[$this->code]['time_format'];
     }
 
-    // --------------------------------------------------------------------
-
     /**
-     * Get the text direction of the current language
-     *
-     * @access  public
-     * @return string
+     * Get the text direction of the current language.
+     * 
+     * @return  string
+     * 
+     * @since   2.0.0
      */
     public function get_text_direction()
     {
         return $this->languages[$this->code]['text_direction'];
     }
 
-    // --------------------------------------------------------------------
-
     /**
-     * Get the currency id of the current language
-     *
-     * @access  public
-     * @return string
+     * Get the currency id of the current language.
+     * 
+     * @return  string
+     * 
+     * @since   2.0.0
      */
     public function get_currency_id()
     {
         return $this->languages[$this->code]['currencies_id'];
     }
 
-    // --------------------------------------------------------------------
-
     /**
-     * Get the decimal separator of the current language
-     *
-     * @access  public
-     * @return string
+     * Get the decimal separator of the current language.
+     * 
+     * @return  string
+     * 
+     * @since   2.0.0
      */
     public function get_numeric_decimal_separator()
     {
         return $this->languages[$this->code]['numeric_separator_decimal'];
     }
 
-    // --------------------------------------------------------------------
-
     /**
-     * Get the thousands separator of the current language
-     *
-     * @access  public
-     * @return string
+     * Get the thousands separator of the current language.
+     * 
+     * @return  string
+     * 
+     * @since   2.0.0
      */
     public function get_numeric_thousands_separator()
     {
         return $this->languages[$this->code]['numeric_separator_thousands'];
     }
 
-    // --------------------------------------------------------------------
-
     /**
-     * Get the wordflag image
-     *
-     * @access  public
-     * @param string The language code
-     * @param int The width
-     * @param int The height
-     * @param string
-     * @return string
+     * Get the wordflag image.
+     * 
+     * @param   string  $code       The language code.
+     * @param   integer $width      Optional width.
+     * @param   integer $height     Optional height.
+     * @param   string  $parameters Optional parameters.
+     * 
+     * @return  string
+     * 
+     * @since   2.0.0
      */
-    public function show_image($code = null, $width = '16', $height = '10', $parameters = null)
+    public function show_image($code = NULL, $width = 16, $height = 10, $parameters = NULL)
     {
-        $this->ci->load->helper('html_output');
-
-        if ( empty($code) ) {
+        if (empty($code))
+        {
             $code = $this->code;
         }
 
         $imagecode = strtolower(substr($code, 3));
 
-        if ( !is_numeric($width) ) {
+        if ( ! is_numeric($width))
+        {
             $width = 16;
         }
 
-        if ( !is_numeric($height) ) {
+        if ( ! is_numeric($height))
+        {
             $height = 10;
         }
 
         return image('images/worldflags/' . $imagecode . '.png', $this->languages[$code]['name'], $width, $height, $parameters);
     }
 
-    // --------------------------------------------------------------------
-
     /**
-     * Import xml language resource file
-     *
-     * @access  public
-     * @param string the xml file
-     * @param int language id
-     * @return boolean
+     * Import xml language resource file.
+     * 
+     * @param   string  $filename       The xml filename.
+     * @param   integer $language_id    Language id.
+     * 
+     * @return  boolean True if the file has successfully imported.
+     * 
+     * @since   2.0.0
      */
-    public function import_xml($xml_file, $languages_id) 
+    public function import_xml($filename, $language_id)
     {
-        if ( file_exists($xml_file) ) {
-            $info = simplexml_load_file($xml_file);
+        if (file_exists($filename))
+        {
+            $info = simplexml_load_file($filename);
 
-            if (($info !== FALSE) ) 
+            if (($info !== FALSE))
             {
-                //insert definitions
-                foreach ($info->definitions->definition as $definition) 
+                foreach ($info->definitions->definition as $definition)
                 {
-                    $entry = array(
-                    	'languages_id' => $languages_id,
-                        'content_group' => (string) $definition->group,
-                        'definition_key' => (string) $definition->key,
-                        'definition_value' => (string) $definition->value);
-                    
-                    if (!$this->ci->languages_model->check_definition($entry)) 
+                    $data = array(
+                        'language_id' => $language_id,
+                        'content_group' => (string)$definition->group,
+                        'definition_key' => (string)$definition->key,
+                        'definition_value' => (string) $definition->value
+                    );
+
+                    if ( ! $this->ci->languages_model->check($data))
                     {
-                        $this->ci->languages_model->insert_definition($entry);
+                        $this->ci->languages_model->insert($data);
                     }
                 }
 
@@ -689,30 +662,34 @@ class TOC_Lang extends CI_Lang
         return FALSE;
     }
 
-    // --------------------------------------------------------------------
-
     /**
-     * Remove the xml resource definition in the database
-     *
-     * @access  public
-     * @param string the xml file
-     * @param int language id
-     * @return boolean
+     * Remove the xml resource definition in the database.
+     * 
+     * @param   string  $filename       The xml filename.
+     * @param   integer $language_id    Language id.
+     * 
+     * @return  boolean True if the file has successfully removed.
+     * 
+     * @since   2.0.0
      */
-    public function remove_xml($xml_file, $languages_id) {
-        if ( file_exists($xml_file) ) {
-            $info = simplexml_load_file($xml_file);
+    public function remove_xml($filename, $language_id)
+    {
+        if (file_exists($filename))
+        {
+            $info = simplexml_load_file($filename);
 
-            if (($info !== FALSE) ) {
-                //insert definitions
-                foreach ($info->definitions->definition as $definition) {
-                    $entry = array(
-                    	'languages_id' => $languages_id,
-                        'content_group' => (string) $definition->group,
-                        'definition_key' => (string) $definition->key,
-                        'definition_value' => (string) $definition->value);
+            if (($info !== FALSE))
+            {
+                foreach ($info->definitions->definition as $definition)
+                {
+                    $data = array(
+                        'language_id' => $language_id,
+                        'content_group' => (string)$definition->group,
+                        'definition_key' => (string)$definition->key,
+                        'definition_value' => (string) $definition->value
+                    );
 
-                    $this->ci->languages_model->remove_definition($entry);
+                    $this->ci->languages_model->remove_definition($data);
                 }
 
                 unset($info);
@@ -724,7 +701,6 @@ class TOC_Lang extends CI_Lang
         return FALSE;
     }
 }
-// END TOC_Lang Class
 
 /* End of file TOC_Lang.php */
 /* Location: ./admin/system/core/TOC_Lang.php */

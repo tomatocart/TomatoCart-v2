@@ -1,138 +1,238 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
  * TomatoCart Open Source Shopping Cart Solution
- *
+ * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License v3 (2007)
  * as published by the Free Software Foundation.
- *
- * @package		TomatoCart
- * @author		TomatoCart Dev Team
- * @copyright	Copyright (c) 2009 - 2012, TomatoCart. All rights reserved.
- * @license		http://www.gnu.org/licenses/gpl.html
- * @link		http://tomatocart.com
- * @since		Version 2.0
- * @filesource
+ * 
+ * @package     TomatoCart
+ * @author      TomatoCart Dev Team
+ * @copyright   Copyright (c) 2009 - 2013, TomatoCart. All rights reserved.
+ * @license     http://www.gnu.org/licenses/gpl.html
+ * @link        http://tomatocart.com
+ * @since       2.0.0
+ * @filesource  
  */
-
-// ------------------------------------------------------------------------
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
- * Frontend Controller
- *
- * @package		TomatoCart
- * @subpackage	tomatocart
- * @category	template-module-controller
- * @author		TomatoCart Dev Team
- * @link		http://tomatocart.com/wiki/
+ * TOC Controller Class
+ * 
+ * @package     TomatoCart
+ * @subpackage  Libraries
+ * @category    Libraries
+ * @author      TomatoCart Dev Team
+ * @link        http://tomatocart.com/wiki/
  */
-class TOC_Controller extends CI_Controller
-{
+class TOC_Controller extends CI_Controller {
+
     /**
-     * Constructor
-     *
-     * @access public
-     * @param string
+     * Class constructor
+     * 
+     * @return  void
+     * 
+     * @since   2.0.0
      */
     public function __construct()
     {
         parent::__construct();
 
-        //initialize system language
+        // Initialize system language
         $this->lang->initialize();
-        $this->output->set_header('Content-Type: text/html; charset=' . $this->lang->get_character_set());
+        $this->output->set_header('Content-Type: text/html; charset=' . $this->lang->get_charset());
         setlocale(LC_TIME, explode(',', $this->lang->get_locale()));
 
-        //load language resource
+        // Load language resource
         $this->lang->ini_load();
 
-        //load module language resource
+        // Load module language resource
         $module = trim($this->router->class);
-        $this->lang->ini_load($module . '.php');
+        $this->lang->ini_load($module);
 
-        //initialize system language
-        $this->output->set_header('Content-Type: text/html; charset=' . $this->lang->get_character_set());
-        setlocale(LC_TIME, explode(',', $this->lang->get_locale()));
+        // To be delete, all constant must be access via the config helper function
+        $this->configuration->extract();
 
-        //to be delete, all constant must be access via the config helper function
-        $this->configuration->extract_all();
-
-        //load template
+        // Load template
         $this->load->library('template');
 
-        //load cache
+        // Load cache
         $this->load->driver('cache');
 
-        //set layout
-        $this->template->set_layout('index.php');
+        log_message('debug', 'TOC Controller Class Initialized');
     }
 
-    // --------------------------------------------------------------------
+    /**
+     * Fetch an item from the GET array
+     * 
+     * @param   string  $index      Index for item to be fetched from $_GET
+     * @param   boolean $xss_clean  Whether to apply XSS filtering
+     * 
+     * @return  mixed
+     * 
+     * @since   2.0.0
+     */
+    protected function get($index = NULL, $xss_clean = FALSE)
+    {
+        return $this->input->get($index, $xss_clean);
+    }
+
+    /**
+     * Fetch an item from GET data with fallback to POST
+     * 
+     * @param   string  $index      Index for item to be fetched from $_GET or $_POST
+     * @param   boolean $xss_clean  Whether to apply XSS filtering
+     * 
+     * @return  mixed
+     * 
+     * @since   2.0.0
+     */
+    protected function get_post($index = NULL, $xss_clean = FALSE)
+    {
+        return $this->input->get_post($index, $xss_clean);
+    }
 
     /**
      * Is this a ajax request
-     *
-     * @access protected
-     * @return bool
+     * 
+     * @return  boolean
+     * 
+     * @since   2.0.0
      */
     protected function is_ajax()
     {
         return $this->input->is_ajax_request();
     }
 
-    // --------------------------------------------------------------------
-
+    /**
+     * Fetch an item from the POST array
+     * 
+     * @param   string  $index      Index for item to be fetched from $_POST
+     * @param   boolean $xss_clean  Whether to apply XSS filtering
+     * 
+     * @return  mixed
+     * 
+     * @since   2.0.0
+     */
+    protected function post($index = NULL, $xss_clean = FALSE)
+    {
+        return $this->input->post($index, $xss_clean);
+    }
 
     /**
-     * set output
-     *
-     * The sub class could override this method to extend the output type
-     *
-     * @access protected
-     * @param array or string or xml etc...
-     * @return void
+     * Fetch an item from POST data with fallback to GET
+     * 
+     * @param   string  $index      Index for item to be fetched from $_POST or $_GET
+     * @param   boolean $xss_clean  Whether to apply XSS filtering
+     * 
+     * @return  mixed
+     * 
+     * @since   2.0.0
      */
-    protected function set_output($output) {
+    protected function post_get($index = NULL, $xss_clean = FALSE)
+    {
+        return $this->input->post_get($index, $xss_clean);
+    }
+
+    /**
+     * Record
+     * 
+     * @param   mixed   $output Output data
+     * 
+     * @return  void
+     * 
+     * @since   2.0.0
+     */
+    protected function record($output)
+    {
+        $this->set_output(array(EXT_JSON_READER_ROOT => $output));
+    }
+
+    /**
+     * Response
+     * 
+     * @param   mixed   $output Output data
+     * @param   integer $total  Output count data
+     * 
+     * @return  void
+     * 
+     * @since   2.0.0
+     */
+    protected function response($output, $total)
+    {
+        $this->set_output(array(
+            EXT_JSON_READER_ROOT => $output,
+            EXT_JSON_READER_TOTAL => $total
+        ));
+    }
+
+    /**
+     * Set output
+     * 
+     * @param   mixed   $output Output data
+     * 
+     * @return  void
+     * 
+     * @since   2.0.0
+     */
+    protected function set_output($output)
+    {
         $type = gettype($output);
 
-        if ($type == 'array')
+        if ($type === 'array')
         {
             $this->output_json($output);
         }
 
-        if ($type == 'string')
+        if ($type === 'string')
         {
             $this->output_string($output);
         }
     }
 
-    // --------------------------------------------------------------------
-
     /**
-     * set output to a json string
-     *
-     * @access private
-     * @param array
-     * @return void
+     * Set output to a json string
+     * 
+     * @param   string  $output Output data
+     * 
+     * @return  void
+     * 
+     * @since   2.0.0
      */
     private function output_json($output)
     {
         $this->output->set_content_type('application/json')->set_output(json_encode($output));
     }
 
-    // --------------------------------------------------------------------
-
     /**
-     * set output to a string
-     *
-     * @access private
-     * @param string
-     * @return void
+     * Set output to a string
+     * 
+     * @param   string  $output Output data
+     * 
+     * @return  void
+     * 
+     * @since   2.0.0
      */
-
     private function output_string($output)
     {
         $this->output->set_content_type('text/plain')->set_output($output);
+    }
+}
+
+if ( ! function_exists('ci'))
+{
+    /**
+     * Reference to the CI_Controller method.
+     * 
+     * Returns current CI instance object
+     * 
+     * @return  object
+     * 
+     * @since   2.0.0
+     */
+    function ci()
+    {
+        return get_instance();
     }
 }
 
